@@ -1,1 +1,0 @@
-/home/bas/.local/share/fish/plug/jorgebucaran/autopair.fish/conf.d/autopair.fish

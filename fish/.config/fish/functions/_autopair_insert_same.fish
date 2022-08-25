@@ -1,1 +1,0 @@
-/home/bas/.local/share/fish/plug/jorgebucaran/autopair.fish/functions/_autopair_insert_same.fish

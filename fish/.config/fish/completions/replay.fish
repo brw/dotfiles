@@ -1,1 +1,0 @@
-/home/bas/.local/share/fish/plug/jorgebucaran/replay.fish/completions/replay.fish

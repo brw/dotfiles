@@ -1,1 +1,0 @@
-/home/bas/.local/share/fish/plug/gazorby/fish-abbreviation-tips/conf.d/abbr_tips.fish

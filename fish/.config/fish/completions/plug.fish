@@ -1,1 +1,0 @@
-/home/bas/.local/share/fish/plug/kidonng/fish-plug/completions/plug.fish

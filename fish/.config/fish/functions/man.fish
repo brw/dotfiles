@@ -1,1 +1,0 @@
-/home/bas/.local/share/fish/plug/decors/fish-colored-man/functions/man.fish

@@ -1,1 +1,0 @@
-/home/bas/.local/share/fish/plug/gazorby/fish-abbreviation-tips/functions/__abbr_tips_bind_newline.fish
