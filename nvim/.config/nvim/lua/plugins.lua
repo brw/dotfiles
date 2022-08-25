@@ -51,6 +51,7 @@ require('packer').startup(function(use)
   use 'rcarriga/nvim-notify'
   use 'lewis6991/impatient.nvim'
   use 'tpope/vim-sleuth'
+  use 'JopjeKnopje/42header_codam'
 
   if packer_bootstrap then
     require('packer').sync()
@@ -145,6 +146,7 @@ vim.g.coq_settings = {
   auto_start = 'shut-up',
   display = { icons = { mode = 'short' } },
   limits = { completion_auto_timeout = 0.5 },
+  keymap = { recommended = false },
 }
 
 -- Copilot is bugged with Node 18
