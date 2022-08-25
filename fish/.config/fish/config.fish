@@ -3,7 +3,7 @@ command -sq starship && starship init fish | source
 command -sq direnv && direnv hook fish | source
 command -sq zoxide && zoxide init fish | source
 
-set -Gx SSH_AUTH_SOCK $HOME/.ssh/agent.sock
+set -gx SSH_AUTH_SOCK $HOME/.ssh/agent.sock
 
 bind \er __select_from_last
 bind \e, __commandline_token_search_backward
