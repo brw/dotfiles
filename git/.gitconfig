@@ -1,0 +1,39 @@
+[user]
+    email = hi@bas.sh
+    name = Bas van den Wollenberg
+
+[includeIf "gitdir:~/dev/Solease/**/**"]
+    path = /home/bas/dev/Solease/.gitconfig
+
+[core]
+    autocrlf = input
+    editor = nvim
+    pager = delta
+
+[credential]
+    helper = store
+
+[filter "lfs"]
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true
+
+[vain]
+    default = ba5
+
+[interactive]
+    diffFilter = delta --color-only
+
+[delta]
+    syntax-theme = Nord
+    navigate = true
+
+[init]
+    defaultBranch = main
+
+[pull]
+    rebase = true
+
+[rebase]
+	autostash = true
