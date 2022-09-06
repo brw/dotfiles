@@ -1,4 +1,3 @@
-# Defined via `source`
 function gsudo --wraps=sudo.exe --description 'alias gsudo=sudo.exe'
-  sudo.exe $argv; 
+  sudo.exe $argv
 end

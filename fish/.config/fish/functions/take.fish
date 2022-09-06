@@ -1,3 +1,3 @@
-function take --wraps='mkdir $argv; cd $argv' --wraps='mkdir $argv; cd' --description 'alias take mkdir $argv; cd'
-  mkdir $argv; cd $argv; 
+function take --wraps='mkdir -p $argv && cd $argv' --description 'Create a directory and cd into it'
+  mkdir -p $argv && cd $argv 
 end

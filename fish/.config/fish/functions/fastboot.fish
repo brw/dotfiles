@@ -1,3 +1,3 @@
 function fastboot --wraps=fastboot.exe --description 'alias fastboot=fastboot.exe'
-  fastboot.exe $argv; 
+  fastboot.exe $argv
 end
