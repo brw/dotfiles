@@ -13,7 +13,7 @@ if string match -q -- "*microsoft*" (uname -a)
   set -gx SSH_AUTH_SOCK $HOME/.ssh/agent.sock
   if not ss -a | grep -q $SSH_AUTH_SOCK
     rm -f $SSH_AUTH_SOCK
-    setsid socat UNIX-LISTEN:$SSH_AUTH_SOCK,fork EXEC:"/mnt/c/Users/Bas/wsl-ssh-agent/npiperelay.exe -ei -s //./pipe/openssh-ssh-agent",nofork &
+    setsid socat UNIX-LISTEN:$SSH_AUTH_SOCK,fork EXEC:"/mnt/c/Users/Bas/wsl-ssh-agent/npiperelay.exe -ei -s //./pipe/openssh-ssh-agent",nofork
   end
 end
 
