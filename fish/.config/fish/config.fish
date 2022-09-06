@@ -20,3 +20,4 @@ end
 test -e $HOME/.iterm2_shell_integration.fish && source $HOME/.iterm2_shell_integration.fish
 
 set -gx plug_path $HOME/.local/share/fish/plug
+fish_add_path -g $HOME/.homebrew/bin
