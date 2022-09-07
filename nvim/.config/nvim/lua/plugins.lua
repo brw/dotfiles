@@ -8,7 +8,7 @@ if fn.empty(fn.glob(install_path)) > 0 then
   vim.o.runtimepath = vim.fn.stdpath('data') .. '/site/pack/*/start/*,' .. vim.o.runtimepath
 end
 
-require('packer').startup(function(use)
+require('packer').startup({function(use)
   use 'wbthomason/packer.nvim'
   use 'shaunsingh/nord.nvim'
   use {
@@ -56,7 +56,12 @@ require('packer').startup(function(use)
   if packer_bootstrap then
     require('packer').sync()
   end
-end)
+end,
+config = {
+  display = {
+    open_cmd = 'vnew \\[packer\\]',
+  }
+}})
 
 local plugins_no_config = { 'which-key', 'Comment', 'toggleterm', 'nrpattern', 'gitsigns', 'fidget', 'octo', 'nvim-surround' }
 for _, plugin in pairs(plugins_no_config) do
