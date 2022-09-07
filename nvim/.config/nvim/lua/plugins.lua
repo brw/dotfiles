@@ -64,7 +64,7 @@ config = {
   }
 }})
 
-local plugins_no_config = { 'which-key', 'Comment', 'toggleterm', 'nrpattern', 'gitsigns', 'fidget', 'octo', 'nvim-surround', 'neogit' }
+local plugins_no_config = { 'which-key', 'Comment', 'toggleterm', 'nrpattern', 'gitsigns', 'fidget', 'octo', 'nvim-surround' }
 for _, plugin in pairs(plugins_no_config) do
   require(plugin).setup()
 end
@@ -185,3 +185,12 @@ require('notify').setup {
 }
 
 vim.notify = require('notify')
+
+require('neogit').setup {
+  commit_popup = {
+    kind = "floating"
+  },
+  popup = {
+    kind = "floating"
+  }
+}
