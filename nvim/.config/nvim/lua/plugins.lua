@@ -52,6 +52,7 @@ require('packer').startup({function(use)
   use 'lewis6991/impatient.nvim'
   use 'tpope/vim-sleuth'
   use 'JopjeKnopje/42header_codam'
+  use 'TimUntersberger/neogit'
 
   if packer_bootstrap then
     require('packer').sync()
@@ -63,7 +64,7 @@ config = {
   }
 }})
 
-local plugins_no_config = { 'which-key', 'Comment', 'toggleterm', 'nrpattern', 'gitsigns', 'fidget', 'octo', 'nvim-surround' }
+local plugins_no_config = { 'which-key', 'Comment', 'toggleterm', 'nrpattern', 'gitsigns', 'fidget', 'octo', 'nvim-surround', 'neogit' }
 for _, plugin in pairs(plugins_no_config) do
   require(plugin).setup()
 end
