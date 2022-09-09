@@ -4,193 +4,326 @@ local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
 local packer_bootstrap = false
 if fn.empty(fn.glob(install_path)) > 0 then
   packer_bootstrap = true
-  fn.system({'git', 'clone', '--depth=1', 'https://github.com/wbthomason/packer.nvim', install_path})
+  fn.system({ 'git', 'clone', '--depth=1', 'https://github.com/wbthomason/packer.nvim', install_path })
   vim.o.runtimepath = vim.fn.stdpath('data') .. '/site/pack/*/start/*,' .. vim.o.runtimepath
 end
 
-require('packer').startup({function(use)
-  use 'wbthomason/packer.nvim'
-  use 'shaunsingh/nord.nvim'
-  use {
-    'nvim-lualine/lualine.nvim',
-    requires = { 'kyazdani42/nvim-web-devicons' }
-  }
-  use {
-    'nvim-telescope/telescope.nvim',
-    requires = { 'nvim-lua/plenary.nvim' }
-  }
-  use {
-    'pwntester/octo.nvim',
-    requires = {
-      'nvim-lua/plenary.nvim',
-      'nvim-telescope/telescope.nvim',
-      'kyazdani42/nvim-web-devicons'
-    }
-  }
-  use 'folke/which-key.nvim'
-  -- use 'andweeb/presence.nvim'
-  use 'WilliamWelsh/presence.nvim'
-  use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
-  use 'kevinhwang91/nvim-hlslens'
-  use 'petertriho/nvim-scrollbar'
-  -- use 'tpope/vim-surround'
-  use 'kylechui/nvim-surround'
-  use 'tpope/vim-repeat'
-  use 'numtostr/comment.nvim'
-  use 'akinsho/toggleterm.nvim'
-  use 'zegervdv/nrpattern.nvim'
-  use 'neovim/nvim-lspconfig'
-  use 'williamboman/nvim-lsp-installer'
-  use 'ms-jpq/coq_nvim'
-  use 'ms-jpq/coq.artifacts'
-  use 'ms-jpq/coq.thirdparty'
-  use 'j-hui/fidget.nvim'
-  -- use 'github/copilot.vim'
-  use 'lewis6991/gitsigns.nvim'
-  use 'karb94/neoscroll.nvim'
-  use 'rcarriga/nvim-notify'
-  use 'lewis6991/impatient.nvim'
-  use 'tpope/vim-sleuth'
-  use 'JopjeKnopje/42header_codam'
-  use 'TimUntersberger/neogit'
+require('packer').startup {
+  function(use)
+    use { 'wbthomason/packer.nvim' }
 
-  if packer_bootstrap then
-    require('packer').sync()
-  end
-end,
-config = {
-  display = {
-    open_cmd = 'vnew \\[packer\\]',
-  }
-}})
-
-local plugins_no_config = { 'which-key', 'Comment', 'toggleterm', 'nrpattern', 'gitsigns', 'fidget', 'octo', 'nvim-surround' }
-for _, plugin in pairs(plugins_no_config) do
-  require(plugin).setup()
-end
-
-local nord_options = {
-  borders = true,
-  italic = false,
-}
-
-for option, value in pairs(nord_options) do
-  vim.g['nord_' .. option] = value
-end
-
-require('nord').set()
-
-require('lualine').setup {
-  options = {
-    theme = 'nord',
-    -- component_separators = {left = '', right = ''},
-    -- section_separators = {left = '', right = ''},
-    globalstatus = true
-  }
-}
-
-require('presence'):setup({
- show_time = false,
- neovim_image_text = 'Neovim'
-})
-
-require('nvim-treesitter.configs').setup {
-  ensure_installed = 'all',
-  sync_install = false,
-  highlight = {
-    enable = true
-  }
-}
-
-require('toggleterm').setup {
-  shade_terminals = false
-}
-
-require('scrollbar').setup {
-  handle = {
-    color = require('nord.colors').nord2_gui
-  },
-  handlers = {
-    search = true
-  }
-}
-
-local runtime_path = vim.split(package.path, ';')
-table.insert(runtime_path, "lua/?.lua")
-table.insert(runtime_path, "lua/?/init.lua")
-
-local lsp_opts = {
-  sumneko_lua = {
-    settings = {
-      Lua = {
-        runtime = {
-          version = "LuaJIT",
-          path = runtime_path
-        },
-        diagnostics = {
-          globals = { 'vim' }
-        },
-        workspace = {
-          library = {
-            [fn.expand("$VIMRUNTIME/lua")] = true,
-            [fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true
-          }
-        },
-        format = {
-          enable = true,
-          defaultConfig = {
-            indent_style = 'space',
-            indent_size = '2'
-          }
+    use {
+      'folke/which-key.nvim',
+      config = function()
+        require('which-key').setup {
+          window = { border = 'single' },
         }
-      }
+      end,
     }
-  }
-}
 
-vim.g.coq_settings = {
-  auto_start = 'shut-up',
-  display = { icons = { mode = 'short' } },
-  limits = { completion_auto_timeout = 0.5 },
-  keymap = { recommended = false },
-}
+    use {
+      'nvim-lualine/lualine.nvim',
+      requires = { 'kyazdani42/nvim-web-devicons' },
+      after = { 'nord.nvim' },
+      config = function()
+        local function diff_source()
+          local gitsigns = vim.b.gitsigns_status_dict
+          if gitsigns then
+            return {
+              added = gitsigns.added,
+              modified = gitsigns.changed,
+              removed = gitsigns.removed,
+            }
+          end
+        end
 
--- Copilot is bugged with Node 18
--- vim.g.copilot_node_command = '/home/bas/.asdf/installs/nodejs/17.9.0/bin/node'
+        local empty = {
+          function()
+            return ' '
+          end,
+          padding = 0,
+          color = 'Normal',
+        }
+        require('lualine').setup {
+          options = {
+            theme = 'nord',
+            component_separators = '|',
+            section_separators = { left = '', right = '' },
+            globalstatus = true,
+          },
+          sections = {
+            lualine_a = {
+              empty,
+              empty,
+              { 'mode', separator = { left = '' }, padding = { left = 1, right = 2 } },
+            },
+            lualine_b = {
+              { 'filename' },
+              -- TODO: figure out why the branch plugin only loads after a :PackerCompile
+              -- { 'branch' },
+              { 'b:gitsigns_head', icon = '' },
+              { 'diff', source = diff_source },
+              { 'diagnostics' },
+            },
+            lualine_c = {},
+            lualine_x = {},
+            lualine_y = {
+              { 'filetype' },
+              { 'fileformat', icons_enabled = false },
+              { 'progress' },
+            },
+            lualine_z = {
+              { 'location', separator = { right = '' } },
+              empty,
+            },
+          },
+        }
+      end,
+    }
 
-local lsp_installer = require("nvim-lsp-installer")
-local coq = require('coq')
+    use {
+      'shaunsingh/nord.nvim',
+      config = function()
+        vim.g.nord_borders = true
+        vim.g.nord_italic = false
+        require('nord').set()
+      end,
+    }
 
-lsp_installer.on_server_ready(function(server)
-  local opts = lsp_opts[server.name] or {}
+    use {
+      'nvim-telescope/telescope.nvim',
+      requires = { 'nvim-lua/plenary.nvim' },
+    }
 
-  server:setup(coq.lsp_ensure_capabilities(opts))
-end)
+    use {
+      'pwntester/octo.nvim',
+      requires = {
+        'nvim-lua/plenary.nvim',
+        'nvim-telescope/telescope.nvim',
+        'kyazdani42/nvim-web-devicons',
+      },
+      config = function()
+        require('octo').setup()
+      end,
+    }
 
-require('coq_3p') {
-  -- { src = "copilot", short_name = "COP", accept_key = "<c-f>" },
-  { src = "nvimlua", short_name = "nLUA" }
-}
+    use {
+      'andweeb/presence.nvim',
+      config = function()
+        require('presence'):setup({
+          show_time = false,
+          neovim_image_text = 'Neovim',
+        })
+      end,
+    }
 
-require('neoscroll').setup {
-  easing_function = 'quadratic'
-}
+    use {
+      'nvim-treesitter/nvim-treesitter',
+      run = ':TSUpdate',
+      config = function()
+        require('nvim-treesitter.configs').setup {
+          -- ensure_installed = 'all',
+          sync_install = false,
+          auto_install = true,
+          highlight = {
+            enable = true,
+          },
+        }
+      end,
+    }
 
-require('notify').setup {
-  minimum_width = 16,
-  on_open = function(win)
-    vim.api.nvim_win_set_option(win, 'winblend', 40)
-    vim.api.nvim_win_set_config(win, { zindex = 100 })
-  end
-}
+    use {
+      'kevinhwang91/nvim-hlslens',
+      config = function()
+        require('hlslens').setup {
+          calm_down = true,
+        }
+      end,
+    }
 
-vim.notify = require('notify')
+    use {
+      'petertriho/nvim-scrollbar',
+      requires = { 'nvim-hlslens' },
+      config = function()
+        require('scrollbar').setup {
+          handle = {
+            color = require('nord.colors').nord2_gui,
+          },
+          handlers = {
+            search = true,
+          },
+        }
+      end,
+    }
 
-require('neogit').setup {
-  commit_popup = {
-    kind = "floating"
+    -- use { 'tpope/vim-repeat' }
+    use {
+      -- 'tpope/vim-surround'
+      'kylechui/nvim-surround',
+      config = function()
+        require('nvim-surround').setup()
+      end,
+    }
+
+    use {
+      'numToStr/Comment.nvim',
+      config = function()
+        require('Comment').setup()
+      end,
+    }
+
+    use {
+      'akinsho/toggleterm.nvim',
+      config = function()
+        require('toggleterm').setup {
+          shade_terminals = false,
+        }
+      end,
+    }
+
+    use {
+      'zegervdv/nrpattern.nvim',
+      config = function()
+        require('nrpattern').setup()
+      end,
+    }
+
+    use { 'neovim/nvim-lspconfig' }
+
+    use {
+      'williamboman/mason.nvim',
+      config = function()
+        require('mason').setup()
+      end,
+    }
+
+    use {
+      'williamboman/mason-lspconfig.nvim',
+      requires = { 'mason.nvim', 'nvim-lspconfig' },
+      after = { 'coq_nvim', 'lua-dev.nvim' },
+      config = function()
+        local lsp_opts = {
+          sumneko_lua = {
+            settings = {
+              Lua = {
+                diagnostics = {
+                  neededFileStatus = {
+                    ['codestyle-check'] = 'Any',
+                  },
+                },
+              },
+            },
+          },
+        }
+        local coq = require('coq')
+        require('mason-lspconfig').setup()
+        require('mason-lspconfig').setup_handlers {
+          function(server_name)
+            require('lspconfig')[server_name].setup(coq.lsp_ensure_capabilities(lsp_opts[server_name] or {}))
+          end,
+        }
+      end,
+    }
+
+    use {
+      'ms-jpq/coq_nvim',
+      requires = { 'ms-jpq/coq.artifacts', 'coq.thirdparty' },
+      config = function()
+        vim.g.coq_settings = {
+          auto_start = 'shut-up',
+          display = { icons = { mode = 'short' } },
+          limits = { completion_auto_timeout = 0.5 },
+          keymap = { recommended = false },
+        }
+        require('coq')
+      end,
+    }
+
+    use {
+      'ms-jpq/coq.thirdparty',
+      config = function()
+        require('coq_3p') {}
+      end,
+    }
+
+    use {
+      'j-hui/fidget.nvim',
+      config = function()
+        require('fidget').setup()
+      end,
+    }
+
+    use {
+      'lewis6991/gitsigns.nvim',
+      config = function()
+        require('gitsigns').setup()
+      end,
+    }
+
+    use {
+      'karb94/neoscroll.nvim',
+      config = function()
+        require('neoscroll').setup {
+          easing_function = 'quadratic',
+        }
+      end,
+    }
+
+    use {
+      'rcarriga/nvim-notify',
+      config = function()
+        require('notify').setup {
+          minimum_width = 16,
+          on_open = function(win)
+            vim.api.nvim_win_set_option(win, 'winblend', 40)
+            vim.api.nvim_win_set_config(win, { zindex = 100 })
+          end,
+        }
+        vim.notify = require('notify')
+      end,
+    }
+
+    use 'lewis6991/impatient.nvim'
+
+    use 'tpope/vim-sleuth'
+
+    use 'JopjeKnopje/42header_codam'
+
+    use {
+      'sindrets/diffview.nvim',
+      requires = { 'nvim-lua/plenary.nvim' },
+    }
+
+    use {
+      'TimUntersberger/neogit',
+      config = function()
+        require('neogit').setup {
+          commit_popup = {
+            kind = 'floating',
+          },
+          popup = {
+            kind = 'floating',
+          },
+        }
+      end,
+    }
+
+    use {
+      'folke/lua-dev.nvim',
+      after = { 'nvim-lspconfig' },
+      config = function()
+        require('lua-dev').setup()
+      end,
+    }
+
+
+    if packer_bootstrap then
+      require('packer').sync()
+    end
+  end,
+  config = {
+    display = {
+      open_cmd = 'vnew \\[packer\\]',
+    },
   },
-  popup = {
-    kind = "floating"
-  }
 }

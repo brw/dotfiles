@@ -1,2 +1,3 @@
+App::cpanminus
 Log::Log4perl
 Neovim::Ext
