@@ -197,7 +197,7 @@ require('packer').startup {
 
     use {
       'williamboman/mason-lspconfig.nvim',
-      requires = { 'neovim/nvim-lspconfig' },
+      requires = { 'neovim/nvim-lspconfig', 'b0o/SchemaStore.nvim' },
       after = { 'coq_nvim', 'lua-dev.nvim', 'mason.nvim' },
       config = function()
         local lsp_opts = {
@@ -209,6 +209,14 @@ require('packer').startup {
                     ['codestyle-check'] = 'Any',
                   },
                 },
+              },
+            },
+          },
+          jsonls = {
+            settings = {
+              json = {
+                schemas = require('schemastore').json.schemas(),
+                validate = { enable = true },
               },
             },
           },
@@ -226,7 +234,6 @@ require('packer').startup {
     use {
       'ms-jpq/coq_nvim',
       requires = { 'ms-jpq/coq.artifacts' },
-      after = { 'coq.thirdparty' },
       config = function()
         vim.g.coq_settings = {
           auto_start = 'shut-up',
@@ -240,6 +247,7 @@ require('packer').startup {
 
     use {
       'ms-jpq/coq.thirdparty',
+      after = { 'coq_nvim' },
       config = function()
         require('coq_3p') {}
       end,
@@ -320,6 +328,18 @@ require('packer').startup {
       end,
     }
 
+    use {
+      'lewis6991/hover.nvim',
+      config = function()
+        require('hover').setup {
+          init = function()
+            require('hover.providers.lsp')
+          end,
+        }
+        vim.keymap.set('n', 'K', require('hover').hover, { desc = 'hover.nvim' })
+        vim.keymap.set('n', 'gK', require('hover').hover_select, { desc = 'hover.nvim select' })
+      end,
+    }
     if packer_bootstrap then
       require('packer').sync()
     end
