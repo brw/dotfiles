@@ -283,11 +283,16 @@ require('packer').startup {
       end,
     }
 
-    use 'lewis6991/impatient.nvim'
+    use {
+      'lewis6991/impatient.nvim',
+      config = function()
+        require('impatient').enable_profile()
+      end,
+    }
 
-    use 'tpope/vim-sleuth'
+    use { 'tpope/vim-sleuth' }
 
-    use 'JopjeKnopje/42header_codam'
+    use { 'JopjeKnopje/42header_codam' }
 
     use {
       'sindrets/diffview.nvim',
