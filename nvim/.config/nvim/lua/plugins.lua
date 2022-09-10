@@ -144,6 +144,7 @@ require('packer').startup {
     use {
       'petertriho/nvim-scrollbar',
       requires = { 'nvim-hlslens' },
+      after = { 'nord.nvim' },
       config = function()
         require('scrollbar').setup {
           handle = {
