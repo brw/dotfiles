@@ -143,8 +143,7 @@ require('packer').startup {
 
     use {
       'petertriho/nvim-scrollbar',
-      requires = { 'nvim-hlslens' },
-      after = { 'nord.nvim' },
+      after = { 'nord.nvim', 'nvim-hlslens' },
       config = function()
         require('scrollbar').setup {
           handle = {
@@ -189,8 +188,6 @@ require('packer').startup {
       end,
     }
 
-    use { 'neovim/nvim-lspconfig' }
-
     use {
       'williamboman/mason.nvim',
       config = function()
@@ -200,8 +197,8 @@ require('packer').startup {
 
     use {
       'williamboman/mason-lspconfig.nvim',
-      requires = { 'mason.nvim', 'nvim-lspconfig' },
-      after = { 'coq_nvim', 'lua-dev.nvim' },
+      requires = { 'neovim/nvim-lspconfig' },
+      after = { 'coq_nvim', 'lua-dev.nvim', 'mason.nvim' },
       config = function()
         local lsp_opts = {
           sumneko_lua = {
@@ -228,7 +225,8 @@ require('packer').startup {
 
     use {
       'ms-jpq/coq_nvim',
-      requires = { 'ms-jpq/coq.artifacts', 'coq.thirdparty' },
+      requires = { 'ms-jpq/coq.artifacts' },
+      after = { 'coq.thirdparty' },
       config = function()
         vim.g.coq_settings = {
           auto_start = 'shut-up',
@@ -321,7 +319,6 @@ require('packer').startup {
         require('lua-dev').setup()
       end,
     }
-
 
     if packer_bootstrap then
       require('packer').sync()
