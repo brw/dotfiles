@@ -287,7 +287,7 @@ require('packer').startup {
     use {
       'lewis6991/impatient.nvim',
       config = function()
-        require('impatient').enable_profile()
+        require('impatient')
       end,
     }
 
