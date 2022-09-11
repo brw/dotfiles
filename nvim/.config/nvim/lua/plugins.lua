@@ -340,6 +340,14 @@ require('packer').startup {
         vim.keymap.set('n', 'gK', require('hover').hover_select, { desc = 'hover.nvim select' })
       end,
     }
+
+    use {
+      'lambdalisue/suda.vim',
+      config = function()
+        vim.g.suda_smart_edit = true
+      end
+    }
+
     if packer_bootstrap then
       require('packer').sync()
     end
