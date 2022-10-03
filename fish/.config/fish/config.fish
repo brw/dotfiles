@@ -10,6 +10,8 @@ bind \e, __commandline_token_search_backward
 if string match -q -- "*microsoft*" (uname -a)
   ulimit -n 65536 # no idea how to set this permanently in WSL
 
+  set -gx DBUS_SESSION_BUS_ADDRESS unix:path=/run/user/1000/bus
+
   set -gx SSH_AUTH_SOCK $HOME/.ssh/agent.sock
   if not ss -a | grep -q $SSH_AUTH_SOCK
     rm -f $SSH_AUTH_SOCK
@@ -20,4 +22,4 @@ end
 test -e $HOME/.iterm2_shell_integration.fish && source $HOME/.iterm2_shell_integration.fish
 
 set -gx plug_path $HOME/.local/share/fish/plug
-fish_add_path -g $HOME/.homebrew/bin
+fish_add_path -g $HOME/.homebrew/bin $HOME/bin
