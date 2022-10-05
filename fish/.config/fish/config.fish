@@ -19,6 +19,10 @@ if string match -q -- "*microsoft*" (uname -a)
   end
 end
 
+if string match -q -- "*codam.nl*" (hostname)
+  ulimit -n 512
+end
+
 test -e $HOME/.iterm2_shell_integration.fish && source $HOME/.iterm2_shell_integration.fish
 
 set -gx plug_path $HOME/.local/share/fish/plug
