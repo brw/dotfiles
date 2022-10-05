@@ -297,7 +297,7 @@ require('packer').startup {
       end,
     }
 
-    use { 'tpope/vim-sleuth' }
+    -- use { 'tpope/vim-sleuth' }
 
     use { 'JopjeKnopje/42header_codam' }
 
