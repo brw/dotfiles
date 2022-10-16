@@ -1,5 +1,6 @@
 test -e $HOME/.homebrew/bin/brew && eval ($HOME/.homebrew/bin/brew shellenv)
-source (command -sq brew && brew --prefix asdf || echo /opt/asdf-vm)/asdf.fish # source from brew if exists, otherwise use system-installed
+test -e /home/linuxbrew/.linuxbrew/bin/brew && eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+source (command -sq brew && test -d (brew --prefix asdf) && brew --prefix asdf || echo /opt/asdf-vm)/asdf.fish # source from brew if exists, otherwise use system-installed
 command -sq starship && starship init fish | source
 command -sq direnv && direnv hook fish | source
 command -sq zoxide && zoxide init fish | source
