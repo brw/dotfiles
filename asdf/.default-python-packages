@@ -1,3 +1,4 @@
 pynvim
 virtualenv
 pipenv
+norminette
