@@ -198,7 +198,7 @@ require('packer').startup {
     use {
       'williamboman/mason-lspconfig.nvim',
       requires = { 'neovim/nvim-lspconfig', 'b0o/SchemaStore.nvim' },
-      after = { 'coq_nvim', 'lua-dev.nvim', 'mason.nvim' },
+      after = { 'coq_nvim', 'neodev.nvim', 'mason.nvim' },
       config = function()
         local lsp_opts = {
           sumneko_lua = {
@@ -321,10 +321,10 @@ require('packer').startup {
     }
 
     use {
-      'folke/lua-dev.nvim',
+      'folke/neodev.nvim',
       after = { 'nvim-lspconfig' },
       config = function()
-        require('lua-dev').setup()
+        require('neodev').setup()
       end,
     }
 
