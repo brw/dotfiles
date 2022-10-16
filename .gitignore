@@ -1,0 +1,16 @@
+fish/.config/fish/functions/_autopair_insert_left.fish
+fish/.config/fish/functions/_autopair_backspace.fish
+fish/.config/fish/functions/replay.fish
+fish/.config/fish/functions/man.fish
+fish/.config/fish/functions/_autopair_insert_right.fish
+fish/.config/fish/functions/__abbr_tips_bind_space.fish
+fish/.config/fish/functions/_autopair_insert_same.fish
+fish/.config/fish/functions/br.fish
+fish/.config/fish/functions/__abbr_tips_init.fish
+fish/.config/fish/functions/_autopair_tab.fish
+fish/.config/fish/functions/__abbr_tips_bind_newline.fish
+fish/.config/fish/functions/plug.fish
+fish/.config/fish/completions/replay.fish
+fish/.config/fish/completions/plug.fish
+fish/.config/fish/conf.d/abbr_tips.fish
+fish/.config/fish/conf.d/autopair.fish
