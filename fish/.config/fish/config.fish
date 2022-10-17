@@ -22,6 +22,8 @@ end
 
 if string match -q -- "*codam.nl*" (hostname)
   ulimit -n 512
+
+  set -gx HOMEBREW_CORE_GIT_REMOTE "https://github.com/gromgit/homebrew-core-mojave"
 end
 
 test -e $HOME/.iterm2_shell_integration.fish && source $HOME/.iterm2_shell_integration.fish
