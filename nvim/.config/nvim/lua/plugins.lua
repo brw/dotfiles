@@ -189,6 +189,31 @@ require('packer').startup {
     }
 
     use {
+      'VonHeikemen/lsp-zero.nvim',
+      requires = {
+        'neovim/nvim-lspconfig',
+        'williamboman/mason.nvim',
+        'williamboman/mason-lspconfig.nvim',
+
+        'hrsh7th/nvim-cmp',
+        'hrsh7th/cmp-buffer',
+        'hrsh7th/cmp-path',
+        'saadparwaiz1/cmp_luasnip',
+        'hrsh7th/cmp-nvim-lsp',
+        'hrsh7th/cmp-nvim-lua',
+
+        'L3MON4D3/LuaSnip',
+        'rafamadriz/friendly-snippets',
+      },
+      config = function()
+        local lsp = require('lsp-zero')
+
+        lsp.preset('recommended')
+        lsp.setup()
+      end
+    }
+
+    --[[ use {
       'williamboman/mason.nvim',
       config = function()
         require('mason').setup()
@@ -251,7 +276,7 @@ require('packer').startup {
       config = function()
         require('coq_3p') {}
       end,
-    }
+    } ]]
 
     use {
       'j-hui/fidget.nvim',
@@ -322,7 +347,7 @@ require('packer').startup {
 
     use {
       'folke/neodev.nvim',
-      after = { 'nvim-lspconfig' },
+      after = { 'lsp-zero.nvim', 'nvim-lspconfig' },
       config = function()
         require('neodev').setup()
       end,
