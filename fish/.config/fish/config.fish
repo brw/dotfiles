@@ -30,3 +30,5 @@ test -e $HOME/.iterm2_shell_integration.fish && source $HOME/.iterm2_shell_integ
 
 set -gx plug_path $HOME/.local/share/fish/plug
 fish_add_path -g $HOME/.homebrew/bin $HOME/bin
+
+set -gx GPG_TTY (tty)
