@@ -1,6 +1,6 @@
 test -e $HOME/.homebrew/bin/brew && eval ($HOME/.homebrew/bin/brew shellenv)
 test -e /home/linuxbrew/.linuxbrew/bin/brew && eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-source (command -sq brew && test -d (brew --prefix asdf) && brew --prefix asdf || echo /opt/asdf-vm)/asdf.fish # source from brew if exists, otherwise use system-installed
+source (command -sq brew && test -d (brew --prefix asdf) && echo -n (brew --prefix asdf)"/libexec" || echo /opt/asdf-vm)/asdf.fish # source from brew if exists, otherwise use system-installed
 command -sq starship && starship init fish | source
 command -sq direnv && direnv hook fish | source
 command -sq zoxide && zoxide init fish | source
@@ -18,12 +18,10 @@ if string match -q -- "*microsoft*" (uname -a)
     rm -f $SSH_AUTH_SOCK
     setsid --fork socat UNIX-LISTEN:$SSH_AUTH_SOCK,fork EXEC:"/mnt/c/Users/Bas/wsl-ssh-agent/npiperelay.exe -ei -s //./pipe/openssh-ssh-agent",nofork
   end
-end
-
-if string match -q -- "*codam.nl*" (hostname)
+else if string match -q -- "*codam.nl*" (hostname)
   ulimit -n 512
 
-  set -gx HOMEBREW_CORE_GIT_REMOTE "https://github.com/gromgit/homebrew-core-mojave"
+  #set -gx HOMEBREW_CORE_GIT_REMOTE "https://github.com/gromgit/homebrew-core-mojave"
 end
 
 test -e $HOME/.iterm2_shell_integration.fish && source $HOME/.iterm2_shell_integration.fish
