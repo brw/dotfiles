@@ -188,7 +188,7 @@ require('packer').startup {
       end,
     }
 
-    use {
+    --[[ use {
       'VonHeikemen/lsp-zero.nvim',
       requires = {
         'neovim/nvim-lspconfig',
@@ -211,9 +211,9 @@ require('packer').startup {
         lsp.preset('recommended')
         lsp.setup()
       end
-    }
+    } ]]
 
-    --[[ use {
+    use {
       'williamboman/mason.nvim',
       config = function()
         require('mason').setup()
@@ -276,7 +276,7 @@ require('packer').startup {
       config = function()
         require('coq_3p') {}
       end,
-    } ]]
+    }
 
     use {
       'j-hui/fidget.nvim',
@@ -347,9 +347,9 @@ require('packer').startup {
 
     use {
       'folke/neodev.nvim',
-      after = { 'lsp-zero.nvim', 'nvim-lspconfig' },
+      after = { 'nvim-lspconfig' },
       config = function()
-        require('neodev').setup()
+        require('neodev').setup({})
       end,
     }
 
@@ -379,7 +379,8 @@ require('packer').startup {
   end,
   config = {
     display = {
-      open_cmd = 'vnew \\[packer\\]',
+      -- open_cmd = 'vnew \\[packer\\]',
+	  open_fn = require('packer.util').float,
     },
   },
 }
