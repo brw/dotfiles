@@ -37,3 +37,6 @@
 
 [rebase]
 	autostash = true
+
+[commit]
+	verbose = true
