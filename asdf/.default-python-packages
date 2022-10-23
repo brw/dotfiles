@@ -2,3 +2,4 @@ pynvim
 virtualenv
 pipenv
 norminette
+c-formatter-42
