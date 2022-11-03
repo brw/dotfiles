@@ -19,6 +19,7 @@ opt.clipboard = 'unnamedplus'
 opt.inccommand = 'split'
 opt.formatoptions = opt.formatoptions - 'o'
 opt.termguicolors = true
+-- opt.expandtab = true
 opt.tabstop = 4
 opt.shiftwidth = 4
 

@@ -128,6 +128,9 @@ require('packer').startup {
           highlight = {
             enable = true,
           },
+          -- indent = {
+          --   enable = true,
+          -- },
         }
       end,
     }
@@ -189,29 +192,29 @@ require('packer').startup {
     }
 
     --[[ use {
-      'VonHeikemen/lsp-zero.nvim',
-      requires = {
-        'neovim/nvim-lspconfig',
-        'williamboman/mason.nvim',
-        'williamboman/mason-lspconfig.nvim',
+        'VonHeikemen/lsp-zero.nvim',
+        requires = {
+          'neovim/nvim-lspconfig',
+          'williamboman/mason.nvim',
+          'williamboman/mason-lspconfig.nvim',
 
-        'hrsh7th/nvim-cmp',
-        'hrsh7th/cmp-buffer',
-        'hrsh7th/cmp-path',
-        'saadparwaiz1/cmp_luasnip',
-        'hrsh7th/cmp-nvim-lsp',
-        'hrsh7th/cmp-nvim-lua',
+          'hrsh7th/nvim-cmp',
+          'hrsh7th/cmp-buffer',
+          'hrsh7th/cmp-path',
+          'saadparwaiz1/cmp_luasnip',
+          'hrsh7th/cmp-nvim-lsp',
+          'hrsh7th/cmp-nvim-lua',
 
-        'L3MON4D3/LuaSnip',
-        'rafamadriz/friendly-snippets',
-      },
-      config = function()
-        local lsp = require('lsp-zero')
+          'L3MON4D3/LuaSnip',
+          'rafamadriz/friendly-snippets',
+        },
+        config = function()
+          local lsp = require('lsp-zero')
 
-        lsp.preset('recommended')
-        lsp.setup()
-      end
-    } ]]
+          lsp.preset('recommended')
+          lsp.setup()
+        end
+      } ]]
 
     use {
       'williamboman/mason.nvim',
@@ -229,10 +232,8 @@ require('packer').startup {
           sumneko_lua = {
             settings = {
               Lua = {
-                diagnostics = {
-                  neededFileStatus = {
-                    ['codestyle-check'] = 'Any',
-                  },
+                format = {
+                  enable = true,
                 },
               },
             },
@@ -380,7 +381,7 @@ require('packer').startup {
   config = {
     display = {
       -- open_cmd = 'vnew \\[packer\\]',
-	  open_fn = require('packer.util').float,
+      open_fn = require('packer.util').float,
     },
   },
 }
