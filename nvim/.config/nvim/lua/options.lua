@@ -26,4 +26,4 @@ opt.shiftwidth = 4
 local g = vim.g
 g.mapleader = ' '
 g.user42 = 'bvan-den'
-g.mail42 = 'bvan-den@codam.nl'
+g.mail42 = 'bvan-den@student.codam.nl'
