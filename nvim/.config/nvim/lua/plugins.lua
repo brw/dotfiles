@@ -316,12 +316,12 @@ require('packer').startup {
       end,
     }
 
-    use {
-      'lewis6991/impatient.nvim',
-      config = function()
-        require('impatient')
-      end,
-    }
+    -- use {
+    --   'lewis6991/impatient.nvim',
+    --   config = function()
+    --     require('impatient')
+    --   end,
+    -- }
 
     -- use { 'tpope/vim-sleuth' }
 
@@ -371,8 +371,10 @@ require('packer').startup {
       'lambdalisue/suda.vim',
       config = function()
         vim.g.suda_smart_edit = true
-      end
+      end,
     }
+
+    use { 'cacharle/c_formatter_42.vim' }
 
     if packer_bootstrap then
       require('packer').sync()
