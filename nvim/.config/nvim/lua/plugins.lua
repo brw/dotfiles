@@ -118,9 +118,9 @@ require('packer').startup {
           highlight = {
             enable = true,
           },
-          -- indent = {
-          --   enable = true,
-          -- },
+          indent = {
+            enable = true,
+          },
         }
       end,
     }
@@ -279,6 +279,44 @@ require('packer').startup {
     }
 
     use {
+      'jayp0521/mason-nvim-dap.nvim',
+      after = { 'mason.nvim', 'nvim-dap' },
+      config = function()
+        require('mason-nvim-dap').setup({
+          automatic_setup = true,
+        })
+        require('mason-nvim-dap').setup_handlers {
+          function(source_name)
+            require('mason-nvim-dap.automatic_setup')(source_name)
+          end,
+          cppdbg = function()
+            local dap = require('dap')
+
+            dap.adapters.cppdbg = {
+              id = 'cppdbg',
+              type = 'executable',
+              command = '/Users/bvan-den/.local/share/nvim//mason/packages/cpptools/extension/debugAdapters/bin/OpenDebugAD7',
+            }
+
+            dap.configurations.c = {
+              {
+                name = 'Launch file',
+                type = 'cppdbg',
+                request = 'launch',
+                program = function()
+                  return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+                end,
+                cwd = '${workspaceFolder}',
+                stopAtEntry = true,
+                MIMode = 'lldb',
+              },
+            }
+          end,
+        }
+      end,
+    }
+
+    use {
       'ms-jpq/coq_nvim',
       requires = { 'ms-jpq/coq.artifacts' },
       config = function()
@@ -328,9 +366,12 @@ require('packer').startup {
       config = function()
         require('notify').setup {
           minimum_width = 16,
+          max_width = 64,
+          max_height = 10,
           on_open = function(win)
             vim.api.nvim_win_set_option(win, 'winblend', 40)
             vim.api.nvim_win_set_config(win, { zindex = 100 })
+            vim.api.nvim_win_set_option(win, 'wrap', true)
           end,
         }
         vim.notify = require('notify')
@@ -396,6 +437,16 @@ require('packer').startup {
     }
 
     use { 'cacharle/c_formatter_42.vim' }
+
+    use { 'mfussenegger/nvim-dap' }
+
+    use {
+      'rcarriga/nvim-dap-ui',
+      after = { 'nvim-dap' },
+      config = function()
+        require('dapui').setup()
+      end,
+    }
 
     if packer_bootstrap then
       require('packer').sync()
