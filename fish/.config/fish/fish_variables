@@ -7,6 +7,7 @@ SETUVAR --export BAT_THEME:Nord
 SETUVAR --export COLORTERM:truecolor
 SETUVAR --export DIRENV_LOG_FORMAT:\x1d
 SETUVAR --export EDITOR:nvim
+SETUVAR --export GIT_MERGE_AUTOEDIT:no
 SETUVAR --export SUDO_EDITOR:nvim
 SETUVAR --export SYSTEMD_EDITOR:nvim
 SETUVAR --export __ABBR_TIPS_KEYS:a__\x3aq\x1ea__adb\x1ea__choco\x1ea__fastboot\x1ea__gsudo\x1ea__keybase\x1ea__less\x1ea__paco\x1ea__rg\x1ea__spicetify\x1ea__to_list\x1ea__winget
