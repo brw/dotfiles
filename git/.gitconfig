@@ -40,3 +40,6 @@
 
 [commit]
 	verbose = true
+
+[submodule]
+	recurse = true
