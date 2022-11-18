@@ -26,17 +26,6 @@ require('packer').startup {
       requires = { 'kyazdani42/nvim-web-devicons' },
       after = { 'nord.nvim' },
       config = function()
-        local function diff_source()
-          local gitsigns = vim.b.gitsigns_status_dict
-          if gitsigns then
-            return {
-              added = gitsigns.added,
-              modified = gitsigns.changed,
-              removed = gitsigns.removed,
-            }
-          end
-        end
-
         local empty = {
           function()
             return ' '
@@ -62,7 +51,7 @@ require('packer').startup {
               -- TODO: figure out why the branch plugin only loads after a :PackerCompile
               -- { 'branch' },
               { 'b:gitsigns_head', icon = '' },
-              { 'diff', source = diff_source },
+              { 'diff' },
               { 'diagnostics' },
             },
             lualine_c = {},
@@ -74,6 +63,7 @@ require('packer').startup {
             },
             lualine_z = {
               { 'location', separator = { right = '' } },
+              empty,
               empty,
             },
           },
