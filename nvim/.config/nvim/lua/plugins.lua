@@ -126,6 +126,37 @@ require('packer').startup {
     }
 
     use {
+      'nvim-treesitter/nvim-treesitter-textobjects',
+      after = { 'nvim-treesitter' },
+      config = function()
+        require('nvim-treesitter.configs').setup {
+          textobjects = {
+            select = {
+              enable = true,
+              lookahead = true,
+              keymaps = {
+                ['af'] = '@function.outer',
+                ['if'] = '@function.inner',
+                ['ac'] = '@comment.outer',
+              },
+              selection_modes = {
+                ['@function.outer'] = 'V',
+                ['@function.inner'] = 'V',
+              },
+            },
+            move = {
+              enable = true,
+              set_jumps = true,
+              goto_next_start = {
+                [']m'] = '@function.outer',
+              },
+            },
+          },
+        }
+      end,
+    }
+
+    use {
       'kevinhwang91/nvim-hlslens',
       config = function()
         require('hlslens').setup {
