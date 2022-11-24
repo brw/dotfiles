@@ -452,6 +452,13 @@ require('packer').startup {
       end,
     }
 
+    use {
+      'theHamsta/nvim-dap-virtual-text',
+      config = function()
+        require('nvim-dap-virtual-text').setup()
+      end,
+    }
+
     if packer_bootstrap then
       require('packer').sync()
     end
