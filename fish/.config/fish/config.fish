@@ -13,6 +13,8 @@ if string match -q -- "*microsoft*" (uname -a)
 
   set -gx DBUS_SESSION_BUS_ADDRESS unix:path=/run/user/1000/bus
 
+  set -gx DEBUGINFOD_URLS "https://debuginfod.archlinux.org"
+
   set -gx SSH_AUTH_SOCK $HOME/.ssh/agent.sock
   if not ss -a | grep -q $SSH_AUTH_SOCK
     rm -f $SSH_AUTH_SOCK
