@@ -256,6 +256,11 @@ require('packer').startup {
                 format = {
                   enable = true,
                 },
+                workspace = {
+                  library = {
+                    '${3rd}/luassert/library',
+                  },
+                },
               },
             },
           },
