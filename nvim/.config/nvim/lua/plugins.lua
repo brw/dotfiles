@@ -117,6 +117,7 @@ require('packer').startup {
           auto_install = true,
           highlight = {
             enable = true,
+            disable = { 'gitcommit' },
           },
           -- indent = {
           --   enable = true,
