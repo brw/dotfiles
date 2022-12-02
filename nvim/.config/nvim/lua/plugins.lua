@@ -118,9 +118,9 @@ require('packer').startup {
           highlight = {
             enable = true,
           },
-          indent = {
-            enable = true,
-          },
+          -- indent = {
+          --   enable = true,
+          -- },
         }
       end,
     }
@@ -250,26 +250,20 @@ require('packer').startup {
       after = { 'coq_nvim', 'neodev.nvim', 'mason.nvim' },
       config = function()
         local lsp_opts = {
-          sumneko_lua = {
-            settings = {
-              Lua = {
-                format = {
-                  enable = true,
-                },
-                workspace = {
-                  library = {
-                    '${3rd}/luassert/library',
-                  },
+          settings = {
+            Lua = {
+              format = {
+                enable = true,
+              },
+              workspace = {
+                library = {
+                  '${3rd}/luassert/library',
                 },
               },
             },
-          },
-          jsonls = {
-            settings = {
-              json = {
-                schemas = require('schemastore').json.schemas(),
-                validate = { enable = true },
-              },
+            json = {
+              schemas = require('schemastore').json.schemas(),
+              validate = { enable = true },
             },
           },
         }
@@ -277,7 +271,7 @@ require('packer').startup {
         require('mason-lspconfig').setup()
         require('mason-lspconfig').setup_handlers {
           function(server_name)
-            require('lspconfig')[server_name].setup(coq.lsp_ensure_capabilities(lsp_opts[server_name] or {}))
+            require('lspconfig')[server_name].setup(coq.lsp_ensure_capabilities(lsp_opts))
           end,
         }
       end,
@@ -300,7 +294,8 @@ require('packer').startup {
             dap.adapters.cppdbg = {
               id = 'cppdbg',
               type = 'executable',
-              command = '/Users/bvan-den/.local/share/nvim//mason/packages/cpptools/extension/debugAdapters/bin/OpenDebugAD7',
+              command = os.getenv('HOME') ..
+                  '/.local/share/nvim/mason/packages/cpptools/extension/debugAdapters/bin/OpenDebugAD7',
             }
 
             dap.configurations.c = {
@@ -461,6 +456,19 @@ require('packer').startup {
       'theHamsta/nvim-dap-virtual-text',
       config = function()
         require('nvim-dap-virtual-text').setup()
+      end,
+    }
+
+    use {
+      'jose-elias-alvarez/null-ls.nvim',
+      requires = { 'nvim-lua/plenary.nvim' },
+      config = function()
+        local null_ls = require('null-ls')
+        null_ls.setup({
+          sources = {
+            null_ls.builtins.formatting.prettierd,
+          },
+        })
       end,
     }
 
