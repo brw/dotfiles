@@ -250,7 +250,31 @@ require('packer').startup {
       requires = { 'neovim/nvim-lspconfig', 'b0o/SchemaStore.nvim' },
       after = { 'coq_nvim', 'neodev.nvim', 'mason.nvim' },
       config = function()
+        local lsp_formatting = function(bufnr)
+          vim.lsp.buf.format({
+            filter = function(client)
+              return client.name ~= 'tsserver'
+            end,
+            bufnr = bufnr,
+          })
+        end
+        local augroup = vim.api.nvim_create_augroup('LspFormatting', {})
+        local on_attach = function(client, bufnr)
+          if client.supports_method('textDocument/formatting') then
+            vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+            vim.api.nvim_create_autocmd('BufWritePre', {
+              group = augroup,
+              buffer = bufnr,
+              callback = function()
+                if client.name ~= 'clangd' then
+                  lsp_formatting(bufnr)
+                end
+              end,
+            })
+          end
+        end
         local lsp_opts = {
+          on_attach = on_attach,
           settings = {
             Lua = {
               format = {
