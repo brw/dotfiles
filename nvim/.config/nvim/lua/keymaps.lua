@@ -7,7 +7,7 @@ map('n', '*', "*<Cmd>lua require('hlslens').start()<CR>", silent)
 map('n', '#', "#<Cmd>lua require('hlslens').start()<CR>", silent)
 map('n', 'g*', "g*<Cmd>lua require('hlslens').start()<CR>", silent)
 map('n', 'g#', "g#<Cmd>lua require('hlslens').start()<CR>", silent)
-map('n', '<Esc>', ':noh<CR>', silent)
+map('n', '<Esc>', '<Cmd>noh<CR>', silent)
 
 map('n', '<C-k>', '<C-w><C-k>')
 map('n', '<C-j>', '<C-w><C-j>')
