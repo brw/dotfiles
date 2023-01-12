@@ -1,4 +1,3 @@
--- options
 local opt = vim.opt
 opt.number = true
 opt.relativenumber = true
@@ -13,7 +12,7 @@ opt.laststatus = 3
 opt.ignorecase = true
 opt.smartcase = true
 opt.signcolumn = 'yes'
-opt.scrolloff = 16
+opt.scrolloff = 8
 opt.undofile = true
 -- opt.clipboard = 'unnamedplus'
 opt.inccommand = 'split'

@@ -253,7 +253,7 @@ require('packer').startup {
         local lsp_formatting = function(bufnr)
           vim.lsp.buf.format({
             filter = function(client)
-              return client.name ~= 'tsserver'
+              return client.name ~= 'tsserver' and client.name ~= 'jsonls'
             end,
             bufnr = bufnr,
           })
@@ -410,7 +410,7 @@ require('packer').startup {
     --   end,
     -- }
 
-    -- use { 'tpope/vim-sleuth' }
+    use { 'tpope/vim-sleuth' }
 
     -- use { 'JopjeKnopje/42header_codam' }
     use {
@@ -496,6 +496,8 @@ require('packer').startup {
         })
       end,
     }
+
+    use { 'gpanders/editorconfig.nvim' }
 
     if packer_bootstrap then
       require('packer').sync()
