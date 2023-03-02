@@ -8,6 +8,7 @@ command -sq zoxide && zoxide init fish | source
 bind \er __select_from_last
 bind \e, __commandline_token_search_backward
 
+set host (hostname)
 if string match -q -- "*microsoft*" (uname -a)
   ulimit -n 65535 # no idea how to set this permanently in WSL
 
@@ -18,9 +19,16 @@ if string match -q -- "*microsoft*" (uname -a)
   set -gx SSH_AUTH_SOCK $HOME/.ssh/agent.sock
   if not ss -a | grep -q $SSH_AUTH_SOCK
     rm -f $SSH_AUTH_SOCK
-    setsid --fork socat UNIX-LISTEN:$SSH_AUTH_SOCK,fork EXEC:"/mnt/c/Users/Bas/wsl-ssh-agent/npiperelay.exe -ei -s //./pipe/openssh-ssh-agent",nofork
+
+    if string match -iq -- "bamibal" $host
+      set user "Bas"
+    else if string match -iq -- "bitterbal" $host
+      set user "BastiaanRiovandenWol"
+    end
+
+    setsid --fork socat UNIX-LISTEN:$SSH_AUTH_SOCK,fork EXEC:"/mnt/c/Users/$user/wsl-ssh-agent/npiperelay.exe -ei -s //./pipe/openssh-ssh-agent",nofork
   end
-else if string match -q -- "*codam.nl*" (hostname)
+else if string match -q -- "*codam.nl*" $host
   ulimit -n 10240
 
   #set -gx HOMEBREW_CORE_GIT_REMOTE "https://github.com/gromgit/homebrew-core-mojave"
