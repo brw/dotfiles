@@ -237,7 +237,6 @@ require('packer').startup {
           lsp.setup()
         end
       } ]]
-
     use {
       'williamboman/mason.nvim',
       config = function()
@@ -253,7 +252,7 @@ require('packer').startup {
         local lsp_formatting = function(bufnr)
           vim.lsp.buf.format({
             filter = function(client)
-              return client.name ~= 'tsserver' and client.name ~= 'jsonls'
+              return client.name == 'null-ls' or client.name == 'lua_ls'
             end,
             bufnr = bufnr,
           })
@@ -320,7 +319,7 @@ require('packer').startup {
               id = 'cppdbg',
               type = 'executable',
               command = os.getenv('HOME') ..
-                  '/.local/share/nvim/mason/packages/cpptools/extension/debugAdapters/bin/OpenDebugAD7',
+              '/.local/share/nvim/mason/packages/cpptools/extension/debugAdapters/bin/OpenDebugAD7',
             }
 
             dap.configurations.c = {
@@ -480,7 +479,7 @@ require('packer').startup {
     use {
       'theHamsta/nvim-dap-virtual-text',
       config = function()
-        require('nvim-dap-virtual-text').setup()
+        require('nvim-dap-virtual-text').setup {}
       end,
     }
 
@@ -498,6 +497,31 @@ require('packer').startup {
     }
 
     use { 'gpanders/editorconfig.nvim' }
+
+    use {
+      'folke/trouble.nvim',
+      requires = 'nvim-tree/nvim-web-devicons',
+      config = function()
+        require('trouble').setup {}
+      end,
+    }
+
+    use {
+      'akinsho/git-conflict.nvim',
+      after = { 'nord.nvim' },
+      config = function()
+        require('git-conflict').setup {
+          default_mappings = {
+            ours = '<Leader>o',
+            theirs = '<Leader>t',
+            none = '<Leader>0',
+            both = '<Leader>b',
+            next = '<Leader>n',
+            prev = '<Leader>p',
+          },
+        }
+      end,
+    }
 
     if packer_bootstrap then
       require('packer').sync()
