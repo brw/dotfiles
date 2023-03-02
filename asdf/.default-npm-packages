@@ -1,3 +1,5 @@
 neovim
 prettier
 @fsouza/prettierd
+eslint
+eslint_d
