@@ -36,10 +36,16 @@
     rebase = true
 
 [rebase]
-	autostash = true
+    autostash = true
+
+[merge]
+    autoStash = true
 
 [commit]
-	verbose = true
+    verbose = true
 
 [submodule]
-	recurse = true
+    recurse = true
+
+[push]
+    autoSetupRemote = true
