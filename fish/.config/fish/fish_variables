@@ -5,13 +5,14 @@ SETUVAR --export ABBR_TIPS_REGEXES:\x28\x5e\x28\x5cw\x2b\x5cs\x2b\x29\x2b\x28\x2
 SETUVAR --export BAT_STYLE:plain
 SETUVAR --export BAT_THEME:Nord
 SETUVAR --export COLORTERM:truecolor
+SETUVAR --export DBX_COMPOSE:/home/bas/dev/DBX\x2eWebApp/docker\x2dcompose\x2eyml
 SETUVAR --export DIRENV_LOG_FORMAT:\x1d
 SETUVAR --export EDITOR:nvim
 SETUVAR --export GIT_MERGE_AUTOEDIT:no
 SETUVAR --export SUDO_EDITOR:nvim
 SETUVAR --export SYSTEMD_EDITOR:nvim
-SETUVAR --export __ABBR_TIPS_KEYS:a__\x3aq\x1ea__adb\x1ea__choco\x1ea__fastboot\x1ea__gsudo\x1ea__keybase\x1ea__less\x1ea__paco\x1ea__rg\x1ea__spicetify\x1ea__to_list\x1ea__winget\x1ea__less\x1ea__less
-SETUVAR --export __ABBR_TIPS_VALUES:exit\x1eadb\x2eexe\x1echoco\x2eexe\x1efastboot\x2eexe\x1esudo\x2eexe\x1ekeybase\x2eexe\x1eless\x20\x2dR\x1e\x24HOME/francinette/tester\x2esh\x1erg\x20\x2dS\x1espicetify\x2eexe\x1eto_list\x5c\x5c\x5c\x20tr\x5c\x5c\x5c\x20\x5c\x5c\x5c\x27\x5c\x5c\x5c\x20\x5c\x5c\x5c\x27\x5c\x5c\x5c\x20\x5c\x5c\x5c\x5cn\x5c\x5c\x5c\x20\x5c\x5c\x5c\x7c\x5c\x5c\x5c\x20nl\x1ecmd\x2eexe\x20/c\x20winget\x2eexe\x1eless\x20\x2dj\x208\x1eless\x20\x2dj\x208
+SETUVAR --export __ABBR_TIPS_KEYS:a__\x3aq\x1ea__adb\x1ea__bastion365\x1ea__choco\x1ea__fastboot\x1ea__gsudo\x1ea__keybase\x1ea__paco\x1ea__rg\x1ea__spicetify\x1ea__to_list\x1ea__winget
+SETUVAR --export __ABBR_TIPS_VALUES:exit\x1eadb\x2eexe\x1edocker\x2dcompose\x20\x2df\x20/home/bas/dev/DBX\x2eWebApp/docker\x2dcompose\x2eyml\x1echoco\x2eexe\x1efastboot\x2eexe\x1esudo\x2eexe\x1ekeybase\x2eexe\x1e\x24HOME/francinette/tester\x2esh\x1erg\x20\x2dS\x1espicetify\x2eexe\x1eto_list\x5c\x5c\x5c\x20tr\x5c\x5c\x5c\x20\x5c\x5c\x5c\x27\x5c\x5c\x5c\x20\x5c\x5c\x5c\x27\x5c\x5c\x5c\x20\x5c\x5c\x5c\x5cn\x5c\x5c\x5c\x20\x5c\x5c\x5c\x7c\x5c\x5c\x5c\x20nl\x1ecmd\x2eexe\x20/c\x20winget\x2eexe
 SETUVAR __fish_initialized:3400
 SETUVAR fish_color_autosuggestion:4c566a
 SETUVAR fish_color_cancel:\x2dr
