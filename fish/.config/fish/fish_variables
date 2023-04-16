@@ -9,6 +9,7 @@ SETUVAR --export DBX_COMPOSE:/home/bas/dev/DBX\x2eWebApp/docker\x2dcompose\x2eym
 SETUVAR --export DIRENV_LOG_FORMAT:\x1d
 SETUVAR --export EDITOR:nvim
 SETUVAR --export GIT_MERGE_AUTOEDIT:no
+SETUVAR --export HOMEBREW_CURLRC:1
 SETUVAR --export SUDO_EDITOR:nvim
 SETUVAR --export SYSTEMD_EDITOR:nvim
 SETUVAR --export __ABBR_TIPS_KEYS:a__\x3aq\x1ea__adb\x1ea__bastion365\x1ea__choco\x1ea__fastboot\x1ea__gsudo\x1ea__keybase\x1ea__paco\x1ea__rg\x1ea__spicetify\x1ea__to_list\x1ea__winget
@@ -45,3 +46,4 @@ SETUVAR fish_pager_color_description:B3A06D\x1eyellow
 SETUVAR fish_pager_color_prefix:normal\x1e\x2d\x2dbold\x1e\x2d\x2dunderline
 SETUVAR fish_pager_color_progress:brwhite\x1e\x2d\x2dbackground\x3dcyan
 SETUVAR fish_pager_color_selected_background:\x2dr
+SETUVAR fish_user_paths:/Users/bvan\x2dden/\x2elocal/bin\x1e/Users/bvan\x2dden/\x2ehomebrew/bin\x1e/Users/bvan\x2dden/bin\x1e/Users/bvan\x2dden/\x2easdf/shims\x1e/Users/bvan\x2dden/\x2ehomebrew/opt/asdf/libexec/bin

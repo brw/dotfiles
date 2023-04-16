@@ -1,13 +1,3 @@
-test -e $HOME/.homebrew/bin/brew && eval ($HOME/.homebrew/bin/brew shellenv)
-test -e /home/linuxbrew/.linuxbrew/bin/brew && eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-source (command -sq brew && test -d (brew --prefix asdf) && echo -n (brew --prefix asdf)"/libexec" || echo /opt/asdf-vm)/asdf.fish # source from brew if exists, otherwise use system-installed
-command -sq starship && starship init fish | source
-command -sq direnv && direnv hook fish | source
-command -sq zoxide && zoxide init fish | source
-
-bind \er __select_from_last
-bind \e, __commandline_token_search_backward
-
 set host (hostname)
 if string match -q -- "*microsoft*" (uname -a)
   ulimit -n 65535 # no idea how to set this permanently in WSL
@@ -32,11 +22,31 @@ else if string match -q -- "*codam.nl*" $host
   ulimit -n 10240
 
   #set -gx HOMEBREW_CORE_GIT_REMOTE "https://github.com/gromgit/homebrew-core-mojave"
+
+  set -gx ASDF_DATA_DIR /Volumes/T7/asdf
 end
+
+if test -e /Volumes/T7/homebrew/bin/brew
+  eval (/Volumes/T7/homebrew/bin/brew shellenv)
+else if test -e $HOME/.homebrew/bin/brew
+  eval ($HOME/.homebrew/bin/brew shellenv)
+end
+
+if command -sq brew && test -d (brew --prefix asdf)
+  source (brew --prefix asdf)/libexec/asdf.fish
+else if test -d /opt/asdf-vm
+  source /opt/asdf-vm/asdf.fish
+end
+
+command -sq starship && starship init fish | source
+command -sq direnv && direnv hook fish | source
+command -sq zoxide && zoxide init fish | source
+
+bind \er __select_from_last
+bind \e, __commandline_token_search_backward
 
 test -e $HOME/.iterm2_shell_integration.fish && source $HOME/.iterm2_shell_integration.fish
 
 set -gx plug_path $HOME/.local/share/fish/plug
-fish_add_path -g $HOME/.homebrew/bin $HOME/bin
 
 set -gx GPG_TTY (tty)
