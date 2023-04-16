@@ -313,26 +313,20 @@ require('packer').startup {
               require('mason-nvim-dap').default_setup(config)
             end,
             cppdbg = function(config)
-              config.adapters.cppdbg = {
-                id = 'cppdbg',
-                type = 'executable',
-                command = os.getenv('HOME') ..
-                    '/.local/share/nvim/mason/packages/cpptools/extension/debugAdapters/bin/OpenDebugAD7',
-              }
-
-              config.configurations.c = {
+              config.configurations = {
                 {
                   name = 'Launch file',
                   type = 'cppdbg',
                   request = 'launch',
                   program = function()
-                    return vim.fn.input('Path to executable: ', vim.fn.getcwd(), '/' .. 'file')
+                    return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
                   end,
                   cwd = '${workspaceFolder}',
                   stopAtEntry = true,
                   MIMode = 'lldb',
                 },
               }
+
               require('mason-nvim-dap').default_setup(config)
             end,
           }
