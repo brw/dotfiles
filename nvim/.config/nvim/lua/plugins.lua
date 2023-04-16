@@ -283,6 +283,7 @@ require('packer').startup {
                 library = {
                   '${3rd}/luassert/library',
                 },
+                checkThirdParty = false,
               },
             },
             json = {
@@ -306,37 +307,36 @@ require('packer').startup {
       after = { 'mason.nvim', 'nvim-dap' },
       config = function()
         require('mason-nvim-dap').setup({
-          automatic_setup = true,
+          ensure_installed = { 'cppdbg' },
+          handlers = {
+            function(config)
+              require('mason-nvim-dap').default_setup(config)
+            end,
+            cppdbg = function(config)
+              config.adapters.cppdbg = {
+                id = 'cppdbg',
+                type = 'executable',
+                command = os.getenv('HOME') ..
+                    '/.local/share/nvim/mason/packages/cpptools/extension/debugAdapters/bin/OpenDebugAD7',
+              }
+
+              config.configurations.c = {
+                {
+                  name = 'Launch file',
+                  type = 'cppdbg',
+                  request = 'launch',
+                  program = function()
+                    return vim.fn.input('Path to executable: ', vim.fn.getcwd(), '/' .. 'file')
+                  end,
+                  cwd = '${workspaceFolder}',
+                  stopAtEntry = true,
+                  MIMode = 'lldb',
+                },
+              }
+              require('mason-nvim-dap').default_setup(config)
+            end,
+          }
         })
-        require('mason-nvim-dap').setup_handlers {
-          function(source_name)
-            require('mason-nvim-dap.automatic_setup')(source_name)
-          end,
-          cppdbg = function()
-            local dap = require('dap')
-
-            dap.adapters.cppdbg = {
-              id = 'cppdbg',
-              type = 'executable',
-              command = os.getenv('HOME') ..
-              '/.local/share/nvim/mason/packages/cpptools/extension/debugAdapters/bin/OpenDebugAD7',
-            }
-
-            dap.configurations.c = {
-              {
-                name = 'Launch file',
-                type = 'cppdbg',
-                request = 'launch',
-                program = function()
-                  return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
-                end,
-                cwd = '${workspaceFolder}',
-                stopAtEntry = true,
-                MIMode = 'lldb',
-              },
-            }
-          end,
-        }
       end,
     }
 
