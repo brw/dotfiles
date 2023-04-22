@@ -323,7 +323,7 @@ require('packer').startup {
                   end,
                   cwd = '${workspaceFolder}',
                   stopAtEntry = true,
-                  MIMode = 'lldb',
+                  MIMode = 'gdb',
                 },
               }
 
@@ -461,6 +461,14 @@ require('packer').startup {
     use { 'cacharle/c_formatter_42.vim' }
 
     use { 'mfussenegger/nvim-dap' }
+
+    use {
+      'ldelossa/nvim-dap-projects',
+      requires = { 'nvim-dap' },
+      config = function()
+        require('nvim-dap-projects').search_project_config()
+      end,
+    }
 
     use {
       'rcarriga/nvim-dap-ui',
