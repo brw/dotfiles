@@ -24,6 +24,8 @@ else if string match -q -- "*codam.nl*" $host
   #set -gx HOMEBREW_CORE_GIT_REMOTE "https://github.com/gromgit/homebrew-core-mojave"
 
   set -gx ASDF_DATA_DIR /Volumes/T7/asdf
+
+  fish_add_path -g /Applications/CLion.app/Contents/bin/gdb/mac/bin
 end
 
 if test -e /Volumes/T7/homebrew/bin/brew
