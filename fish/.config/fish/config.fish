@@ -40,6 +40,7 @@ else if test -d /opt/asdf-vm
   source /opt/asdf-vm/asdf.fish
 end
 
+command -sq rtx && rtx activate fish | source
 command -sq starship && starship init fish | source
 command -sq direnv && direnv hook fish | source
 command -sq zoxide && zoxide init fish | source
