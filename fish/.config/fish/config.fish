@@ -1,4 +1,5 @@
 set host (hostname)
+
 if string match -q -- "*microsoft*" (uname -a)
   ulimit -n 65535 # no idea how to set this permanently in WSL
 
@@ -26,9 +27,13 @@ else if string match -q -- "*codam.nl*" $host
   set -gx ASDF_DATA_DIR /Volumes/T7/asdf
 
   fish_add_path -g /Applications/CLion.app/Contents/bin/gdb/mac/bin
+else if string match -iq -- "*mistergreen*" $host
+  set -gx SSH_AUTH_SOCK /Users/mistergreen/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock
 end
 
-if test -e /Volumes/T7/homebrew/bin/brew
+if test -e /opt/homebrew/bin/brew
+  eval (/opt/homebrew/bin/brew shellenv)
+else if test -e /Volumes/T7/homebrew/bin/brew
   eval (/Volumes/T7/homebrew/bin/brew shellenv)
 else if test -e $HOME/.homebrew/bin/brew
   eval ($HOME/.homebrew/bin/brew shellenv)

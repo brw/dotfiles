@@ -10,6 +10,7 @@ SETUVAR --export DIRENV_LOG_FORMAT:\x1d
 SETUVAR --export EDITOR:nvim
 SETUVAR --export GIT_MERGE_AUTOEDIT:no
 SETUVAR --export HOMEBREW_CURLRC:1
+SETUVAR --export LANG:en_US\x2eUTF\x2d8
 SETUVAR --export SUDO_EDITOR:nvim
 SETUVAR --export SYSTEMD_EDITOR:nvim
 SETUVAR --export __ABBR_TIPS_KEYS:a__\x3aq\x1ea__adb\x1ea__bastion365\x1ea__choco\x1ea__fastboot\x1ea__gsudo\x1ea__keybase\x1ea__paco\x1ea__rg\x1ea__spicetify\x1ea__to_list\x1ea__winget
