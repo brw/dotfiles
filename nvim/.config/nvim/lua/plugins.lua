@@ -252,7 +252,7 @@ require('packer').startup {
         local lsp_formatting = function(bufnr)
           vim.lsp.buf.format({
             filter = function(client)
-              return client.name == 'null-ls' or client.name == 'lua_ls'
+              return client.name == 'null-ls' or client.name == 'lua_ls' or client.name == 'tsserver'
             end,
             bufnr = bufnr,
           })
@@ -524,6 +524,8 @@ require('packer').startup {
         }
       end,
     }
+
+    use { 'xorid/swap-split.nvim', }
 
     if packer_bootstrap then
       require('packer').sync()
