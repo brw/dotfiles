@@ -2,9 +2,6 @@
     email = hi@bas.sh
     name = Bas van den Wollenberg
 
-[includeIf "gitdir:~/dev/Solease/**/**"]
-    path = /home/bas/dev/Solease/.gitconfig
-
 [core]
     autocrlf = input
     editor = nvim
