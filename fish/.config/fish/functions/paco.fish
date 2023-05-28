@@ -1,3 +1,3 @@
-function paco --wraps=/home/bas/francinette/tester.sh --description 'alias paco $HOME/francinette/tester.sh'
-  $HOME/francinette/tester.sh $argv; 
+function paco --wraps=/Volumes/T7/francinette/tester.sh --description 'alias paco /Volumes/T7/francinette/tester.sh'
+  /Volumes/T7/francinette/tester.sh $argv; 
 end
