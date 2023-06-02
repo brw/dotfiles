@@ -406,11 +406,7 @@ require('packer').startup {
 
     use { 'tpope/vim-sleuth' }
 
-    -- use { 'JopjeKnopje/42header_codam' }
-    use {
-      'brw/42header_codam',
-      branch = 'improve-ascii-art',
-    }
+    use { 'JopjeKnopje/42header_codam' }
 
     use {
       'sindrets/diffview.nvim',
