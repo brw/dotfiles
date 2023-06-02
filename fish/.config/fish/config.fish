@@ -39,7 +39,7 @@ else if string match -iq -- "*mistergreen*" $host
   source "$(brew --prefix)/share/google-cloud-sdk/path.fish.inc"
 end
 
-command -sq rtx && rtx activate fish | source
+command -sq rtx && rtx activate fish | source && rtx completion fish | source
 command -sq starship && starship init fish | source
 command -sq direnv && direnv hook fish | source
 command -sq zoxide && zoxide init fish | source
