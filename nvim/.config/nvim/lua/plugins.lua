@@ -79,6 +79,35 @@ require('lazy').setup({
   },
 
   {
+    'nvim-treesitter/nvim-treesitter',
+    build = ':TSUpdate',
+    config = function()
+      require('nvim-treesitter.configs').setup {
+        ensure_installed = {
+          'lua', 'vim', 'vimdoc', 'bash', 'fish', 'diff', 'git_config',
+          'git_rebase', 'json', 'jsonc', 'markdown', 'markdown_inline', 'regex'
+        },
+        auto_install = true,
+        highlight = {
+          enable = true,
+          disable = { 'gitcommit' },
+        },
+        indent = {
+          enable = true,
+        },
+      }
+    end
+  },
+
+  {
+    'nvim-telescope/telescope.nvim',
+    version = '*',
+    dependencies = {
+      'nvim-lua/plenary.nvim'
+    }
+  },
+
+  {
     'folke/noice.nvim',
     dependencies = {
       'muniftanjim/nui.nvim',
