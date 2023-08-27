@@ -1,11 +1,12 @@
+set uname (uname -a)
 set host (hostname)
 
 if test -e /opt/homebrew/bin/brew
   eval (/opt/homebrew/bin/brew shellenv)
 else if test -e /Volumes/T7/homebrew/bin/brew
   eval (/Volumes/T7/homebrew/bin/brew shellenv)
-else if test -e $HOME/.homebrew/bin/brew
-  eval ($HOME/.homebrew/bin/brew shellenv)
+else if test -e $HOME/homebrew/bin/brew
+  eval ($HOME/homebrew/bin/brew shellenv)
 end
 
 if string match -q -- "*microsoft*" (uname -a)
@@ -19,24 +20,22 @@ if string match -q -- "*microsoft*" (uname -a)
     rm -f $SSH_AUTH_SOCK
 
     if string match -iq -- "bamibal" $host
-      set user "Bas"
+      set -gx user "Bas" # I don't remember what this is for but it's here now
     end
 
     setsid --fork socat UNIX-LISTEN:$SSH_AUTH_SOCK,fork EXEC:"/mnt/c/Users/$user/wsl-ssh-agent/npiperelay.exe -ei -s //./pipe/openssh-ssh-agent",nofork
   end
 else if string match -q -- "*codam.nl*" $host
-  ulimit -n 10240
+  if string match -q -- "*Darwin*" $uname
+    ulimit -n 10240
 
-  #set -gx HOMEBREW_CORE_GIT_REMOTE "https://github.com/gromgit/homebrew-core-mojave"
-  set -gx HOMEBREW_TEMP /Volumes/T7/homebrew/tmp
+    #set -gx HOMEBREW_CORE_GIT_REMOTE "https://github.com/gromgit/homebrew-core-mojave"
+    set -gx HOMEBREW_TEMP /Volumes/T7/homebrew/tmp
 
-  fish_add_path -g /Applications/CLion.app/Contents/bin/gdb/mac/bin
-else if string match -iq -- "*mistergreen*" $host
-  set -gx SSH_AUTH_SOCK /Users/mistergreen/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock
-
-  fish_add_path -g ~/.moon/bin
-
-  source "$(brew --prefix)/share/google-cloud-sdk/path.fish.inc"
+    fish_add_path -g /Applications/CLion.app/Contents/bin/gdb/mac/bin
+  else
+    fish_add_path $HOME/.local/bin
+  end
 end
 
 command -sq rtx && rtx activate fish | source && rtx completion fish | source
