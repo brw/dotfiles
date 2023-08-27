@@ -81,6 +81,9 @@ require('lazy').setup({
   {
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
+    dependencies = {
+      'nvim-treesitter/nvim-treesitter-textobjects',
+    },
     config = function()
       require('nvim-treesitter.configs').setup {
         ensure_installed = {
@@ -92,11 +95,55 @@ require('lazy').setup({
           enable = true,
           disable = { 'gitcommit' },
         },
+        --[[
         indent = {
           enable = true,
         },
+        ]]
+        textobjects = {
+          select = {
+            enable = true,
+            lookahead = true,
+            keymaps = {
+              ['af'] = '@function.outer',
+              ['if'] = '@function.inner',
+              ['ac'] = '@comment.outer',
+            },
+            selection_modes = {
+              ['@function.outer'] = 'V',
+              ['@function.inner'] = 'V',
+            },
+          },
+          move = {
+            enable = true,
+            set_jumps = true,
+            goto_next_start = {
+              [']m'] = '@function.outer',
+            },
+          },
+        },
       }
     end
+  },
+
+  {
+    'wansmer/treesj',
+    keys = {
+      {
+        '<leader>s',
+        function()
+          require('treesj').toggle({ split = { recursive = true } })
+        end,
+        desc = 'Toggle node (split/join)',
+      },
+    },
+    dependencies = {
+      'nvim-treesitter/nvim-treesitter',
+    },
+    opts = {
+      use_default_keymaps = false,
+      max_join_length = 600,
+    },
   },
 
   {
@@ -137,5 +184,68 @@ require('lazy').setup({
         inc_rename = true
       }
     },
+  },
+
+  {
+    'andweeb/presence.nvim',
+    enabled = false,
+    config = function()
+      require('presence'):setup({
+        show_time = false,
+        neovim_image_text = 'Neovim',
+        log_level = 'debug'
+      })
+    end,
+  },
+
+  {
+    'petertriho/nvim-scrollbar',
+    opts = function()
+      require('scrollbar').setup {
+        handle = {
+          color = require('nord.colors').nord2_gui,
+        },
+        handlers = {
+          search = true,
+        },
+      }
+    end,
+  },
+
+  {
+    'kylechui/nvim-surround',
+    config = true,
+  },
+
+  {
+    'numtostr/comment.nvim',
+    config = true,
+  },
+
+  {
+    'zegervdv/nrpattern.nvim',
+    config = true,
+  },
+
+  {
+    'j-hui/fidget.nvim',
+    tag = 'legacy',
+    config = true,
+  },
+
+  {
+    'lewis6991/gitsigns.nvim',
+    config = true,
+  },
+
+  {
+    'karb94/neoscroll.nvim',
+    opts = {
+      easing_function = 'quadratic',
+    }
+  },
+
+  {
+    'JopjeKnopje/42header_codam',
   }
 })

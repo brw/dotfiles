@@ -1,11 +1,6 @@
 require('packer').startup {
   function(use)
     use {
-      'nvim-telescope/telescope.nvim',
-      requires = { 'nvim-lua/plenary.nvim' },
-    }
-
-    use {
       'pwntester/octo.nvim',
       requires = {
         'nvim-lua/plenary.nvim',
@@ -18,66 +13,6 @@ require('packer').startup {
     }
 
     use {
-      'andweeb/presence.nvim',
-      config = function()
-        require('presence'):setup({
-          show_time = false,
-          neovim_image_text = 'Neovim',
-        })
-      end,
-    }
-
-    use {
-      'nvim-treesitter/nvim-treesitter',
-      run = ':TSUpdate',
-      config = function()
-        require('nvim-treesitter.configs').setup {
-          -- ensure_installed = 'all',
-          sync_install = false,
-          auto_install = true,
-          highlight = {
-            enable = true,
-            disable = { 'gitcommit' },
-          },
-          -- indent = {
-          --   enable = true,
-          -- },
-        }
-      end,
-    }
-
-    use {
-      'nvim-treesitter/nvim-treesitter-textobjects',
-      after = { 'nvim-treesitter' },
-      config = function()
-        require('nvim-treesitter.configs').setup {
-          textobjects = {
-            select = {
-              enable = true,
-              lookahead = true,
-              keymaps = {
-                ['af'] = '@function.outer',
-                ['if'] = '@function.inner',
-                ['ac'] = '@comment.outer',
-              },
-              selection_modes = {
-                ['@function.outer'] = 'V',
-                ['@function.inner'] = 'V',
-              },
-            },
-            move = {
-              enable = true,
-              set_jumps = true,
-              goto_next_start = {
-                [']m'] = '@function.outer',
-              },
-            },
-          },
-        }
-      end,
-    }
-
-    use {
       'kevinhwang91/nvim-hlslens',
       config = function()
         require('hlslens').setup {
@@ -86,36 +21,7 @@ require('packer').startup {
       end,
     }
 
-    use {
-      'petertriho/nvim-scrollbar',
-      after = { 'nord.nvim', 'nvim-hlslens' },
-      config = function()
-        require('scrollbar').setup {
-          handle = {
-            color = require('nord.colors').nord2_gui,
-          },
-          handlers = {
-            search = true,
-          },
-        }
-      end,
-    }
-
     -- use { 'tpope/vim-repeat' }
-    use {
-      -- 'tpope/vim-surround'
-      'kylechui/nvim-surround',
-      config = function()
-        require('nvim-surround').setup()
-      end,
-    }
-
-    use {
-      'numToStr/Comment.nvim',
-      config = function()
-        require('Comment').setup()
-      end,
-    }
 
     use {
       'akinsho/toggleterm.nvim',
@@ -123,13 +29,6 @@ require('packer').startup {
         require('toggleterm').setup {
           shade_terminals = false,
         }
-      end,
-    }
-
-    use {
-      'zegervdv/nrpattern.nvim',
-      config = function()
-        require('nrpattern').setup()
       end,
     }
 
@@ -277,47 +176,6 @@ require('packer').startup {
       end,
     }
 
-    use {
-      'j-hui/fidget.nvim',
-      tag = 'legacy',
-      config = function()
-        require('fidget').setup()
-      end,
-    }
-
-    use {
-      'lewis6991/gitsigns.nvim',
-      config = function()
-        require('gitsigns').setup()
-      end,
-    }
-
-    use {
-      'karb94/neoscroll.nvim',
-      config = function()
-        require('neoscroll').setup {
-          easing_function = 'quadratic',
-        }
-      end,
-    }
-
-    use {
-      'rcarriga/nvim-notify',
-      config = function()
-        require('notify').setup {
-          minimum_width = 16,
-          max_width = 64,
-          max_height = 10,
-          on_open = function(win)
-            vim.api.nvim_win_set_option(win, 'winblend', 40)
-            vim.api.nvim_win_set_config(win, { zindex = 100 })
-            vim.api.nvim_win_set_option(win, 'wrap', true)
-          end,
-        }
-        vim.notify = require('notify')
-      end,
-    }
-
     -- use {
     --   'lewis6991/impatient.nvim',
     --   config = function()
@@ -326,8 +184,6 @@ require('packer').startup {
     -- }
 
     use { 'tpope/vim-sleuth' }
-
-    use { 'JopjeKnopje/42header_codam' }
 
     use {
       'sindrets/diffview.nvim',

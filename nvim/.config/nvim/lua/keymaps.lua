@@ -24,6 +24,6 @@ vim.cmd('ino <silent><expr> <C-c>   pumvisible() ? "\\<C-e><C-c>" : "\\<C-c>"')
 vim.cmd('ino <silent><expr> <BS>    pumvisible() ? "\\<C-e><BS>"  : "\\<BS>"')
 vim.cmd('ino <silent><expr> <CR>    pumvisible() ? (complete_info().selected == -1 ? "\\<C-e><CR>" : "\\<C-y>") : "\\<CR>"')
 
-map('n', '<leader>s', '<cmd>SwapSplit<CR>')
+--map('n', '<leader>s', '<cmd>SwapSplit<CR>')
 
 map('n', '<Esc>', '<cmd>noh<CR>', silent)
