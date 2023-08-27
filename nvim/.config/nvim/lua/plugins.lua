@@ -104,6 +104,16 @@ require('lazy').setup({
     version = '*',
     dependencies = {
       'nvim-lua/plenary.nvim'
+    },
+    keys = {
+      { '<leader>ff', '<cmd>Telescope find_files<cr>', desc = 'Telescope find files' },
+      { '<leader>fb', '<cmd>Telescope buffers<cr>', desc = 'Telescope buffers' },
+      { '<leader>fg', '<cmd>Telescope live_grep<cr>', desc = 'Telescope grep' },
+      { '<leader>fh', '<cmd>Telescope help_tags<cr>', desc = 'Telescope help' },
+      { '<leader>fm', '<cmd>Telescope man_pages<cr>', desc = 'Telescope man' },
+      { 'gd', '<cmd>Telescope lsp_definitions<cr>', desc = 'Telescope definitions' },
+      { 'gi', '<cmd>Telescope implementations<cr>', desc = 'Telescope implementations' },
+      { '<leader>dl', '<cmd>Telescope diagnostics<cr>', desc = 'Telescope diagnostics' },
     }
   },
 
