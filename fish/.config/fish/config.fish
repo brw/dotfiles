@@ -34,7 +34,7 @@ else if string match -q -- "*codam.nl*" $host
 
     fish_add_path -g /Applications/CLion.app/Contents/bin/gdb/mac/bin
   else
-    fish_add_path $HOME/.local/bin
+    fish_add_path -g $HOME/.local/bin
   end
 end
 
