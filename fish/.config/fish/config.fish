@@ -35,6 +35,15 @@ else if string match -q -- "*codam.nl*" $host
     fish_add_path -g /Applications/CLion.app/Contents/bin/gdb/mac/bin
   else
     fish_add_path -g $HOME/.local/bin
+
+    # the horror that is compiling python using rtx/pyenv on Linux with homebrew libs
+    set -gx PKG_CONFIG_PATH \
+      (brew --prefix readline)/lib/pkgconfig \
+      (brew --prefix openssl)/lib/pkgconfig \
+      (brew --prefix sqlite3)/lib/pkgconfig \
+      (brew --prefix tcl-tk)/lib/pkgconfig \
+      (brew --prefix zlib)/lib/pkgconfig \
+      (brew --prefix bzip2)/lib/pkgconfig
   end
 end
 
