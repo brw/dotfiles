@@ -30,7 +30,7 @@ require('lazy').setup({
       vim.g.nord_italic = false
     end,
     config = function()
-      vim.cmd([[colorscheme nord]])
+      vim.cmd.colorscheme('nord')
     end
   },
 
