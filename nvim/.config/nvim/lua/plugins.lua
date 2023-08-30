@@ -200,7 +200,7 @@ require('lazy').setup({
 
   {
     'petertriho/nvim-scrollbar',
-    opts = function()
+    config = function()
       require('scrollbar').setup {
         handle = {
           color = require('nord.colors').nord2_gui,
