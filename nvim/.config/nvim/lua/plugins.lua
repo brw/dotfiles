@@ -13,14 +13,6 @@ end
 
 vim.opt.rtp:prepend(lazypath)
 
-local empty_section = {
-  function()
-    return ' '
-  end,
-  padding = 1,
-  color = 'Normal',
-}
-
 require('lazy').setup({
   {
     'shaunsingh/nord.nvim',
@@ -54,8 +46,14 @@ require('lazy').setup({
       },
       sections = {
         lualine_a = {
-          empty_section,
-          { 'mode', separator = { left = '' }, padding = { left = 1, right = 2 } },
+          {
+            function()
+              return ' '
+            end,
+            padding_left = 1,
+            color = 'Normal'
+          },
+          { 'mode', separator = { left = '' } },
         },
         lualine_b = {
           { 'filename' },
@@ -72,7 +70,13 @@ require('lazy').setup({
         },
         lualine_z = {
           { 'location', separator = { right = '' } },
-          empty_section,
+          {
+            function()
+              return ' '
+            end,
+            padding_right = 1,
+            color = 'Normal'
+          }
         },
       },
     }
@@ -130,7 +134,7 @@ require('lazy').setup({
     'wansmer/treesj',
     keys = {
       {
-        '<leader>s',
+        'gs',
         function()
           require('treesj').toggle({ split = { recursive = true } })
         end,
@@ -147,6 +151,42 @@ require('lazy').setup({
   },
 
   {
+    'vonheikemen/lsp-zero.nvim',
+    branch = 'dev-v3',
+    dependencies = {
+      'williamboman/mason.nvim',
+      'williamboman/mason-lspconfig.nvim',
+      'neovim/nvim-lspconfig',
+      'hrsh7th/nvim-cmp',
+      'hrsh7th/cmp-nvim-lsp',
+      'l3mon4d3/luasnip'
+    },
+    config = function()
+      local lsp_zero = require('lsp-zero')
+
+      lsp_zero.on_attach(function(client, bufnr)
+        -- see :help lsp-zero-keybindings
+        -- to learn the available actions
+        lsp_zero.default_keymaps({
+          buffer = bufnr,
+          preserve_mappings = false,
+        })
+      end)
+
+      require('mason').setup({})
+      require('mason-lspconfig').setup({
+        ensure_installed = {'lua_ls'},
+        handlers = {
+          lsp_zero.default_setup,
+          lua_ls = function()
+            require('lspconfig').lua_ls.setup(lsp_zero.nvim_lua_ls())
+          end
+        },
+      })
+    end
+  },
+
+  {
     'nvim-telescope/telescope.nvim',
     version = '*',
     dependencies = {
@@ -158,9 +198,9 @@ require('lazy').setup({
       { '<leader>fg', '<cmd>Telescope live_grep<cr>', desc = 'Telescope grep' },
       { '<leader>fh', '<cmd>Telescope help_tags<cr>', desc = 'Telescope help' },
       { '<leader>fm', '<cmd>Telescope man_pages<cr>', desc = 'Telescope man' },
-      { 'gd', '<cmd>Telescope lsp_definitions<cr>', desc = 'Telescope definitions' },
-      { 'gi', '<cmd>Telescope implementations<cr>', desc = 'Telescope implementations' },
-      { '<leader>dl', '<cmd>Telescope diagnostics<cr>', desc = 'Telescope diagnostics' },
+      --{ 'gd', '<cmd>Telescope lsp_definitions<cr>', desc = 'Telescope definitions' },
+      --{ 'gi', '<cmd>Telescope implementations<cr>', desc = 'Telescope implementations' },
+      --{ '<leader>dl', '<cmd>Telescope diagnostics<cr>', desc = 'Telescope diagnostics' },
     }
   },
 
@@ -187,6 +227,11 @@ require('lazy').setup({
   },
 
   {
+    'stevearc/dressing.nvim',
+    configure = true
+  },
+
+  {
     'andweeb/presence.nvim',
     enabled = false,
     config = function()
@@ -196,6 +241,16 @@ require('lazy').setup({
         log_level = 'debug'
       })
     end,
+  },
+
+  {
+    'stevearc/qf_helper.nvim',
+    config = true
+  },
+
+  {
+    'yorickpeterse/nvim-pqf',
+    config = true,
   },
 
   {
@@ -247,5 +302,5 @@ require('lazy').setup({
 
   {
     'JopjeKnopje/42header_codam',
-  }
+  },
 })

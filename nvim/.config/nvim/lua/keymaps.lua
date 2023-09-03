@@ -14,6 +14,9 @@ map('n', '<C-j>', '<C-w><C-j>')
 map('n', '<C-l>', '<C-w><C-l>')
 map('n', '<C-h>', '<C-w><C-h>')
 
+map('n', '<C-s>', 'zH')
+map('n', '<C-y>', 'zL')
+
 -- why does this not work :(
 --map('i', '<Esc>', 'pumvisible() ? "<C-e><Esc>" : "<Esc>"', { silent = true, expr = true } )
 --map('i', '<C-c>', 'pumvisible() ? "<C-e><C-c>" : "<C-c>"', { silent = true, expr = true } )
@@ -26,4 +29,14 @@ vim.cmd('ino <silent><expr> <CR>    pumvisible() ? (complete_info().selected == 
 
 --map('n', '<leader>s', '<cmd>SwapSplit<CR>')
 
-map('n', '<Esc>', '<cmd>noh<CR>', silent)
+map('n', '<Esc>', function()
+  vim.cmd.nohlsearch()
+  require('noice').cmd('dismiss')
+end, silent)
+
+-- use <C-N> and <C-P> for next/prev.
+map("n", "<C-N>", "<CMD>QNext<CR>")
+map("n", "<C-P>", "<CMD>QPrev<CR>")
+-- toggle the quickfix open/closed without jumping to it
+map("n", "<leader>q", "<CMD>QFToggle!<CR>")
+map("n", "<leader>l", "<CMD>LLToggle!<CR>")
