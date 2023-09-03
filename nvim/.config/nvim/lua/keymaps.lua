@@ -35,8 +35,8 @@ map('n', '<Esc>', function()
 end, silent)
 
 -- use <C-N> and <C-P> for next/prev.
-map("n", "<C-N>", "<CMD>QNext<CR>")
-map("n", "<C-P>", "<CMD>QPrev<CR>")
+map('n', '<C-n>', '<Cmd>QNext<CR>')
+map('n', '<C-n>', '<Cmd>QPrev<CR>')
 -- toggle the quickfix open/closed without jumping to it
-map("n", "<leader>q", "<CMD>QFToggle!<CR>")
-map("n", "<leader>l", "<CMD>LLToggle!<CR>")
+map('n', '<leader>q', '<Cmd>QFToggle!<CR>')
+map('n', '<leader>l', '<Cmd>LLToggle!<CR>')

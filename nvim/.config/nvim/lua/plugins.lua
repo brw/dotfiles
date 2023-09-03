@@ -1,12 +1,12 @@
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
 
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable", -- latest stable release
+    'git',
+    'clone',
+    '--filter=blob:none',
+    'https://github.com/folke/lazy.nvim.git',
+    '--branch=stable', -- latest stable release
     lazypath,
   })
 end
@@ -23,16 +23,16 @@ require('lazy').setup({
     end,
     config = function()
       vim.cmd.colorscheme('nord')
-    end
+    end,
   },
 
   {
     'folke/which-key.nvim',
     opts = {
       window = {
-        border = 'single'
-      }
-    }
+        border = 'single',
+      },
+    },
   },
 
   {
@@ -51,7 +51,7 @@ require('lazy').setup({
               return ' '
             end,
             padding_left = 1,
-            color = 'Normal'
+            color = 'Normal',
           },
           { 'mode', separator = { left = '' } },
         },
@@ -75,11 +75,11 @@ require('lazy').setup({
               return ' '
             end,
             padding_right = 1,
-            color = 'Normal'
-          }
+            color = 'Normal',
+          },
         },
       },
-    }
+    },
   },
 
   {
@@ -92,7 +92,7 @@ require('lazy').setup({
       require('nvim-treesitter.configs').setup {
         ensure_installed = {
           'lua', 'vim', 'vimdoc', 'bash', 'fish', 'diff', 'git_config',
-          'git_rebase', 'json', 'jsonc', 'markdown', 'markdown_inline', 'regex'
+          'git_rebase', 'json', 'jsonc', 'markdown', 'markdown_inline', 'regex',
         },
         auto_install = true,
         highlight = {
@@ -127,7 +127,7 @@ require('lazy').setup({
           },
         },
       }
-    end
+    end,
   },
 
   {
@@ -159,7 +159,7 @@ require('lazy').setup({
       'neovim/nvim-lspconfig',
       'hrsh7th/nvim-cmp',
       'hrsh7th/cmp-nvim-lsp',
-      'l3mon4d3/luasnip'
+      'l3mon4d3/luasnip',
     },
     config = function()
       local lsp_zero = require('lsp-zero')
@@ -175,33 +175,33 @@ require('lazy').setup({
 
       require('mason').setup({})
       require('mason-lspconfig').setup({
-        ensure_installed = {'lua_ls'},
+        ensure_installed = { 'lua_ls' },
         handlers = {
           lsp_zero.default_setup,
           lua_ls = function()
             require('lspconfig').lua_ls.setup(lsp_zero.nvim_lua_ls())
-          end
+          end,
         },
       })
-    end
+    end,
   },
 
   {
     'nvim-telescope/telescope.nvim',
     version = '*',
     dependencies = {
-      'nvim-lua/plenary.nvim'
+      'nvim-lua/plenary.nvim',
     },
     keys = {
       { '<leader>ff', '<cmd>Telescope find_files<cr>', desc = 'Telescope find files' },
-      { '<leader>fb', '<cmd>Telescope buffers<cr>', desc = 'Telescope buffers' },
-      { '<leader>fg', '<cmd>Telescope live_grep<cr>', desc = 'Telescope grep' },
-      { '<leader>fh', '<cmd>Telescope help_tags<cr>', desc = 'Telescope help' },
-      { '<leader>fm', '<cmd>Telescope man_pages<cr>', desc = 'Telescope man' },
+      { '<leader>fb', '<cmd>Telescope buffers<cr>',    desc = 'Telescope buffers' },
+      { '<leader>fg', '<cmd>Telescope live_grep<cr>',  desc = 'Telescope grep' },
+      { '<leader>fh', '<cmd>Telescope help_tags<cr>',  desc = 'Telescope help' },
+      { '<leader>fm', '<cmd>Telescope man_pages<cr>',  desc = 'Telescope man' },
       --{ 'gd', '<cmd>Telescope lsp_definitions<cr>', desc = 'Telescope definitions' },
       --{ 'gi', '<cmd>Telescope implementations<cr>', desc = 'Telescope implementations' },
       --{ '<leader>dl', '<cmd>Telescope diagnostics<cr>', desc = 'Telescope diagnostics' },
-    }
+    },
   },
 
   {
@@ -213,22 +213,22 @@ require('lazy').setup({
     opts = {
       lsp = {
         override = {
-          ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
-          ["vim.lsp.util.stylize_markdown"] = true,
-          ["cmp.entry.get_documentation"] = true,
+          ['vim.lsp.util.convert_input_to_markdown_lines'] = true,
+          ['vim.lsp.util.stylize_markdown'] = true,
+          ['cmp.entry.get_documentation'] = true,
         },
       },
       presets = {
         bottom_search = true,
         long_message_to_split = true,
-        inc_rename = true
-      }
+        inc_rename = true,
+      },
     },
   },
 
   {
     'stevearc/dressing.nvim',
-    configure = true
+    configure = true,
   },
 
   {
@@ -238,14 +238,14 @@ require('lazy').setup({
       require('presence'):setup({
         show_time = false,
         neovim_image_text = 'Neovim',
-        log_level = 'debug'
+        log_level = 'debug',
       })
     end,
   },
 
   {
     'stevearc/qf_helper.nvim',
-    config = true
+    config = true,
   },
 
   {
@@ -297,7 +297,7 @@ require('lazy').setup({
     'karb94/neoscroll.nvim',
     opts = {
       easing_function = 'quadratic',
-    }
+    },
   },
 
   {
