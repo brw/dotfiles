@@ -37,7 +37,7 @@ require('lazy').setup({
 
   {
     'nvim-lualine/lualine.nvim',
-    dependencies = { 'kyazdani42/nvim-web-devicons' },
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
     opts = {
       options = {
         theme = 'nord',
@@ -187,6 +187,12 @@ require('lazy').setup({
   },
 
   {
+    'folke/trouble.nvim',
+    dependencies = 'nvim-tree/nvim-web-devicons',
+    config = true,
+  },
+
+  {
     'nvim-telescope/telescope.nvim',
     version = '*',
     dependencies = {
@@ -245,6 +251,12 @@ require('lazy').setup({
 
   {
     'stevearc/qf_helper.nvim',
+    keys = {
+      { '<C-n>',     '<Cmd>QNext<CR>' },
+      { '<C-p>',     '<Cmd>QPrev<CR>' },
+      { '<leader>q', '<Cmd>QFToggle!<CR>' },
+      { '<leader>l', '<Cmd>LLToggle!<CR>' },
+    },
     config = true,
   },
 

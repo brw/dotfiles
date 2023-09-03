@@ -33,10 +33,3 @@ map('n', '<Esc>', function()
   vim.cmd.nohlsearch()
   require('noice').cmd('dismiss')
 end, silent)
-
--- use <C-N> and <C-P> for next/prev.
-map('n', '<C-n>', '<Cmd>QNext<CR>')
-map('n', '<C-n>', '<Cmd>QPrev<CR>')
--- toggle the quickfix open/closed without jumping to it
-map('n', '<leader>q', '<Cmd>QFToggle!<CR>')
-map('n', '<leader>l', '<Cmd>LLToggle!<CR>')

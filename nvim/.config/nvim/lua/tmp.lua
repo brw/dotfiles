@@ -176,13 +176,6 @@ require('packer').startup {
       end,
     }
 
-    -- use {
-    --   'lewis6991/impatient.nvim',
-    --   config = function()
-    --     require('impatient')
-    --   end,
-    -- }
-
     use { 'tpope/vim-sleuth' }
 
     use {
