@@ -14,9 +14,6 @@ map('n', '<C-j>', '<C-w><C-j>')
 map('n', '<C-l>', '<C-w><C-l>')
 map('n', '<C-h>', '<C-w><C-h>')
 
-map('n', '<C-s>', 'zH')
-map('n', '<C-y>', 'zL')
-
 -- why does this not work :(
 --map('i', '<Esc>', 'pumvisible() ? "<C-e><Esc>" : "<Esc>"', { silent = true, expr = true } )
 --map('i', '<C-c>', 'pumvisible() ? "<C-e><C-c>" : "<C-c>"', { silent = true, expr = true } )

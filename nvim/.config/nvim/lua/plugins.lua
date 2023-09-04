@@ -87,6 +87,8 @@ require('lazy').setup({
     build = ':TSUpdate',
     dependencies = {
       'nvim-treesitter/nvim-treesitter-textobjects',
+      'RRethy/nvim-treesitter-endwise',
+      'windwp/nvim-ts-autotag',
     },
     config = function()
       require('nvim-treesitter.configs').setup {
@@ -126,6 +128,12 @@ require('lazy').setup({
             },
           },
         },
+        endwise = {
+          enable = true,
+        },
+        autotag = {
+          enable = true,
+        },
       }
     end,
   },
@@ -134,7 +142,7 @@ require('lazy').setup({
     'wansmer/treesj',
     keys = {
       {
-        'gs',
+        '<leader>s',
         function()
           require('treesj').toggle({ split = { recursive = true } })
         end,
@@ -187,8 +195,16 @@ require('lazy').setup({
   },
 
   {
+    'folke/neodev.nvim',
+    config = true,
+  },
+
+  {
     'folke/trouble.nvim',
     dependencies = 'nvim-tree/nvim-web-devicons',
+    keys = {
+      { '<leader>t', '<Cmd>TroubleToggle<CR>' },
+    },
     config = true,
   },
 
@@ -234,7 +250,6 @@ require('lazy').setup({
 
   {
     'stevearc/dressing.nvim',
-    configure = true,
   },
 
   {
@@ -314,5 +329,16 @@ require('lazy').setup({
 
   {
     'JopjeKnopje/42header_codam',
+  },
+
+  {
+    'altermo/ultimate-autopair.nvim',
+    event = { 'InsertEnter', 'CmdlineEnter' },
+    config = true,
+  },
+
+  {
+    'abecodes/tabout.nvim',
+    config = true,
   },
 })
