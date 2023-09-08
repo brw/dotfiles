@@ -198,14 +198,6 @@ require('packer').startup {
     }
 
     use {
-      'folke/neodev.nvim',
-      after = { 'nvim-lspconfig' },
-      config = function()
-        require('neodev').setup({})
-      end,
-    }
-
-    use {
       'lewis6991/hover.nvim',
       config = function()
         require('hover').setup {
@@ -266,14 +258,6 @@ require('packer').startup {
     }
 
     use { 'gpanders/editorconfig.nvim' }
-
-    use {
-      'folke/trouble.nvim',
-      requires = 'nvim-tree/nvim-web-devicons',
-      config = function()
-        require('trouble').setup {}
-      end,
-    }
 
     use {
       'akinsho/git-conflict.nvim',

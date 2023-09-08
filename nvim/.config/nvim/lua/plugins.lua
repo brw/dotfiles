@@ -306,7 +306,9 @@ require('lazy').setup({
 
   {
     'zegervdv/nrpattern.nvim',
-    config = true,
+    config = function() -- for some reason `config = true` isn't enough here
+      require('nrpattern').setup()
+    end,
   },
 
   {
