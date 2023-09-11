@@ -91,21 +91,20 @@ require('lazy').setup({
       'windwp/nvim-ts-autotag',
     },
     config = function()
+      ---@diagnostic disable-next-line: missing-fields
       require('nvim-treesitter.configs').setup {
         ensure_installed = {
-          'lua', 'vim', 'vimdoc', 'bash', 'fish', 'diff', 'git_config',
-          'git_rebase', 'json', 'jsonc', 'markdown', 'markdown_inline', 'regex',
+          'lua', 'vim', 'vimdoc', 'bash', 'fish', 'diff', 'json', 'jsonc',
+          'markdown', 'markdown_inline', 'regex',
         },
         auto_install = true,
         highlight = {
           enable = true,
           disable = { 'gitcommit' },
         },
-        --[[
         indent = {
           enable = true,
         },
-        ]]
         textobjects = {
           select = {
             enable = true,
@@ -168,6 +167,7 @@ require('lazy').setup({
       'hrsh7th/nvim-cmp',
       'hrsh7th/cmp-nvim-lsp',
       'l3mon4d3/luasnip',
+      'b0o/schemastore.nvim',
     },
     config = function()
       local lsp_zero = require('lsp-zero')
@@ -188,6 +188,16 @@ require('lazy').setup({
           lsp_zero.default_setup,
           lua_ls = function()
             require('lspconfig').lua_ls.setup(lsp_zero.nvim_lua_ls())
+          end,
+          jsonls = function()
+            require('lspconfig').jsonls.setup({
+              settings = {
+                json = {
+                  schemas = require('schemastore').json.schemas(),
+                  validate = { enable = true },
+                },
+              },
+            })
           end,
         },
       })
