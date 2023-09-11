@@ -183,7 +183,8 @@ require('lazy').setup({
 
       require('mason').setup({})
       require('mason-lspconfig').setup({
-        ensure_installed = { 'lua_ls' },
+        ensure_installed = { 'lua_ls', 'efm', 'clangd', 'jsonls', 'yamlls',
+          'jsonnet_ls' },
         handlers = {
           lsp_zero.default_setup,
           lua_ls = function()
@@ -199,6 +200,19 @@ require('lazy').setup({
               },
             })
           end,
+          yamlls = function()
+            require('lspconfig').yamlls.setup({
+              settings = {
+                yaml = {
+                  schemaStore = {
+                    enable = false,
+                    url = '',
+                  },
+                  schemas = require('schemastore').yaml.schemas,
+                },
+              },
+            })
+          end,
         },
       })
     end,
@@ -206,7 +220,12 @@ require('lazy').setup({
 
   {
     'folke/neodev.nvim',
-    config = true,
+    opts = {
+      override = function(root_dir, library)
+        library.enabled = true
+        library.plugins = true
+      end,
+    },
   },
 
   {
