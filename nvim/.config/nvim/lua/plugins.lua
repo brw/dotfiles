@@ -111,9 +111,9 @@ require("lazy").setup({
           enable = true,
           disable = { "gitcommit" },
         },
-        indent = {
-          enable = true,
-        },
+        -- indent = {
+        --   enable = true,
+        -- },
         textobjects = {
           select = {
             enable = true,
