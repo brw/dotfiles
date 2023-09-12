@@ -171,6 +171,8 @@ require('lazy').setup({
     },
     config = function()
       local lsp_zero = require('lsp-zero')
+      local lspconfig = require('lspconfig')
+      local schemastore = require('schemastore')
 
       lsp_zero.on_attach(function(client, bufnr)
         -- see :help lsp-zero-keybindings
@@ -183,37 +185,53 @@ require('lazy').setup({
 
       require('mason').setup({})
       require('mason-lspconfig').setup({
-        ensure_installed = { 'lua_ls', 'efm', 'clangd', 'jsonls', 'yamlls',
+        ensure_installed = { 'lua_ls', 'clangd', 'jsonls', 'yamlls',
           'jsonnet_ls' },
         handlers = {
           lsp_zero.default_setup,
           lua_ls = function()
-            require('lspconfig').lua_ls.setup(lsp_zero.nvim_lua_ls())
+            lspconfig.lua_ls.setup(lsp_zero.nvim_lua_ls())
           end,
           jsonls = function()
-            require('lspconfig').jsonls.setup({
+            lspconfig.jsonls.setup({
               settings = {
                 json = {
-                  schemas = require('schemastore').json.schemas(),
+                  schemas = schemastore.json.schemas(),
                   validate = { enable = true },
                 },
               },
             })
           end,
           yamlls = function()
-            require('lspconfig').yamlls.setup({
+            lspconfig.yamlls.setup({
               settings = {
                 yaml = {
                   schemaStore = {
                     enable = false,
                     url = '',
                   },
-                  schemas = require('schemastore').yaml.schemas,
+                  schemas = schemastore.yaml.schemas,
                 },
               },
             })
           end,
         },
+      })
+    end,
+  },
+
+  {
+    "nvimdev/guard.nvim",
+    config = function()
+      local ft = require("guard.filetype")
+
+      ft("typescript,javascript,typescriptreact,json,css,html"):fmt("prettierd")
+      ft("lua"):fmt("stylua")
+      ft("fish"):fmt("fish_indent")
+
+      require("guard").setup({
+        fmt_on_save = false,
+        lsp_as_default_formatter = false,
       })
     end,
   },
