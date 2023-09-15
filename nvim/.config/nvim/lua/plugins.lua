@@ -218,7 +218,7 @@ require("lazy").setup({
                     enable = false,
                     url = "",
                   },
-                  schemas = schemastore.yaml.schemas,
+                  schemas = schemastore.yaml.schemas(),
                 },
               },
             })
@@ -396,6 +396,11 @@ require("lazy").setup({
 
   {
     "abecodes/tabout.nvim",
+    config = true,
+  },
+
+  {
+    "NMAC427/guess-indent.nvim",
     config = true,
   },
 })
