@@ -230,10 +230,13 @@ require("lazy").setup({
 
   {
     "nvimdev/guard.nvim",
+    dependencies = {
+      "nvimdev/guard-collection",
+    },
     config = function()
       local ft = require("guard.filetype")
 
-      ft("typescript,javascript,typescriptreact,json,css,html"):fmt("prettierd")
+      ft("typescript,javascript,typescriptreact,json,css,html"):fmt("prettier")
       ft("lua"):fmt("stylua")
       ft("fish"):fmt("fish_indent")
 
