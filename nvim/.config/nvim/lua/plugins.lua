@@ -122,6 +122,7 @@ require("lazy").setup({
               ["af"] = "@function.outer",
               ["if"] = "@function.inner",
               ["ac"] = "@comment.outer",
+              ["ic"] = "@comment.outer",
             },
             selection_modes = {
               ["@function.outer"] = "V",
@@ -268,6 +269,7 @@ require("lazy").setup({
 
   {
     "nvim-telescope/telescope.nvim",
+    lazy = false,
     version = "*",
     dependencies = {
       "nvim-lua/plenary.nvim",
