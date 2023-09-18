@@ -183,6 +183,14 @@ require("lazy").setup({
       local lsp_zero = require("lsp-zero")
       local lspconfig = require("lspconfig")
       local schemastore = require("schemastore")
+      local cmp = require("cmp")
+
+      ---@diagnostic disable-next-line: missing-fields
+      cmp.setup({
+        mapping = cmp.mapping.preset.insert({
+          ["<C-Space>"] = cmp.mapping.complete(),
+        }),
+      })
 
       lsp_zero.on_attach(function(client, bufnr)
         -- see :help lsp-zero-keybindings
