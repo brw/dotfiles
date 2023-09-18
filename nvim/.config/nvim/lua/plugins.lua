@@ -283,24 +283,31 @@ require("lazy").setup({
       "nvim-lua/plenary.nvim",
     },
     keys = {
-      { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Telescope find files" },
-      { "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Telescope buffers" },
-      { "<leader>fg", "<cmd>Telescope live_grep<cr>", desc = "Telescope grep" },
-      { "<leader>fh", "<cmd>Telescope help_tags<cr>", desc = "Telescope help" },
-      { "<leader>fm", "<cmd>Telescope man_pages<cr>", desc = "Telescope man" },
-      --{ 'gd', '<cmd>Telescope lsp_definitions<cr>', desc = 'Telescope definitions' },
-      --{ 'gi', '<cmd>Telescope implementations<cr>', desc = 'Telescope implementations' },
-      --{ '<leader>dl', '<cmd>Telescope diagnostics<cr>', desc = 'Telescope diagnostics' },
+      { "<leader>ff", "<cmd>Telescope find_files<CR>", desc = "Telescope find files" },
+      { "<leader>fb", "<cmd>Telescope buffers<CR>", desc = "Telescope buffers" },
+      { "<leader>fg", "<cmd>Telescope live_grep<CR>", desc = "Telescope grep" },
+      { "<leader>fh", "<cmd>Telescope help_tags<CR>", desc = "Telescope help" },
+      { "<leader>fm", "<cmd>Telescope man_pages<CR>", desc = "Telescope man" },
+      --{ 'gd', '<cmd>Telescope lsp_definitions<CR>', desc = 'Telescope definitions' },
+      --{ 'gi', '<cmd>Telescope implementations<CR>', desc = 'Telescope implementations' },
+      --{ '<leader>dl', '<cmd>Telescope diagnostics<CR>', desc = 'Telescope diagnostics' },
     },
   },
 
   {
     "nvim-neo-tree/neo-tree.nvim",
+    event = { "BufEnter" },
     branch = "v3.x",
     dependencies = {
       "nvim-lua/plenary.nvim",
       "nvim-tree/nvim-web-devicons",
       "muniftanjim/nui.nvim",
+    },
+    keys = {
+      { "<C-t>", "<cmd>Neotree toggle<CR>", desc = "Toggle Neotree" },
+    },
+    opts = {
+      close_if_last_window = true,
     },
   },
 
