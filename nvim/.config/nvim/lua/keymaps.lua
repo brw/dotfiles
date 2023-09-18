@@ -19,10 +19,12 @@ map("n", "<C-h>", "<C-w><C-h>")
 --map('i', '<C-c>', 'pumvisible() ? "<C-e><C-c>" : "<C-c>"', { silent = true, expr = true } )
 --map('i', '<BS>', 'pumvisible() ? "<C-e><BS>" : "<BS>"', { silent = true, expr = true } )
 --map('i', '<CR>', 'pumvisible() ? (complete_info().selected == -1 ? "<C-e><CR>" : "<C-y>") : "<CR>', { silent = true, expr = true } )
-vim.cmd('ino <silent><expr> <Esc>pumvisible() ? "\\<C-e><Esc>" : "\\<Esc>"')
-vim.cmd('ino <silent><expr> <C-c>pumvisible() ? "\\<C-e><C-c>" : "\\<C-c>"')
-vim.cmd('ino <silent><expr> <BS>pumvisible() ? "\\<C-e><BS>"  : "\\<BS>"')
-vim.cmd('ino <silent><expr> <CR>pumvisible() ? (complete_info().selected == -1 ? "\\<C-e><CR>" : "\\<C-y>") : "\\<CR>"')
+vim.cmd('ino <silent><expr> <Esc> pumvisible() ? "\\<C-e><Esc>" : "\\<Esc>"')
+vim.cmd('ino <silent><expr> <C-c> pumvisible() ? "\\<C-e><C-c>" : "\\<C-c>"')
+vim.cmd('ino <silent><expr> <BS> pumvisible() ? "\\<C-e><BS>"  : "\\<BS>"')
+vim.cmd(
+  'ino <silent><expr> <CR> pumvisible() ? (complete_info().selected == -1 ? "\\<C-e><CR>" : "\\<C-y>") : "\\<CR>"'
+)
 
 --map('n', '<leader>s', '<cmd>SwapSplit<CR>')
 
