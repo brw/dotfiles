@@ -5,6 +5,6 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 vim.api.nvim_create_autocmd("BufRead,BufNewFile", {
-  pattern = ".envrc",
+  pattern = ".envrc*",
   command = "set filetype=bash",
 })
