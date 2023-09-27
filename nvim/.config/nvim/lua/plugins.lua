@@ -251,7 +251,7 @@ require("lazy").setup({
 
       require("guard").setup({
         fmt_on_save = true,
-        lsp_as_default_formatter = false,
+        lsp_as_default_formatter = true,
       })
     end,
   },

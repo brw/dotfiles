@@ -19,7 +19,6 @@ opt.inccommand = "split"
 opt.formatoptions = opt.formatoptions - "o"
 opt.termguicolors = true
 opt.expandtab = true
-opt.tabstop = 2
 opt.shiftwidth = 2
 
 local g = vim.g
