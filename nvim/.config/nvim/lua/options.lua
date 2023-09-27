@@ -20,6 +20,7 @@ opt.formatoptions = opt.formatoptions - "o"
 opt.termguicolors = true
 opt.expandtab = true
 opt.shiftwidth = 2
+opt.foldenable = false
 
 local g = vim.g
 g.mapleader = " "
