@@ -180,18 +180,26 @@ require("lazy").setup({
       "hrsh7th/cmp-nvim-lsp",
       "l3mon4d3/luasnip",
       "b0o/schemastore.nvim",
+      -- { "zbirenbaum/copilot.lua", config = true },
+      -- { "zbirenbaum/copilot-cmp", config = true },
     },
     config = function()
       local lsp_zero = require("lsp-zero")
       local lspconfig = require("lspconfig")
       local schemastore = require("schemastore")
       local cmp = require("cmp")
+      local cmp_format = require("lsp-zero").cmp_format()
 
       ---@diagnostic disable-next-line: missing-fields
       cmp.setup({
+        sources = {
+          -- { name = "copilot" },
+          { name = "nvim_lsp" },
+        },
         mapping = cmp.mapping.preset.insert({
           ["<C-Space>"] = cmp.mapping.complete(),
         }),
+        formatting = cmp_format,
       })
 
       lsp_zero.on_attach(function(client, bufnr)
