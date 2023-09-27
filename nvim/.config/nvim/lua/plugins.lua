@@ -123,6 +123,8 @@ require("lazy").setup({
               ["if"] = "@function.inner",
               ["ac"] = "@comment.outer",
               ["ic"] = "@comment.outer",
+              ["aa"] = "@parameter.outer",
+              ["ia"] = "@parameter.inner",
             },
             selection_modes = {
               ["@function.outer"] = "V",
