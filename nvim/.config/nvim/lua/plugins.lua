@@ -296,6 +296,7 @@ require("lazy").setup({
     version = "*",
     dependencies = {
       "nvim-lua/plenary.nvim",
+      "nvim-tree/nvim-web-devicons",
     },
     keys = {
       { "<leader>ff", "<cmd>Telescope find_files<CR>", desc = "Telescope find files" },
@@ -306,6 +307,33 @@ require("lazy").setup({
       --{ 'gd', '<cmd>Telescope lsp_definitions<CR>', desc = 'Telescope definitions' },
       --{ 'gi', '<cmd>Telescope implementations<CR>', desc = 'Telescope implementations' },
       --{ '<leader>dl', '<cmd>Telescope diagnostics<CR>', desc = 'Telescope diagnostics' },
+    },
+    opts = {
+      defaults = {
+        sorting_strategy = "ascending",
+        layout_config = {
+          prompt_position = "top",
+        },
+        file_ignore_patterns = { ".git/" },
+      },
+      pickers = {
+        find_files = {
+          theme = "dropdown",
+          hidden = true,
+        },
+        buffers = {
+          theme = "dropdown",
+        },
+        live_grep = {
+          theme = "dropdown",
+        },
+        help_tags = {
+          theme = "dropdown",
+        },
+        man_pages = {
+          theme = "dropdown",
+        },
+      },
     },
   },
 
