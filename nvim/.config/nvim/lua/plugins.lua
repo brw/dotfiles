@@ -417,16 +417,30 @@ require("lazy").setup({
 
   {
     "petertriho/nvim-scrollbar",
-    config = function()
-      require("scrollbar").setup({
+    dependencies = { "kevinhwang91/nvim-hlslens" },
+    opts = function()
+      return {
         handle = {
           color = require("nord.colors").nord2_gui,
         },
         handlers = {
           search = true,
         },
-      })
+      }
     end,
+  },
+
+  {
+    "kevinhwang91/nvim-hlslens",
+    keys = {
+      { "n", "<Cmd>execute('normal! ' . v:count1 . 'n')<CR><Cmd>lua require('hlslens').start()<CR>" },
+      { "N", "<Cmd>execute('normal! ' . v:count1 . 'N')<CR><Cmd>lua require('hlslens').start()<CR>" },
+      { "*", "*<Cmd>lua require('hlslens').start()<CR>" },
+      { "#", "#<Cmd>lua require('hlslens').start()<CR>" },
+      { "g*", "g*<Cmd>lua require('hlslens').start()<CR>" },
+      { "g#", "g#<Cmd>lua require('hlslens').start()<CR>" },
+    },
+    config = true,
   },
 
   {
