@@ -225,7 +225,7 @@ require("lazy").setup({
                 json = {
                   schemas = vim.list_extend(schemastore.json.schemas(), {
                     {
-                      fileMatch = { "docker-compose*.json" },
+                      fileMatch = { "dodcker-compose*.json", "compose*.json" },
                       url = "https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json",
                     },
                   }),
