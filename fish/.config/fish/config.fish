@@ -50,10 +50,10 @@ else if string match -q -- "*codam.nl*" $host
     end
 end
 
-command -q rtx && rtx activate fish | source && rtx completion fish | source
-command -q starship && starship init fish | source
-command -q direnv && direnv hook fish | source
-command -q zoxide && zoxide init fish | source
+type -q rtx && rtx activate fish | source && rtx completion fish | source
+type -q starship && starship init fish | source
+type -q direnv && direnv hook fish | source
+type -q zoxide && zoxide init fish | source
 
 bind \er __select_from_last
 bind \e, __commandline_token_search_backward
