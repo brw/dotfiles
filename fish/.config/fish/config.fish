@@ -1,12 +1,25 @@
 set uname (uname -a)
 set host (hostname)
 
+fish_add_path -g $HOME/.local/bin
+
 if test -e /opt/homebrew/bin/brew
     eval (/opt/homebrew/bin/brew shellenv)
 else if test -e /Volumes/T7/homebrew/bin/brew
     eval (/Volumes/T7/homebrew/bin/brew shellenv)
 else if test -e $HOME/homebrew/bin/brew
     eval ($HOME/homebrew/bin/brew shellenv)
+end
+
+if command -q brew
+    # the horror that is compiling python using rtx/pyenv on Linux with homebrew libs
+    set -agx PKG_CONFIG_PATH \
+        (brew --prefix readline)/lib/pkgconfig \
+        (brew --prefix openssl)/lib/pkgconfig \
+        (brew --prefix sqlite3)/lib/pkgconfig \
+        (brew --prefix tcl-tk)/lib/pkgconfig \
+        (brew --prefix zlib)/lib/pkgconfig \
+        (brew --prefix bzip2)/lib/pkgconfig
 end
 
 if string match -q -- "*microsoft*" (uname -a)
@@ -33,24 +46,14 @@ else if string match -q -- "*codam.nl*" $host
         set -gx HOMEBREW_TEMP /Volumes/T7/homebrew/tmp
 
         fish_add_path -g /Applications/CLion.app/Contents/bin/gdb/mac/bin
-    else
-        fish_add_path -g $HOME/.local/bin
-
-        # the horror that is compiling python using rtx/pyenv on Linux with homebrew libs
-        set -agx PKG_CONFIG_PATH \
-            (brew --prefix readline)/lib/pkgconfig \
-            (brew --prefix openssl)/lib/pkgconfig \
-            (brew --prefix sqlite3)/lib/pkgconfig \
-            (brew --prefix tcl-tk)/lib/pkgconfig \
-            (brew --prefix zlib)/lib/pkgconfig \
-            (brew --prefix bzip2)/lib/pkgconfig
+    else # linux
     end
 end
 
-command -sq rtx && rtx activate fish | source && rtx completion fish | source
-command -sq starship && starship init fish | source
-command -sq direnv && direnv hook fish | source
-command -sq zoxide && zoxide init fish | source
+command -q rtx && rtx activate fish | source && rtx completion fish | source
+command -q starship && starship init fish | source
+command -q direnv && direnv hook fish | source
+command -q zoxide && zoxide init fish | source
 
 bind \er __select_from_last
 bind \e, __commandline_token_search_backward
