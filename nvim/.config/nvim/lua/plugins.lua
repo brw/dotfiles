@@ -299,12 +299,12 @@ require("lazy").setup({
       "nvim-tree/nvim-web-devicons",
     },
     keys = {
-      { "<leader>r", "<cmd>Telescope resume<CR>", desc = "Telescope resume" },
-      { "<leader>p", "<cmd>Telescope find_files<CR>", desc = "Telescope find files" },
-      { "<leader>fb", "<cmd>Telescope buffers<CR>", desc = "Telescope buffers" },
-      { "<leader>fg", "<cmd>Telescope live_grep<CR>", desc = "Telescope grep" },
-      { "<leader>fh", "<cmd>Telescope help_tags<CR>", desc = "Telescope help" },
-      { "<leader>fm", "<cmd>Telescope man_pages<CR>", desc = "Telescope man" },
+      { "<C-t><C-r>", "<cmd>Telescope resume<CR>", desc = "Telescope resume" },
+      { "<C-t><C-p>", "<cmd>Telescope find_files<CR>", desc = "Telescope find files" },
+      { "<C-t><C-b>", "<cmd>Telescope buffers<CR>", desc = "Telescope buffers" },
+      { "<C-t><C-g>", "<cmd>Telescope live_grep<CR>", desc = "Telescope grep" },
+      { "<C-t><C-t>", "<cmd>Telescope help_tags<CR>", desc = "Telescope help" },
+      { "<C-t><C-m>", "<cmd>Telescope man_pages<CR>", desc = "Telescope man" },
       --{ 'gd', '<cmd>Telescope lsp_definitions<CR>', desc = 'Telescope definitions' },
       --{ 'gi', '<cmd>Telescope implementations<CR>', desc = 'Telescope implementations' },
       --{ '<leader>dl', '<cmd>Telescope diagnostics<CR>', desc = 'Telescope diagnostics' },
@@ -348,7 +348,7 @@ require("lazy").setup({
       "muniftanjim/nui.nvim",
     },
     keys = {
-      { "<C-t>", "<cmd>Neotree toggle<CR>", desc = "Toggle Neotree" },
+      { "<C-t><C-n>", "<cmd>Neotree toggle<CR>", desc = "Toggle Neotree" },
     },
     opts = {
       close_if_last_window = true,
@@ -440,6 +440,20 @@ require("lazy").setup({
       { "g*", "g*<Cmd>lua require('hlslens').start()<CR>" },
       { "g#", "g#<Cmd>lua require('hlslens').start()<CR>" },
     },
+    config = true,
+  },
+
+  {
+    "akinsho/toggleterm.nvim",
+    version = "*",
+    opts = {
+      open_mapping = "<C-q>",
+      shading_factor = "0",
+    },
+  },
+
+  {
+    "ethanholz/nvim-lastplace",
     config = true,
   },
 
