@@ -299,8 +299,8 @@ require("lazy").setup({
       "nvim-tree/nvim-web-devicons",
     },
     keys = {
-      { "<leader>fr", "<cmd>Telescope resume<CR>", desc = "Telescope resume" },
-      { "<leader>ff", "<cmd>Telescope find_files<CR>", desc = "Telescope find files" },
+      { "<leader>r", "<cmd>Telescope resume<CR>", desc = "Telescope resume" },
+      { "<leader>p", "<cmd>Telescope find_files<CR>", desc = "Telescope find files" },
       { "<leader>fb", "<cmd>Telescope buffers<CR>", desc = "Telescope buffers" },
       { "<leader>fg", "<cmd>Telescope live_grep<CR>", desc = "Telescope grep" },
       { "<leader>fh", "<cmd>Telescope help_tags<CR>", desc = "Telescope help" },
