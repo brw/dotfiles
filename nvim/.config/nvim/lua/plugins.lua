@@ -449,6 +449,7 @@ require("lazy").setup({
     opts = {
       open_mapping = "<C-q>",
       shading_factor = "0",
+      persist_size = false,
     },
   },
 
