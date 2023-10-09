@@ -5,7 +5,6 @@ SETUVAR --export ABBR_TIPS_REGEXES:\x28\x5e\x28\x5cw\x2b\x5cs\x2b\x29\x2b\x28\x2
 SETUVAR --export BAT_STYLE:plain
 SETUVAR --export BAT_THEME:Nord
 SETUVAR --export COLORTERM:truecolor
-SETUVAR --export DBX_COMPOSE:/home/bas/dev/DBX\x2eWebApp/docker\x2dcompose\x2eyml
 SETUVAR --export DIRENV_LOG_FORMAT:\x1d
 SETUVAR --export EDITOR:nvim
 SETUVAR --export GIT_MERGE_AUTOEDIT:no
