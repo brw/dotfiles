@@ -450,6 +450,9 @@ require("lazy").setup({
       open_mapping = "<C-q>",
       shading_factor = "0",
       persist_size = false,
+      winbar = {
+        enabled = true,
+      },
     },
   },
 
