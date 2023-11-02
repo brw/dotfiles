@@ -521,7 +521,11 @@ require("lazy").setup({
   {
     "altermo/ultimate-autopair.nvim",
     event = { "InsertEnter", "CmdlineEnter" },
-    config = true,
+    opts = {
+      fastwarp = {
+        faster = true,
+      },
+    },
   },
 
   {
