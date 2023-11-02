@@ -180,7 +180,25 @@ require("lazy").setup({
       "hrsh7th/cmp-nvim-lsp",
       "l3mon4d3/luasnip",
       "b0o/schemastore.nvim",
-      -- { "zbirenbaum/copilot.lua", config = true },
+      {
+        "zbirenbaum/copilot.lua",
+        opts = {
+          panel = {
+            enabled = false,
+          },
+          suggestion = {
+            auto_trigger = true,
+            keymap = {
+              accept = "<M-CR>",
+              accept_word = "<M-L>",
+              accept_line = "<M-l>",
+              next = "<M-j>",
+              prev = "<M-k>",
+              dismiss = "<C-]>",
+            },
+          },
+        },
+      },
       -- { "zbirenbaum/copilot-cmp", config = true },
     },
     config = function()
