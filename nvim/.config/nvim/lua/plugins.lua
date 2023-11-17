@@ -37,49 +37,56 @@ require("lazy").setup({
 
   {
     "nvim-lualine/lualine.nvim",
-    dependencies = { "nvim-tree/nvim-web-devicons" },
-    opts = {
-      options = {
-        theme = "nord",
-        component_separators = "|",
-        section_separators = { left = "", right = "" },
-      },
-      sections = {
-        lualine_a = {
-          {
-            function()
-              return " "
-            end,
-            padding_left = 1,
-            color = "Normal",
+    dependencies = { "nvim-tree/nvim-web-devicons", "folke/noice.nvim" },
+    config = function()
+      require("lualine").setup({
+        options = {
+          theme = "nord",
+          component_separators = "|",
+          section_separators = { left = "", right = "" },
+        },
+        sections = {
+          lualine_a = {
+            {
+              function()
+                return " "
+              end,
+              padding_left = 1,
+              color = "Normal",
+            },
+            { "mode", separator = { left = "" } },
           },
-          { "mode", separator = { left = "" } },
-        },
-        lualine_b = {
-          { "filename" },
-          { "branch" },
-          { "diff" },
-          { "diagnostics" },
-        },
-        lualine_c = {},
-        lualine_x = {},
-        lualine_y = {
-          { "filetype" },
-          { "fileformat", icons_enabled = false },
-          { "progress" },
-        },
-        lualine_z = {
-          { "location", separator = { right = "" } },
-          {
-            function()
-              return " "
-            end,
-            padding_right = 1,
-            color = "Normal",
+          lualine_b = {
+            { "filename" },
+            { "branch" },
+            { "diff" },
+            { "diagnostics" },
+          },
+          lualine_c = {},
+          lualine_x = {
+            {
+              require("noice").api.statusline.mode.get,
+              cond = require("noice").api.statusline.mode.has,
+            },
+          },
+          lualine_y = {
+            { "filetype" },
+            { "fileformat", icons_enabled = false },
+            { "progress" },
+          },
+          lualine_z = {
+            { "location", separator = { right = "" } },
+            {
+              function()
+                return " "
+              end,
+              padding_right = 1,
+              color = "Normal",
+            },
           },
         },
-      },
-    },
+      })
+    end,
   },
 
   {
