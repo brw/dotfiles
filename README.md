@@ -28,3 +28,6 @@ sudo cp pacman/etc/pacman.conf /etc/
 sudo cp makepkg/etc/makepkg.conf /etc/
 sudo cp sysctl/etc/sysctld.d/80-gamecompatibility.conf /etc/sysctl/etc/sysctld.d/
 ```
+
+#### Disable Intel pstate driver
+Add `intel_pstate=disable` to the options in `/boot/entries/linux.conf`
