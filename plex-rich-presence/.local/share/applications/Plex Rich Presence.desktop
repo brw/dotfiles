@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Plex Rich Presence
+Exec=/home/bas/plex-rich-presence_linux_amd64-1.8.0
+Comment=
+Terminal=false
+Icon=gnome-panel-launcher
+Type=Application
