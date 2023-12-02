@@ -1,0 +1,25 @@
+[global_config]
+  inactive_color_offset = 1.0
+[keybindings]
+  go_next = <Alt>bracketright
+  go_prev = <Alt>bracketleft
+  split_auto = <Primary>Return
+  layout_launcher = <Primary><Alt>l
+[profiles]
+  [[default]]
+    background_color = "#2E3440"
+    foreground_color = "#D8DEE9"
+    show_titlebar = False
+    scrollback_infinite = True
+    palette = "#3b4252:#bf616a:#a3be8c:#ebcb8b:#81a1c1:#b48ead:#88c0d0:#e5e9f0:#4c566a:#bf616a:#a3be8c:#ebcb8b:#81a1c1:#b48ead:#8fbcbb:#eceff4"
+[layouts]
+  [[default]]
+    [[[window0]]]
+      type = Window
+      parent = ""
+      size = 900, 480
+    [[[child1]]]
+      type = Terminal
+      parent = window0
+      profile = default
+[plugins]
