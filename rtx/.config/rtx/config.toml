@@ -1,5 +1,4 @@
 [tools]
-yarn = "latest"
 node = "latest"
 ruby = "latest"
 python = "latest"

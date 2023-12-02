@@ -2,7 +2,7 @@ git
 fish
 neovim
 reflector
-rtx
+rtx-bin
 starship
 direnv
 zoxide
@@ -40,3 +40,5 @@ plzip
 dos2unix
 lshw
 tree
+plocate
+glow
