@@ -19,5 +19,12 @@ yay -Syu --needed $(cat arch-*-packages)
 #### Copy dotfiles
 ```
 git clone git@github.com:brw/dotfiles.git
-stow -d ~/dotfiles direnv fish git nvim ripgrep rtx starship stow
+stow -d ~/dotfiles direnv fish git nvim ripgrep rtx starship stow bin imwheel plex-rich-presence
+```
+
+#### Copy system files
+```bash
+sudo cp pacman/etc/pacman.conf /etc/
+sudo cp makepkg/etc/makepkg.conf /etc/
+sudo cp sysctl/etc/sysctld.d/80-gamecompatibility.conf /etc/sysctl/etc/sysctld.d/
 ```
