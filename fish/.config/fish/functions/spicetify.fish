@@ -1,3 +1,7 @@
-function spicetify --wraps=spicetify.exe --description 'alias spicetify=spicetify.exe'
-    spicetify.exe $argv
+function spicetify
+    if string match -q -- "*microsoft*" (uname -a)
+        spicetify.exe $argv
+    else
+        command spicetify $argv
+    end
 end
