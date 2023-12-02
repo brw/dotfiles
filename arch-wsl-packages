@@ -1,3 +1,4 @@
+git
 fish
 neovim
 reflector
@@ -26,3 +27,14 @@ ffmpeg
 rsync
 bind
 htop
+p7zip
+unrar
+pv
+mediainfo
+jsonnet
+c_formatter_42
+pkgfile
+pigz
+lbzip2
+plzip
+dos2unix
