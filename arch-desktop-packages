@@ -1,6 +1,7 @@
+terminator
 cups
 system-config-printer
-xorgs-xapps
+xorg-apps
 google-chrome
 google-chrome-dev
 locale-en-nl-git
@@ -34,12 +35,13 @@ tor-browser-bin
 nerd-fonts
 all-repository-fonts
 steam
-mullvad-vpn
+mullvad-vpn-bin
 mpv
 mpv-thumbfast-git
 mpv-uosc-git
 losslesscut-bin
-mkvtoolnix
+mkvtoolnix-gui
+mkvtoolnix-cli
 imwheel
 gnome-themes-extra
 gamescope
@@ -57,6 +59,6 @@ arandr
 alacarte
 obs-studio
 teamviewer
-ytsubconvert-bin
+ytsubconverter-bin
 mcomix
 aegisub
