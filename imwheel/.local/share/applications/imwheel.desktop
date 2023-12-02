@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=imwheel
+Exec=imwheel
+Comment=
+Terminal=false
+Icon=gnome-panel-launcher
+Type=Application
