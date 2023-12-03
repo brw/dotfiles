@@ -56,8 +56,9 @@ sudo locale-gen
 ```
 
 #### Fix fish universal variables in Gnome Wayland session
-modify `/usr/bin/gnome-session`, changing `$SHELL` to `bash` on line 10.
-temporary fix for https://github.com/fish-shell/fish-shell/issues/7995 (probably bad but /shrug, universal variables are [being removed](https://github.com/fish-shell/fish-shell/issues/7379) in the near future anyway, at which point I'll change this)
+modify `/usr/bin/gnome-session`, changing (hardcoding) `$SHELL` to `bash` on line 10.
+
+temporary fix for https://github.com/fish-shell/fish-shell/issues/7995 (probably bad but /shrug, universal variables are sort of maybe [being removed](https://github.com/fish-shell/fish-shell/issues/7379) in the near future anyway, at which point I'll change this)
 
 #### Copy dotfiles
 ```
