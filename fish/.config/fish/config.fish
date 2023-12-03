@@ -1,5 +1,5 @@
 if status is-login
-    return
+    exit
 end
 
 set uname (uname -a)
