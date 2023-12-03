@@ -4,7 +4,7 @@ My dotfiles managed using [GNU Stow](https://www.gnu.org/software/stow).
 
 
 ## personal notes for reinstalls
-things that might be good to backup:
+things that might be good to backup manually:
 - `~/.local/share/fish/fish_history`
 - uBlock Origin filters
 - Twitch FFZ & Previews
@@ -13,6 +13,9 @@ things that might be good to backup:
 - Tabs using Session Buddy
 
 ## soo how do i
+
+#### Disable Intel pstate driver
+Add `intel_pstate=disable` to the options in `/boot/entries/linux.conf`
 
 #### Copy system files
 ```bash
@@ -75,6 +78,3 @@ temporary fix for https://github.com/fish-shell/fish-shell/issues/7995 (probably
 git clone git@github.com:brw/dotfiles.git
 stow -d ~/dotfiles direnv fish git nvim ripgrep rtx starship stow bin terminator wayland imwheel plex-rich-presence cpupower
 ```
-
-#### Disable Intel pstate driver
-Add `intel_pstate=disable` to the options in `/boot/entries/linux.conf`
