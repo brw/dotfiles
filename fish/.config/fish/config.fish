@@ -1,3 +1,7 @@
+if status is-login
+    return
+end
+
 set uname (uname -a)
 set host (hostname)
 
@@ -55,10 +59,15 @@ type -q starship && starship init fish | source
 type -q direnv && direnv hook fish | source
 type -q zoxide && zoxide init fish | source
 
+if test -e $__fish_user_data_dir/plugins/plug.fish/conf.d/plugin_load.fish
+    source $__fish_user_data_dir/plugins/plug.fish/conf.d/plugin_load.fish
+else
+    curl -L https://l0c.cc/plug.fish | source
+end
+
 bind \er __select_from_last
 bind \e, __commandline_token_search_backward
 
 test -e $HOME/.iterm2_shell_integration.fish && source $HOME/.iterm2_shell_integration.fish
 
-set -gx plug_path $HOME/.local/share/fish/plug
 set -gx GPG_TTY (tty)
