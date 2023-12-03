@@ -2,6 +2,16 @@
 
 My dotfiles managed using [GNU Stow](https://www.gnu.org/software/stow).
 
+
+## personal notes for reinstalls
+things that might be good to backup:
+- `~/.local/share/fish/fish_history`
+- uBlock Origin filters
+- Twitch FFZ & Previews
+- ViolentMonkey
+- YouTube Enhancer config
+- Tabs using Session Buddy
+
 ## soo how do i
 
 #### Copy system files
