@@ -1,9 +1,13 @@
 [global_config]
   inactive_color_offset = 1.0
 [keybindings]
+  cycle_next = ""
+  cycle_prev = ""
   go_next = <Alt>bracketright
   go_prev = <Alt>bracketleft
   split_auto = <Primary>Return
+  next_tab = <Primary>Tab
+  prev_tab = <Primary><Shift>Tab
   layout_launcher = <Primary><Alt>l
 [profiles]
   [[default]]
