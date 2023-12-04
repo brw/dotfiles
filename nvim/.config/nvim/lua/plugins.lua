@@ -190,6 +190,11 @@ require("lazy").setup({
       {
         "zbirenbaum/copilot.lua",
         opts = {
+          filetypes = {
+            gitcommit = true,
+            markdown = true,
+            yaml = true,
+          },
           panel = {
             enabled = false,
           },
