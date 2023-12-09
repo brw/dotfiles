@@ -419,12 +419,12 @@ require("lazy").setup({
 
   {
     "andweeb/presence.nvim",
-    enabled = false,
+    enabled = true,
     config = function()
       require("presence"):setup({
         show_time = false,
         neovim_image_text = "Neovim",
-        log_level = "debug",
+        -- log_level = "debug",
       })
     end,
   },
