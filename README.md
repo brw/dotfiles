@@ -12,6 +12,9 @@ things that might be good to backup manually:
 - YouTube Enhancer config
 - Tabs using Session Buddy
 - Remote Torrent Adder config
+- Automail config
+
+manual actions:
 - Disable HoverZoom+ on Twitch and Kick
 
 ## soo how do i
