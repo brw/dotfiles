@@ -549,4 +549,11 @@ require("lazy").setup({
     "NMAC427/guess-indent.nvim",
     config = true,
   },
+
+  {
+    'norcalli/nvim-colorizer.lua',
+    config = function()
+      require('colorizer').setup()
+    end,
+  }
 })
