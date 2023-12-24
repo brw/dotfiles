@@ -67,6 +67,11 @@ sudo updatedb
 sudo systemctl enable --now cups
 ```
 
+#### Enable TeamViewer service
+```bash
+sudo systemctl enable --now teamviewerd
+```
+
 #### Set locale to en_NL
 uncomment `en_NL.UTF-8 UTF-8` in `/etc/locale.gen`, then
 ```bash
