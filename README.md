@@ -17,7 +17,12 @@ things that I might want to backup manually:
 manual actions to perform:
 - Disable HoverZoom+ on Twitch and Kick
 
-//TODO: automate everything below
+//TODO: properly automate everything below
+
+#### Clone dotfiles
+```bash
+git clone git@github.com:brw/dotfiles.git
+```
 
 #### Disable Intel pstate driver
 Add `intel_pstate=disable` to the options in `/boot/entries/linux.conf`
@@ -73,9 +78,8 @@ uncomment `en_NL.UTF-8 UTF-8` in `/etc/locale.gen`, then
 sudo locale-gen
 ```
 
-#### Copy dotfiles
+#### Install dotfiles
 ```
-git clone git@github.com:brw/dotfiles.git
 stow -d ~/dotfiles direnv fish git nvim ripgrep rtx starship stow bin terminator wayland imwheel plex-rich-presence cpupower
 ```
 
