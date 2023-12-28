@@ -9,15 +9,15 @@ local silent = { silent = true }
 -- map('n', 'g#', "g#<Cmd>lua require('hlslens').start()<CR>", silent)
 -- map('n', '<Esc>', '<Cmd>noh<CR>', silent)
 
-map("n", "<C-h>", "<Cmd>wincmd h<CR>")
-map("n", "<C-j>", "<Cmd>wincmd j<CR>")
-map("n", "<C-k>", "<Cmd>wincmd k<CR>")
-map("n", "<C-l>", "<Cmd>wincmd l<CR>")
+map("n", "<M-h>", "<Cmd>wincmd h<CR>")
+map("n", "<M-j>", "<Cmd>wincmd j<CR>")
+map("n", "<M-k>", "<Cmd>wincmd k<CR>")
+map("n", "<M-l>", "<Cmd>wincmd l<CR>")
 
-map("t", "<C-h>", "<Cmd>wincmd h<CR>")
-map("t", "<C-j>", "<Cmd>wincmd j<CR>")
-map("t", "<C-k>", "<Cmd>wincmd k<CR>")
-map("t", "<C-l>", "<Cmd>wincmd l<CR>")
+map("t", "<M-h>", "<Cmd>wincmd h<CR>")
+map("t", "<M-j>", "<Cmd>wincmd j<CR>")
+map("t", "<M-k>", "<Cmd>wincmd k<CR>")
+map("t", "<M-l>", "<Cmd>wincmd l<CR>")
 
 -- why does this not work :(
 --map('i', '<Esc>', 'pumvisible() ? "<C-e><Esc>" : "<Esc>"', { silent = true, expr = true } )
