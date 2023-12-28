@@ -17,8 +17,6 @@ things that might be good to backup manually:
 manual actions:
 - Disable HoverZoom+ on Twitch and Kick
 
-## soo how do i
-
 #### Disable Intel pstate driver
 Add `intel_pstate=disable` to the options in `/boot/entries/linux.conf`
 
