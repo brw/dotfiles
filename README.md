@@ -4,7 +4,7 @@ My dotfiles managed using [GNU Stow](https://www.gnu.org/software/stow).
 
 
 ## personal notes for reinstalls
-things that might be good to backup manually:
+things that I might want to backup manually:
 - `~/.local/share/fish/fish_history`
 - uBlock Origin filters
 - Twitch FFZ & Previews
@@ -14,8 +14,10 @@ things that might be good to backup manually:
 - Remote Torrent Adder config
 - Automail config
 
-manual actions:
+manual actions to perform:
 - Disable HoverZoom+ on Twitch and Kick
+
+//TODO: automate everything below
 
 #### Disable Intel pstate driver
 Add `intel_pstate=disable` to the options in `/boot/entries/linux.conf`
