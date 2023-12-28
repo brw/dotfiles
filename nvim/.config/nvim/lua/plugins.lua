@@ -220,7 +220,6 @@ require("lazy").setup({
       local cmp = require("cmp")
       local cmp_format = require("lsp-zero").cmp_format()
 
-      ---@diagnostic disable-next-line: missing-fields
       cmp.setup({
         sources = {
           -- { name = "copilot" },
@@ -230,6 +229,10 @@ require("lazy").setup({
           ["<C-Space>"] = cmp.mapping.complete(),
         }),
         formatting = cmp_format,
+        window = {
+          completion = cmp.config.window.bordered(),
+          documentation = cmp.config.window.bordered(),
+        },
       })
 
       lsp_zero.on_attach(function(client, bufnr)
@@ -409,6 +412,7 @@ require("lazy").setup({
         bottom_search = true,
         long_message_to_split = true,
         inc_rename = true,
+        lsp_doc_border = true,
       },
     },
   },
@@ -541,6 +545,23 @@ require("lazy").setup({
   },
 
   {
+    "TimUntersberger/neogit",
+    opts = {
+      commit_popup = {
+        kind = "floating",
+      },
+      popup = {
+        kind = "floating",
+      },
+    },
+  },
+
+  {
+    "sindrets/diffview.nvim",
+    dependencies = { "nvim-lua/plenary.nvim" },
+  },
+
+  {
     "abecodes/tabout.nvim",
     config = true,
   },
@@ -552,6 +573,60 @@ require("lazy").setup({
 
   {
     "NvChad/nvim-colorizer.lua",
-    config = true,
+    opts = {
+      filetypes = { "*", "!lazy" },
+      RGB = true, -- #RGB hex codes
+      RRGGBB = true, -- #RRGGBB hex codes
+      names = false, -- "Name" codes like Blue or blue
+      RRGGBBAA = false, -- #RRGGBBAA hex codes
+      AARRGGBB = false, -- 0xAARRGGBB hex codes
+      rgb_fn = true, -- CSS rgb() and rgba() functions
+      hsl_fn = true, -- CSS hsl() and hsla() functions
+      css = true, -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
+      css_fn = true, -- Enable all CSS *functions*: rgb_fn, hsl_fn
+      -- Available modes for `mode`: foreground, background,  virtualtext
+      mode = "background",
+      -- Available methods are false / true / "normal" / "lsp" / "both"
+      -- True is same as normal
+      tailwind = "both",
+      sass = {
+        enable = true,
+        parsers = { "css" },
+      },
+      virtualtext = "■",
+      -- update color values even if buffer is not focused
+      -- example use: cmp_menu, cmp_docs
+      always_update = false,
+    },
+  },
+
+  {
+    "xorid/swap-split.nvim",
+    opts = {
+      ignore_filetypes = { "NvimTree", "notify", "toggleterm", "Trouble", "qf" },
+    },
+  },
+
+  {
+    "lambdalisue/suda.vim",
+    init = function()
+      vim.g.suda_smart_edit = true
+    end,
+  },
+
+  { "cacharle/c_formatter_42.vim" },
+
+  {
+    "mfussenegger/nvim-dap",
+    dependencies = {
+      "rcarriga/nvim-dap-ui",
+      "theHamsta/nvim-dap-virtual-text",
+      {
+        "ldelossa/nvim-dap-projects",
+        config = function()
+          require("nvim-dap-projects").search_project_config()
+        end,
+      },
+    },
   },
 })
