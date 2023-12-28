@@ -36,11 +36,6 @@ cd yay
 makepkg -si
 ```
 
-#### Install multithreaded compression alternatives
-```bash
-yay -Sy pigz lbzip2 plzip
-```
-
 #### Import tor gpg key
 ```bash
 gpg --auto-key-locate nodefault,wkd --locate-keys torbrowser@torproject.org
