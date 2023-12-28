@@ -1,10 +1,10 @@
-# yeet
-
 My dotfiles managed using [GNU Stow](https://www.gnu.org/software/stow).
 
 
-## personal notes for reinstalls
-things that I might want to backup manually:
+## Personal notes for reinstalls
+
+#### Things that I might want to backup manually:
+
 - `~/.local/share/fish/fish_history`
 - uBlock Origin filters
 - Twitch FFZ & Previews
@@ -14,7 +14,7 @@ things that I might want to backup manually:
 - Remote Torrent Adder config
 - Automail config
 
-manual actions to perform:
+#### Manual actions to perform:
 - Disable HoverZoom+ on Twitch and Kick
 
 //TODO: properly automate everything below
