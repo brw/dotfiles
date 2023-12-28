@@ -7,6 +7,9 @@
     editor = nvim
     pager = delta
 
+[alias]
+    showext = show --ext-diff
+
 [credential]
     helper = store
 
@@ -25,6 +28,10 @@
 [delta]
     syntax-theme = Nord
     navigate = true
+
+[diff]
+    tool = difft
+    external = difft --display inline
 
 [init]
     defaultBranch = main
