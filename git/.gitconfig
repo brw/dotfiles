@@ -9,6 +9,7 @@
 
 [alias]
     showext = show --ext-diff
+    logext = log --ext-diff
 
 [credential]
     helper = store
