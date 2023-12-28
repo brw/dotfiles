@@ -30,8 +30,8 @@
     syntax-theme = Nord
     navigate = true
 
-[diff]
-    tool = difft
+[difftool]
+    prompt = false
     external = difft --display inline
 
 [init]
