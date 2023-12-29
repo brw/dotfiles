@@ -1,20 +1,21 @@
+# dotfiles
+
 My dotfiles managed using [GNU Stow](https://www.gnu.org/software/stow).
 
+## Personal installation notes
 
-## Personal notes for reinstalls
-
-#### Things that I might want to backup manually:
+#### Things that I might want to backup manually
 
 - `~/.local/share/fish/fish_history`
-- uBlock Origin filters
-- Twitch FFZ & Previews
-- ViolentMonkey
+- uBlock Origin filters & settings
+- Twitch FFZ & Previews settings
+- ViolentMonkey userscripts & options
 - YouTube Enhancer config
-- Tabs using Session Buddy
+- Tabs and windows using Session Buddy
 - Remote Torrent Adder config
-- Automail config
+- AniList Automail userscript config
 
-#### Manual actions to perform:
+#### Manual actions to perform
 - Disable HoverZoom+ on Twitch and Kick
 
 //TODO: properly automate everything below
