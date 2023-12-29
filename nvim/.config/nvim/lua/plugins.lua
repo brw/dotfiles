@@ -37,7 +37,10 @@ require("lazy").setup({
 
   {
     "nvim-lualine/lualine.nvim",
-    dependencies = { "nvim-tree/nvim-web-devicons", "folke/noice.nvim" },
+    dependencies = {
+      "nvim-tree/nvim-web-devicons",
+      "folke/noice.nvim",
+    },
     config = function()
       require("lualine").setup({
         options = {
@@ -158,6 +161,7 @@ require("lazy").setup({
 
   {
     "wansmer/treesj",
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
     keys = {
       {
         "<leader>s",
@@ -166,9 +170,6 @@ require("lazy").setup({
         end,
         desc = "Toggle node (split/join)",
       },
-    },
-    dependencies = {
-      "nvim-treesitter/nvim-treesitter",
     },
     opts = {
       use_default_keymaps = false,
@@ -287,9 +288,7 @@ require("lazy").setup({
 
   {
     "nvimdev/guard.nvim",
-    dependencies = {
-      "nvimdev/guard-collection",
-    },
+    dependencies = { "nvimdev/guard-collection" },
     config = function()
       local ft = require("guard.filetype")
 
@@ -316,7 +315,7 @@ require("lazy").setup({
 
   {
     "folke/trouble.nvim",
-    dependencies = "nvim-tree/nvim-web-devicons",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
     keys = {
       { "<leader>t", "<Cmd>TroubleToggle<CR>" },
     },
@@ -417,9 +416,7 @@ require("lazy").setup({
     },
   },
 
-  {
-    "stevearc/dressing.nvim",
-  },
+  { "stevearc/dressing.nvim" },
 
   {
     "andweeb/presence.nvim",
@@ -530,9 +527,9 @@ require("lazy").setup({
     },
   },
 
-  {
-    "JopjeKnopje/42header_codam",
-  },
+  { "JopjeKnopje/42header_codam" },
+
+  { "cacharle/c_formatter_42.vim" },
 
   {
     "altermo/ultimate-autopair.nvim",
@@ -613,8 +610,6 @@ require("lazy").setup({
       vim.g.suda_smart_edit = true
     end,
   },
-
-  { "cacharle/c_formatter_42.vim" },
 
   {
     "mfussenegger/nvim-dap",
