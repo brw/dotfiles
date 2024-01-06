@@ -16,14 +16,9 @@ else if test -e $HOME/homebrew/bin/brew
 end
 
 if command -q brew
-    # the horror that is compiling python using rtx/pyenv on Linux with homebrew libs
-    set -agx PKG_CONFIG_PATH \
-        (brew --prefix readline)/lib/pkgconfig \
-        (brew --prefix openssl)/lib/pkgconfig \
-        (brew --prefix sqlite3)/lib/pkgconfig \
-        (brew --prefix tcl-tk)/lib/pkgconfig \
-        (brew --prefix zlib)/lib/pkgconfig \
-        (brew --prefix bzip2)/lib/pkgconfig
+    set brew_prefix (brew --prefix)
+    set -agx PKG_CONFIG_PATH $brew_prefix/opt/*/lib/pkgconfig
+    fish_add_path -g $brew_prefix/opt/glibc/{,s}bin
 end
 
 if string match -q -- "*microsoft*" (uname -a)
