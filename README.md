@@ -51,6 +51,11 @@ gpg --auto-key-locate nodefault,wkd --locate-keys torbrowser@torproject.org
 yay -Syu --needed $(cat arch-*-packages)
 ```
 
+#### Install dotfiles
+```
+stow -d ~/dotfiles direnv fish git nvim ripgrep rtx starship stow bin terminator wayland imwheel plex-rich-presence cpupower
+```
+
 #### Update pkgfile database
 ```bash
 sudo pkgfile -u
@@ -71,11 +76,6 @@ sudo systemctl enable --now cups
 uncomment `en_NL.UTF-8 UTF-8` in `/etc/locale.gen`, then
 ```bash
 sudo locale-gen
-```
-
-#### Install dotfiles
-```
-stow -d ~/dotfiles direnv fish git nvim ripgrep rtx starship stow bin terminator wayland imwheel plex-rich-presence cpupower
 ```
 
 #### Fix fish universal variables in Gnome Wayland session
