@@ -30,7 +30,7 @@ Add `intel_pstate=disable` to the options in `/boot/entries/linux.conf`
 
 #### Copy system files
 ```bash
-sudo cp pacman/etc/pacman.conf makepkg/etc/makepkg.conf /etc/
+sudo cp pacman/etc/pacman.conf /etc/
 sudo cp sysctl/etc/sysctld.d/80-gamecompatibility.conf /etc/sysctl.d/
 ```
 
