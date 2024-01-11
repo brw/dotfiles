@@ -30,7 +30,6 @@ Add `intel_pstate=disable` to the options in `/boot/entries/linux.conf`
 
 #### Copy system files
 ```shell
-sudo cp pacman/etc/pacman.conf /etc/
 sudo cp sysctl/etc/sysctld.d/80-gamecompatibility.conf /etc/sysctl.d/
 ```
 
@@ -53,7 +52,7 @@ yay -Syu --needed $(cat arch-*-packages)
 
 #### Install dotfiles
 ```
-stow -d ~/dotfiles direnv fish git nvim ripgrep rtx starship stow bin terminator wayland imwheel plex-rich-presence cpupower
+stow -d ~/dotfiles direnv fish git nvim ripgrep rtx starship stow bin terminator wayland imwheel plex-rich-presence cpupower pacman
 ```
 
 #### Update pkgfile database
