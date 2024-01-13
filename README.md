@@ -31,6 +31,7 @@ Add `intel_pstate=disable` to the options in `/boot/entries/linux.conf`
 #### Copy system files
 ```shell
 sudo cp sysctl/etc/sysctld.d/80-gamecompatibility.conf /etc/sysctl.d/
+sudo cp zram/etc/systemd/zram-generator.conf /etc/systemd/
 ```
 
 #### Install yay
