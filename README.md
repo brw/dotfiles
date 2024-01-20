@@ -87,3 +87,9 @@ temporary fix for https://github.com/fish-shell/fish-shell/issues/7995 (probably
 ```shell
 gsettings set org.gnome.mutter experimental-features "['scale-monitor-framebuffer']"
 ```
+
+#### Unbind XF86Tools (F13) on Gnome
+for some reason the button I have bound to F13 on my mouse opens the Gnome control center/settings by default, with no way to change it outside of dconf/gsettings. quite annoying
+```shell
+gsettings set org.gnome.settings-daemon.plugins.media-keys control-center-static "['']"
+```
