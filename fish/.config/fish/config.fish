@@ -49,7 +49,7 @@ else if string match -q -- "*codam.nl*" $host
     end
 end
 
-type -q rtx && rtx activate fish | source && rtx completion fish | source
+type -q mise && mise activate fish | source && mise completion fish | source
 type -q starship && starship init fish | source
 type -q direnv && direnv hook fish | source
 type -q zoxide && zoxide init fish | source
