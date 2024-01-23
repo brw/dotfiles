@@ -1,6 +1,4 @@
 [tools]
 node = "latest"
-ruby = "latest"
-python = "latest"
 lua = "latest"
 bun = "latest"
