@@ -305,6 +305,7 @@ require("lazy").setup({
 
   {
     "folke/neodev.nvim",
+    lazy = false,
     opts = {
       override = function(root_dir, library)
         library.enabled = true
@@ -651,5 +652,18 @@ require("lazy").setup({
         autoload_mode = config.AutoloadMode.Disabled,
       })
     end,
+  },
+
+  {
+    "chentoast/marks.nvim",
+    config = true,
+  },
+
+  {
+    "jinh0/eyeliner.nvim",
+    opts = {
+      highlight_on_key = true,
+      dim = true,
+    },
   },
 })
