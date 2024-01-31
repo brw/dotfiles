@@ -12,4 +12,14 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
   command = "set filetype=bash",
   group = group,
 })
+
+vim.api.nvim_create_autocmd("TextYankPost", {
+  pattern = "*",
+  callback = function()
+    vim.highlight.on_yank({
+      higroup = "Normal",
+      timeout = 200,
+    })
+  end,
+  group = group,
 })
