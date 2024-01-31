@@ -666,4 +666,14 @@ require("lazy").setup({
       dim = true,
     },
   },
+
+  {
+    "bfredl/nvim-luadev",
+    cmd = { "Luadev" },
+    keys = {
+      { mode = "n", "<leader>ll", "<Plug>(Luadev-RunLine)", desc = "Execute line" },
+      { mode = { "n", "v" }, "<leader>lr", "<Plug>(Luadev-Run)", desc = "Execute movement/object" },
+      { mode = "n", "<leader>lw", "<Plug>(Luadev-RunWord)", desc = "Execute word" },
+    },
+  },
 })
