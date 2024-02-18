@@ -66,3 +66,5 @@ bind \e, __commandline_token_search_backward
 test -e $HOME/.iterm2_shell_integration.fish && source $HOME/.iterm2_shell_integration.fish
 
 set -gx GPG_TTY (tty)
+
+set -q SSH_AUTH_SOCK || set -gx SSH_AUTH_SOCK $XDG_RUNTIME_DIR/gcr/ssh
