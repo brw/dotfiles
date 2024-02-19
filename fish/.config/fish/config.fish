@@ -1,4 +1,4 @@
-if status is-login
+if status is-login && not string match -iq -- haring $host
     exit
 end
 
@@ -49,7 +49,7 @@ else if string match -q -- "*codam.nl*" $host
     end
 end
 
-type -q mise && mise activate fish | source && mise completion fish | source
+type -q mise && mise activate fish | source
 type -q starship && starship init fish | source
 type -q direnv && direnv hook fish | source
 type -q zoxide && zoxide init fish | source
