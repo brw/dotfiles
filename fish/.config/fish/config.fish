@@ -50,6 +50,7 @@ else if string match -q -- "*codam.nl*" $host
 end
 
 type -q mise && mise activate fish | source
+test -e $HOME/.local/mise && $HOME/.local/mise activate fish | source
 type -q starship && starship init fish | source
 type -q direnv && direnv hook fish | source
 type -q zoxide && zoxide init fish | source
