@@ -1,9 +1,9 @@
+set uname (uname -a)
+set host (hostname)
+
 if status is-login && not string match -iq -- haring $host
     exit
 end
-
-set uname (uname -a)
-set host (hostname)
 
 fish_add_path -g $HOME/.local/bin
 
