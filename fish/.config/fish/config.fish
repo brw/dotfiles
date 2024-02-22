@@ -58,7 +58,7 @@ type -q zoxide && zoxide init fish | source
 if test -e $__fish_user_data_dir/plugins/plug.fish/conf.d/plugin_load.fish
     source $__fish_user_data_dir/plugins/plug.fish/conf.d/plugin_load.fish
 else
-    curl -L https://l0c.cc/plug.fish | source
+    curl -L https://github.com/kidonng/plug.fish/raw/v3/conf.d/plugin_load.fish | source
 end
 
 bind \er __select_from_last
