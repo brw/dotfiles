@@ -13,6 +13,8 @@ else if test -e /Volumes/T7/homebrew/bin/brew
     eval (/Volumes/T7/homebrew/bin/brew shellenv)
 else if test -e $HOME/homebrew/bin/brew
     eval ($HOME/homebrew/bin/brew shellenv)
+else if test -e /home/linuxbrew/.linuxbrew/bin/brew
+    eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 end
 
 if command -q brew
