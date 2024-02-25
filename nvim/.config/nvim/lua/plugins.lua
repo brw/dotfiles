@@ -336,7 +336,7 @@ require("lazy").setup({
       { "<C-t><C-p>", "<cmd>Telescope find_files<CR>", desc = "Telescope find files" },
       { "<C-t><C-b>", "<cmd>Telescope buffers<CR>", desc = "Telescope buffers" },
       { "<C-t><C-g>", "<cmd>Telescope live_grep<CR>", desc = "Telescope grep" },
-      { "<C-t><C-t>", "<cmd>Telescope help_tags<CR>", desc = "Telescope help" },
+      { "<C-t><C-c>", "<cmd>Telescope help_tags<CR>", desc = "Telescope help" },
       { "<C-t><C-m>", "<cmd>Telescope man_pages<CR>", desc = "Telescope man" },
       --{ 'gd', '<cmd>Telescope lsp_definitions<CR>', desc = 'Telescope definitions' },
       --{ 'gi', '<cmd>Telescope implementations<CR>', desc = 'Telescope implementations' },
@@ -381,7 +381,7 @@ require("lazy").setup({
       "muniftanjim/nui.nvim",
     },
     keys = {
-      { "<C-t><C-n>", "<cmd>Neotree toggle<CR>", desc = "Toggle Neotree" },
+      { "<C-t><C-t>", "<cmd>Neotree toggle<CR>", desc = "Toggle Neotree" },
     },
     opts = {
       close_if_last_window = true,
