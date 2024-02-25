@@ -50,3 +50,5 @@ aoc-cli
 github-cli
 xq
 ncdu
+tmux
+hackernews_tui
