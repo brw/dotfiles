@@ -2,3 +2,8 @@
 node = "latest"
 lua = "latest"
 bun = "latest"
+usage = "latest"
+
+[settings]
+experimental = true
+python_venv_auto_create = true
