@@ -1,6 +1,7 @@
 [global_config]
   inactive_color_offset = 1.0
   enabled_plugins = ActivityWatch, InactivityWatch, LaunchpadBugURLHandler, LaunchpadCodeURLHandler, APTURLHandler, SaveLastSessionLayout
+  suppress_multiple_term_dialog = True
   disable_mouse_paste = True
   clear_select_on_copy = True
   invert_search = True
@@ -10,6 +11,8 @@
   go_next = <Alt>bracketright
   go_prev = <Alt>bracketleft
   split_auto = <Primary>Return
+  split_horiz = <Primary><Shift>Return
+  split_vert = ""
   next_tab = <Primary>Tab
   prev_tab = <Primary><Shift>Tab
   layout_launcher = <Primary><Alt>l
