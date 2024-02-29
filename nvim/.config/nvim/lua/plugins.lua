@@ -188,7 +188,6 @@ require("lazy").setup({
       "hrsh7th/cmp-nvim-lsp",
       "l3mon4d3/luasnip",
       "b0o/schemastore.nvim",
-      "creativenull/efmls-configs-nvim",
       {
         "zbirenbaum/copilot.lua",
         opts = {
@@ -248,7 +247,7 @@ require("lazy").setup({
 
       require("mason").setup({})
       require("mason-lspconfig").setup({
-        ensure_installed = { "lua_ls", "clangd", "jsonls", "yamlls", "jsonnet_ls", "efm" },
+        ensure_installed = { "lua_ls", "clangd", "jsonls", "yamlls", "jsonnet_ls" },
         handlers = {
           lsp_zero.default_setup,
 
@@ -288,28 +287,27 @@ require("lazy").setup({
               },
             })
           end,
-          efm = function()
-            local languages = require("efmls-configs.defaults").languages()
-
-            lspconfig.efm.setup({
-              filetypes = vim.tbl_keys(languages),
-              settings = {
-                rootMarkers = { ".git/" },
-                languages = languages,
-              },
-              init_options = {
-                documentFormatting = true,
-                documentRangeFormatting = true,
-                hover = true,
-                documentSymbol = true,
-                codeAction = true,
-                completion = true,
-              },
-            })
-          end,
         },
       })
     end,
+  },
+
+  {
+    "stevearc/conform.nvim",
+    opts = {
+      formatters_by_ft = {
+        lua = { "stylua" },
+        python = { "ruff" },
+        yaml = { "yamlfmt" },
+      },
+      format_on_save = {
+        lsp_fallback = true,
+      },
+      javascript = { { "prettierd", "prettier" } },
+      javascriptreact = { { "prettierd", "prettier" } },
+      typescript = { { "prettierd", "prettier" } },
+      typescriptreact = { { "prettierd", "prettier" } },
+    },
   },
 
   {
