@@ -188,6 +188,7 @@ require("lazy").setup({
       "hrsh7th/cmp-nvim-lsp",
       "l3mon4d3/luasnip",
       "b0o/schemastore.nvim",
+      "creativenull/efmls-configs-nvim",
       {
         "zbirenbaum/copilot.lua",
         opts = {
@@ -247,11 +248,16 @@ require("lazy").setup({
 
       require("mason").setup({})
       require("mason-lspconfig").setup({
-        ensure_installed = { "lua_ls", "clangd", "jsonls", "yamlls", "jsonnet_ls" },
+        ensure_installed = { "lua_ls", "clangd", "jsonls", "yamlls", "jsonnet_ls", "efm" },
         handlers = {
           lsp_zero.default_setup,
+
           lua_ls = function()
-            lspconfig.lua_ls.setup(lsp_zero.nvim_lua_ls())
+            local lua_opts = lsp_zero.nvim_lua_ls()
+            lua_opts.settings.Lua.format = {
+              enable = false,
+            }
+            lspconfig.lua_ls.setup(lua_opts)
           end,
           jsonls = function()
             lspconfig.jsonls.setup({
@@ -278,27 +284,30 @@ require("lazy").setup({
                   },
                   schemas = schemastore.yaml.schemas(),
                 },
+                validate = { enable = true },
+              },
+            })
+          end,
+          efm = function()
+            local languages = require("efmls-configs.defaults").languages()
+
+            lspconfig.efm.setup({
+              filetypes = vim.tbl_keys(languages),
+              settings = {
+                rootMarkers = { ".git/" },
+                languages = languages,
+              },
+              init_options = {
+                documentFormatting = true,
+                documentRangeFormatting = true,
+                hover = true,
+                documentSymbol = true,
+                codeAction = true,
+                completion = true,
               },
             })
           end,
         },
-      })
-    end,
-  },
-
-  {
-    "nvimdev/guard.nvim",
-    dependencies = { "nvimdev/guard-collection" },
-    config = function()
-      local ft = require("guard.filetype")
-
-      ft("typescript,javascript,typescriptreact,json,css,html"):fmt("prettier")
-      ft("lua"):fmt("stylua")
-      ft("fish"):fmt("fish_indent")
-
-      require("guard").setup({
-        fmt_on_save = true,
-        lsp_as_default_formatter = true,
       })
     end,
   },
