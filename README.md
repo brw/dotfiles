@@ -39,6 +39,7 @@ sudo cp zram/etc/systemd/zram-generator.conf /etc/systemd/
 git clone https://aur.archlinux.org/yay.git
 cd yay
 makepkg -si
+yay -Y --gendb
 ```
 
 #### Import tor gpg key
