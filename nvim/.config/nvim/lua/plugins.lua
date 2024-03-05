@@ -710,6 +710,8 @@ require("lazy").setup({
     opts = {
       resize = {
         enable_custom_bindings = false,
+        resize_step_x = 5,
+        resize_step_y = 5,
       },
     },
   },
