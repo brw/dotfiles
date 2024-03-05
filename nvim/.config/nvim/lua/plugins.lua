@@ -698,14 +698,14 @@ require("lazy").setup({
   {
     "aserowy/tmux.nvim",
     keys = {
-      { "<M-h>", "<Cmd>lua require('tmux').move_left()<CR>", desc = "Move left" },
-      { "<M-j>", "<Cmd>lua require('tmux').move_bottom()<CR>", desc = "Move bottom" },
-      { "<M-k>", "<Cmd>lua require('tmux').move_top()<CR>", desc = "Move top" },
-      { "<M-l>", "<Cmd>lua require('tmux').move_right()<CR>", desc = "Move right" },
-      { "<M-H>", "<Cmd>lua require('tmux').resize_left()<CR>", desc = "Resize left" },
-      { "<M-J>", "<Cmd>lua require('tmux').resize_bottom()<CR>", desc = "Resize bottom" },
-      { "<M-K>", "<Cmd>lua require('tmux').resize_top()<CR>", desc = "Resize top" },
-      { "<M-L>", "<Cmd>lua require('tmux').resize_right()<CR>", desc = "Resize right" },
+      { "<M-h>", "<Cmd>lua require('tmux').move_left()<CR>", desc = "Move left", mode = { "n", "t" } },
+      { "<M-j>", "<Cmd>lua require('tmux').move_bottom()<CR>", desc = "Move bottom", mode = { "n", "t" } },
+      { "<M-k>", "<Cmd>lua require('tmux').move_top()<CR>", desc = "Move top", mode = { "n", "t" } },
+      { "<M-l>", "<Cmd>lua require('tmux').move_right()<CR>", desc = "Move right", mode = { "n", "t" } },
+      { "<M-H>", "<Cmd>lua require('tmux').resize_left()<CR>", desc = "Resize left", mode = { "n", "t" } },
+      { "<M-J>", "<Cmd>lua require('tmux').resize_bottom()<CR>", desc = "Resize bottom", mode = { "n", "t" } },
+      { "<M-K>", "<Cmd>lua require('tmux').resize_top()<CR>", desc = "Resize top", mode = { "n", "t" } },
+      { "<M-L>", "<Cmd>lua require('tmux').resize_right()<CR>", desc = "Resize right", mode = { "n", "t" } },
     },
     opts = {
       resize = {
