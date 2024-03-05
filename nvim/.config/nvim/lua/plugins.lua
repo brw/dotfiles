@@ -121,9 +121,6 @@ require("lazy").setup({
           enable = true,
           disable = { "gitcommit" },
         },
-        -- indent = {
-        --   enable = true,
-        -- },
         textobjects = {
           select = {
             enable = true,
@@ -247,7 +244,20 @@ require("lazy").setup({
 
       require("mason").setup({})
       require("mason-lspconfig").setup({
-        ensure_installed = { "lua_ls", "clangd", "jsonls", "yamlls", "jsonnet_ls" },
+        ensure_installed = {
+          "lua_ls",
+          "clangd",
+          "jsonls",
+          "yamlls",
+          "jsonnet_ls",
+          "bashls",
+          "pyright",
+          "ruff_lsp",
+          "tailwindcss",
+          "terraformls",
+          "tflint",
+          "tsserver",
+        },
         handlers = {
           lsp_zero.default_setup,
 
@@ -490,7 +500,6 @@ require("lazy").setup({
     opts = {
       open_mapping = "<C-q>",
       shading_factor = "0",
-      persist_size = false,
       winbar = {
         enabled = true,
       },
@@ -655,7 +664,7 @@ require("lazy").setup({
     dependencies = { "nvim-lua/plenary.nvim" },
     config = function()
       local config = require("session_manager.config")
-      print(config.AutoloadMode.CurrentDir)
+      -- print(config.AutoloadMode.CurrentDir)
 
       require("session_manager").setup({
         autoload_mode = config.AutoloadMode.Disabled,
@@ -683,6 +692,25 @@ require("lazy").setup({
       { mode = "n", "<leader>ll", "<Plug>(Luadev-RunLine)", desc = "Execute line" },
       { mode = { "n", "v" }, "<leader>lr", "<Plug>(Luadev-Run)", desc = "Execute movement/object" },
       { mode = "n", "<leader>lw", "<Plug>(Luadev-RunWord)", desc = "Execute word" },
+    },
+  },
+
+  {
+    "aserowy/tmux.nvim",
+    keys = {
+      { "<M-h>", "<Cmd>lua require('tmux').move_left()<CR>", desc = "Move left" },
+      { "<M-j>", "<Cmd>lua require('tmux').move_bottom()<CR>", desc = "Move bottom" },
+      { "<M-k>", "<Cmd>lua require('tmux').move_top()<CR>", desc = "Move top" },
+      { "<M-l>", "<Cmd>lua require('tmux').move_right()<CR>", desc = "Move right" },
+      { "<M-H>", "<Cmd>lua require('tmux').resize_left()<CR>", desc = "Resize left" },
+      { "<M-J>", "<Cmd>lua require('tmux').resize_bottom()<CR>", desc = "Resize bottom" },
+      { "<M-K>", "<Cmd>lua require('tmux').resize_top()<CR>", desc = "Resize top" },
+      { "<M-L>", "<Cmd>lua require('tmux').resize_right()<CR>", desc = "Resize right" },
+    },
+    opts = {
+      resize = {
+        enable_custom_bindings = false,
+      },
     },
   },
 })
