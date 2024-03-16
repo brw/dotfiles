@@ -708,6 +708,9 @@ require("lazy").setup({
       { "<M-L>", "<Cmd>lua require('tmux').resize_right()<CR>", desc = "Resize right", mode = { "n", "t" } },
     },
     opts = {
+      copy_sync = {
+        redirect_to_clipboard = true,
+      },
       resize = {
         enable_custom_bindings = false,
         resize_step_x = 5,
