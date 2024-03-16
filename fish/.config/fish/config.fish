@@ -71,3 +71,11 @@ test -e $HOME/.iterm2_shell_integration.fish && source $HOME/.iterm2_shell_integ
 set -gx GPG_TTY (tty)
 
 set -q SSH_AUTH_SOCK || set -gx SSH_AUTH_SOCK $XDG_RUNTIME_DIR/gcr/ssh
+
+set -l editors nvim vim vi
+for editor in $editors
+    if command -q $editor
+        set -gx EDITOR $editor
+        break
+    end
+end
