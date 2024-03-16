@@ -53,3 +53,5 @@ ncdu
 tmux
 hackernews_tui
 uv
+moreutils
+entr
