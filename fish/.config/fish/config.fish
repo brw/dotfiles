@@ -79,3 +79,5 @@ for editor in $editors
         break
     end
 end
+
+set -gx SYSTEMD_EDITOR $EDITOR
