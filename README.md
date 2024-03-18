@@ -68,6 +68,12 @@ sudo systemctl enable plocate-updatedb.timer
 sudo updatedb
 ```
 
+### Enable yaycache and paccache timer
+```shell
+sudo systemctl enable --now yaycache.timer
+sudo systemctl enable --now paccache.timer
+```
+
 #### Enable printer service
 ```shell
 sudo systemctl enable --now cups
