@@ -550,8 +550,6 @@ require("lazy").setup({
 
   {
     "j-hui/fidget.nvim",
-    tag = "legacy",
-    config = true,
   },
 
   {
