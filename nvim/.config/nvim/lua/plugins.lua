@@ -316,6 +316,7 @@ require("lazy").setup({
         typescript = { { "prettierd", "prettier" } },
         typescriptreact = { { "prettierd", "prettier" } },
         css = { { "prettierd", "prettier" } },
+        sh = { "shfmt" },
       },
       format_on_save = {
         lsp_fallback = true,
