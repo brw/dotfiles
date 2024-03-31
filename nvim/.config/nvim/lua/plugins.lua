@@ -410,6 +410,23 @@ require("lazy").setup({
         filtered_items = {
           visible = true,
         },
+        find_command = "fd",
+        find_args = {
+          fd = {
+            "--exclude",
+            ".git",
+            "--exclude",
+            "node_modules",
+          },
+        },
+      },
+      event_handlers = {
+        -- {
+        --   event = "file_opened",
+        --   handler = function()
+        --     require("neo-tree.command").execute({ action = "close" })
+        --   end,
+        -- },
       },
     },
   },
