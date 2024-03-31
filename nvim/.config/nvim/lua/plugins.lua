@@ -251,7 +251,7 @@ require("lazy").setup({
           "yamlls",
           "jsonnet_ls",
           "bashls",
-          "pyright",
+          "basedpyright",
           "ruff_lsp",
           "tailwindcss",
           "terraformls",
