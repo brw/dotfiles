@@ -13,16 +13,15 @@ end
 
 vim.opt.rtp:prepend(lazypath)
 
+vim.g.nord_borders = true -- border between splits
+vim.g.nord_italic = false
+
 require("lazy").setup({
   {
     "shaunsingh/nord.nvim",
     priority = 1000,
-    init = function()
-      vim.g.nord_borders = true -- border between splits
-      vim.g.nord_italic = false
-    end,
     config = function()
-      vim.cmd.colorscheme("nord")
+      require("nord").set()
     end,
   },
 
@@ -749,5 +748,34 @@ require("lazy").setup({
       vim.cmd.highlight("WinBar guibg=none")
       vim.cmd.highlight("WinBarNC guibg=none")
     end,
+  },
+
+  {
+    "romgrk/barbar.nvim",
+    dependencies = {
+      "lewis6991/gitsigns.nvim",
+      "nvim-tree/nvim-web-devicons",
+    },
+    opts = {
+      auto_hide = 1,
+      focus_on_close = "previous",
+      sidebar_filetypes = {
+        ["neo-tree"] = { event = "BufWipeout" },
+      },
+      no_name_title = "new",
+    },
+  },
+
+  {
+    "tzachar/highlight-undo.nvim",
+    init = function()
+      local nord = require("nord.named_colors")
+
+      vim.api.nvim_set_hl(0, "HighlightUndo", {
+        bg = nord.light_gray,
+        fg = nord.white,
+      })
+    end,
+    opts = {},
   },
 })
