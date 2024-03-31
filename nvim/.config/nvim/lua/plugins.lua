@@ -402,7 +402,7 @@ require("lazy").setup({
       "muniftanjim/nui.nvim",
     },
     keys = {
-      { "<C-t><C-t>", "<cmd>Neotree toggle<CR>", desc = "Toggle Neotree" },
+      { "<C-h>", "<cmd>Neotree toggle<CR>", desc = "Toggle Neotree" },
     },
     opts = {
       close_if_last_window = true,
