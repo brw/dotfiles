@@ -494,7 +494,7 @@ require("lazy").setup({
           color = require("nord.colors").nord2_gui,
         },
         handlers = {
-          search = true,
+          -- search = true,
         },
       }
     end,
@@ -502,6 +502,7 @@ require("lazy").setup({
 
   {
     "kevinhwang91/nvim-hlslens",
+    enabled = false,
     keys = {
       { "n", "<Cmd>execute('normal! ' . v:count1 . 'n')<CR><Cmd>lua require('hlslens').start()<CR>" },
       { "N", "<Cmd>execute('normal! ' . v:count1 . 'N')<CR><Cmd>lua require('hlslens').start()<CR>" },
