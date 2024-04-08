@@ -15,8 +15,13 @@ vim.opt.rtp:prepend(lazypath)
 
 vim.g.nord_borders = true -- border between splits
 vim.g.nord_italic = false
+vim.g.nord_bold = false
 
 require("lazy").setup({
+  install = {
+    colorscheme = "nord",
+  },
+
   {
     "shaunsingh/nord.nvim",
     priority = 1000,
