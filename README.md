@@ -10,7 +10,7 @@ My dotfiles managed using [GNU Stow](https://www.gnu.org/software/stow).
 - uBlock Origin filters & settings
 - Twitch FFZ & Previews settings
 - ViolentMonkey userscripts & options
-- YouTube Enhancer config
+- YouTube Enhancer & SponsorBlock config
 - Tabs and windows using Session Buddy
 - Remote Torrent Adder config
 - AniList Automail userscript config
@@ -30,7 +30,7 @@ Add `intel_pstate=disable` to the options in `/boot/entries/linux.conf`
 
 #### Copy system files
 ```shell
-sudo cp sysctl/etc/sysctld.d/80-gamecompatibility.conf /etc/sysctl.d/
+sudo cp sysctl/etc/sysctld.d/* /etc/sysctl.d/
 sudo cp zram/etc/systemd/zram-generator.conf /etc/systemd/
 ```
 
