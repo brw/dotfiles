@@ -56,3 +56,4 @@ uv
 moreutils
 entr
 yaycache
+python-trezor-agent-git
