@@ -28,6 +28,14 @@ hunspell-nl
 libotr
 gnome-themes-extra
 discord_arch_electron
+electron24-bin
+electron25-bin
+electron26-bin
+electron27-bin
+electron28-bin
+electron29-bin
+electron30-bin
+electron-bin
 vencord-desktop-bin
 vencord-installer-bin
 vencord-installer-cli-bin
