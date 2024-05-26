@@ -584,7 +584,6 @@ require("lazy").setup({
 
   {
     "TimUntersberger/neogit",
-    branch = "nightly",
     opts = {
       commit_popup = {
         kind = "floating",
