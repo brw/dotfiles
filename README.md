@@ -100,3 +100,12 @@ for some reason the button I have bound to F13 on my mouse opens the Gnome contr
 ```shell
 gsettings set org.gnome.settings-daemon.plugins.media-keys control-center-static "['']"
 ```
+
+#### Get latest plex-rich-presence
+```shell
+curl -s https://api.github.com/repos/Arno500/plex-richpresence/releases/latest \
+      | grep "browser_download_url.*linux_amd64*" \
+      | cut -d : -f 2,3 \
+      | tr -d \" \
+      | wget -i -
+```
