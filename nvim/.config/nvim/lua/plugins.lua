@@ -321,6 +321,7 @@ require("lazy").setup({
         typescriptreact = { { "prettierd", "prettier" } },
         css = { { "prettierd", "prettier" } },
         sh = { "shfmt" },
+        fish = { "fish_indent" },
       },
       format_on_save = {
         lsp_fallback = true,
