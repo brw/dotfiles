@@ -57,3 +57,6 @@
 
 [rerere]
 	enabled = true
+
+[protocol "file"]
+	allow = always
