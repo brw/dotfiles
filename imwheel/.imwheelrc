@@ -1,8 +1,7 @@
-"^Plex$"
-@Exclude
-
-".*"
+"Mailspring"
 None, Up, Button4, 3
 None, Down, Button5, 3
+
+".*"
 None, Thumb1, Alt_L|Left
 None, Thumb2, Alt_L|Right

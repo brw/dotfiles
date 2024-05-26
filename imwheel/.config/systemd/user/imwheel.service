@@ -1,0 +1,9 @@
+[Unit]
+Description="imwheel"
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/imwheel
+
+[Install]
+WantedBy=graphical-session.target
