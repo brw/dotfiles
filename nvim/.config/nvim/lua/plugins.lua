@@ -547,10 +547,13 @@ require("lazy").setup({
   },
 
   {
-    "zegervdv/nrpattern.nvim",
-    config = function() -- for some reason `config = true` isn't enough here
-      require("nrpattern").setup()
-    end,
+    "monaqa/dial.nvim",
+    keys = {
+      { "<C-a>", "<Cmd>lua require('dial.map').manipulate('increment', 'normal')<CR>", mode = { "n", "v" } },
+      { "<C-x>", "<Cmd>lua require('dial.map').manipulate('decrement', 'normal')<CR>", mode = { "n", "v" } },
+      { "g<C-a>", "<Cmd>lua require('dial.map').manipulate('increment', 'gnormal')<CR>", mode = { "n", "v" } },
+      { "g<C-x>", "<Cmd>lua require('dial.map').manipulate('decrement', 'gnormal')<CR>", mode = { "n", "v" } },
+    },
   },
 
   {
