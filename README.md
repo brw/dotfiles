@@ -107,5 +107,5 @@ curl -s https://api.github.com/repos/Arno500/plex-richpresence/releases/latest \
       | grep "browser_download_url.*linux_amd64*" \
       | cut -d : -f 2,3 \
       | tr -d \" \
-      | wget -i -
+      | wget -i - && chmod +x plex-rich-presence_linux_amd64-*
 ```
