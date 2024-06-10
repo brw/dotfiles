@@ -1,7 +1,7 @@
 set uname (uname -a)
 set host (hostname)
 
-if status is-login && not string match -iq -- haring $host
+if status is-login && not set -q SSH_CLIENT
     exit
 end
 
