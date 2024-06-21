@@ -68,7 +68,8 @@ yay -Syu --needed $(cat arch-*-packages)
 
 #### Install dotfiles
 ```
-stow -d dotfiles bin cpupower direnv fish git gtk imwheel neofetch nvim pacman plex-rich-presence ripgrep mise starship stow terminator wayland yay
+rm -rf ~/.config/fish
+stow -d dotfiles bin cpupower direnv fish git gtk neofetch nvim pacman ripgrep mise starship stow terminator wayland yay
 ```
 
 #### Update pkgfile database
