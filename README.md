@@ -87,7 +87,7 @@ sudo systemctl enable --now yaycache.timer paccache.timer plocate-updatedb.timer
 sudo systemctl enable --now cups
 ```
 
-#### Set locale to en_NL
+#### Enable en_NL locale
 ```shell
 sudo sed -i '/^#en_NL.UTF-8 UTF-8/s/^#//' /etc/locale.gen
 sudo locale-gen
