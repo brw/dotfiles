@@ -88,8 +88,8 @@ sudo systemctl enable --now cups
 ```
 
 #### Set locale to en_NL
-uncomment `en_NL.UTF-8 UTF-8` in `/etc/locale.gen`, then
 ```shell
+sudo sed -i '/^#en_NL.UTF-8 UTF-8/s/^#//' /etc/locale.gen
 sudo locale-gen
 ```
 
