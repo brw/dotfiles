@@ -32,7 +32,6 @@ Add `intel_pstate=disable` to the options in `/boot/entries/linux.conf`
 ```shell
 sudo cp sysctl/etc/sysctld.d/* /etc/sysctl.d/
 sudo cp zram/etc/systemd/zram-generator.conf /etc/systemd/
-sudo cp throttled/etc/systemd/system/reload-cpu-modules.service /etc/systemd/system/
 ```
 
 #### Install yay
@@ -109,4 +108,11 @@ curl -s https://api.github.com/repos/Arno500/plex-richpresence/releases/latest \
       | cut -d : -f 2,3 \
       | tr -d \" \
       | wget -i - && chmod +x plex-rich-presence_linux_amd64-*
+```
+
+#### Copy systemd services
+```shell
+sudo cp throttled/etc/systemd/system/reload-cpu-modules.service /etc/systemd/system/
+cp plex-rich-presence/.config/systemd/user/plex-rich-presence.service ~/.config/systemd/user/
+cp imwheel/.config/systemd/user/imwheel.service ~/.config/systemd/user/
 ```
