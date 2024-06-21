@@ -1,0 +1,13 @@
+[Unit]
+Description=Plex Discord Rich Presence app
+
+[Service]
+Type=simple
+ExecStart=sh -c '%h/plex-rich-presence_linux_amd64-*'
+Restart=on-failure
+RestartSec=15s
+StartLimitInterval=0
+StartLimitBurst=0
+
+[Install]
+WantedBy=graphical-session.target

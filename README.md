@@ -113,7 +113,7 @@ curl -s https://api.github.com/repos/Arno500/plex-richpresence/releases/latest \
 
 #### Copy systemd services
 ```shell
-sudo cp throttled/etc/systemd/system/reload-cpu-modules.service /etc/systemd/system/
-cp plex-rich-presence/.config/systemd/user/plex-rich-presence.service ~/.config/systemd/user/
-cp imwheel/.config/systemd/user/imwheel.service ~/.config/systemd/user/
+sudo cp systemd/etc/systemd/system/reload-cpu-modules.service /etc/systemd/system/
+cp systemd/.config/systemd/user/plex-rich-presence.service ~/.config/systemd/user/
+cp systemd/.config/systemd/user/imwheel.service ~/.config/systemd/user/
 ```
