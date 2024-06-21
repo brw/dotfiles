@@ -17,7 +17,20 @@ My dotfiles managed using [GNU Stow](https://www.gnu.org/software/stow).
 - Flatpak apps (`~/.var/app/` or `flatpak list --columns=application --app`)
 
 #### Manual actions to perform
-- Disable HoverZoom+ on Twitch and Kick
+- Disable HoverZoom+ on
+```
+qbittorrent.bas.sh
+twitch.tv
+kick.com
+trash-guides.info
+kemono.su
+coomer.su
+pixeldrain.com
+drive.google.com
+bas.eos.usbx.me
+eos.usbx.me
+scrutiny.bas.sh
+```
 
 //TODO: properly automate everything below
 
