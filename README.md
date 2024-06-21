@@ -15,6 +15,7 @@ My dotfiles managed using [GNU Stow](https://www.gnu.org/software/stow).
 - Remote Torrent Adder config
 - AniList Automail userscript config
 - Flatpak apps (`~/.var/app/` or `flatpak list --columns=application --app`)
+- gpg keys (`~/.gnupg/`)
 
 #### Manual actions to perform
 - Disable HoverZoom+ on
