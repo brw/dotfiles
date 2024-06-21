@@ -77,16 +77,9 @@ stow -d dotfiles bin cpupower direnv fish git gtk neofetch nvim pacman ripgrep m
 sudo pkgfile -u
 ```
 
-#### Enable plocate updatedb timer
+### Enable timers
 ```shell
-sudo systemctl enable plocate-updatedb.timer
-sudo updatedb
-```
-
-### Enable yaycache and paccache timer
-```shell
-sudo systemctl enable --now yaycache.timer
-sudo systemctl enable --now paccache.timer
+sudo systemctl enable --now yaycache.timer paccache.timer plocate-updatedb.timer
 ```
 
 #### Enable printer service
