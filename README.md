@@ -77,7 +77,7 @@ stow -d dotfiles bin cpupower direnv fish git gtk neofetch nvim pacman ripgrep m
 sudo pkgfile -u
 ```
 
-### Enable timers
+#### Enable timers
 ```shell
 sudo systemctl enable --now yaycache.timer paccache.timer plocate-updatedb.timer
 ```
