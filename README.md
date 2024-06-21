@@ -32,6 +32,7 @@ Add `intel_pstate=disable` to the options in `/boot/entries/linux.conf`
 ```shell
 sudo cp sysctl/etc/sysctld.d/* /etc/sysctl.d/
 sudo cp zram/etc/systemd/zram-generator.conf /etc/systemd/
+sudo cp throttled/etc/systemd/system/reload-cpu-modules.service /etc/systemd/system/
 ```
 
 #### Install yay

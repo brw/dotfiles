@@ -1,0 +1,22 @@
+[Unit]
+Description=Reload CPU kernel modules to fix power limit throttling
+
+[Service]
+Type=oneshot
+
+ExecStart=rmmod intel_rapl_msr
+ExecStart=rmmod processor_thermal_device_pci_legacy
+ExecStart=rmmod processor_thermal_device
+ExecStart=rmmod processor_thermal_rapl
+ExecStart=rmmod intel_rapl_common
+ExecStart=rmmod intel_powerclamp
+
+ExecStart=modprobe intel_powerclamp
+ExecStart=modprobe intel_rapl_common
+ExecStart=modprobe processor_thermal_rapl
+ExecStart=modprobe processor_thermal_device
+ExecStart=modprobe processor_thermal_device_pci_legacy
+ExecStart=modprobe intel_rapl_msr
+
+[Install]
+WantedBy=multi-user.target
