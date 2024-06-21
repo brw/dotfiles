@@ -226,6 +226,7 @@ require("lazy").setup({
         sources = {
           -- { name = "copilot" },
           { name = "nvim_lsp" },
+          { name = "lazydev", group_index = 0 },
         },
         mapping = cmp.mapping.preset.insert({
           ["<C-Space>"] = cmp.mapping.complete(),
@@ -330,14 +331,9 @@ require("lazy").setup({
   },
 
   {
-    "folke/neodev.nvim",
-    lazy = false,
-    opts = {
-      override = function(root_dir, library)
-        library.enabled = true
-        library.plugins = true
-      end,
-    },
+    "folke/lazydev.nvim",
+    ft = "lua",
+    opts = {},
   },
 
   {
