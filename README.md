@@ -14,6 +14,7 @@ My dotfiles managed using [GNU Stow](https://www.gnu.org/software/stow).
 - Tabs and windows using Session Buddy
 - Remote Torrent Adder config
 - AniList Automail userscript config
+- Flatpak apps (`~/.var/app/` or `flatpak list --columns=application --app`)
 
 #### Manual actions to perform
 - Disable HoverZoom+ on Twitch and Kick
