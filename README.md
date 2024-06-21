@@ -118,10 +118,9 @@ gsettings set org.gnome.settings-daemon.plugins.media-keys control-center-static
 #### Get latest plex-rich-presence
 ```shell
 curl -s https://api.github.com/repos/Arno500/plex-richpresence/releases/latest \
-      | grep "browser_download_url.*linux_amd64*" \
-      | cut -d : -f 2,3 \
-      | tr -d \" \
-      | wget -i - && chmod +x plex-rich-presence_linux_amd64-*
+    | jq -r '.assets[] | select(.name | contains("linux_amd64")).browser_download_url' \
+    | wget -q -P $HOME -i - \
+    && chmod +x $HOME/plex-rich-presence_linux_amd64-*
 ```
 
 #### Copy systemd services
