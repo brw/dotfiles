@@ -82,3 +82,4 @@ for editor in $editors
 end
 
 set -gx SYSTEMD_EDITOR $EDITOR
+set -gx WINEPREFIX $HOME/.wine
