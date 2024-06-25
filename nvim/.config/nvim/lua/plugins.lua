@@ -43,7 +43,6 @@ require("lazy").setup({
     "nvim-lualine/lualine.nvim",
     dependencies = {
       "nvim-tree/nvim-web-devicons",
-      "folke/noice.nvim",
     },
     config = function()
       require("lualine").setup({
@@ -72,8 +71,9 @@ require("lazy").setup({
           lualine_c = {},
           lualine_x = {
             {
-              require("noice").api.statusline.mode.get,
-              cond = require("noice").api.statusline.mode.has,
+              function()
+                return require("lazy").stats().startuptime
+              end,
             },
           },
           lualine_y = {
@@ -448,6 +448,9 @@ require("lazy").setup({
           ["vim.lsp.util.stylize_markdown"] = true,
           ["cmp.entry.get_documentation"] = true,
         },
+        progress = {
+          enabled = false,
+        },
       },
       presets = {
         bottom_search = true,
@@ -556,6 +559,7 @@ require("lazy").setup({
 
   {
     "j-hui/fidget.nvim",
+    opts = {},
   },
 
   {
