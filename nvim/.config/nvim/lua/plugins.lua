@@ -336,13 +336,15 @@ require("lazy").setup({
     opts = {},
   },
 
+  --TODO: configure
   {
     "folke/trouble.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
+    cmd = { "Trouble" },
     keys = {
-      { "<leader>t", "<Cmd>TroubleToggle<CR>" },
+      { "<leader>t", "<Cmd>Trouble<CR>" },
     },
-    config = true,
+    opts = {},
   },
 
   {
