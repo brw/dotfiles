@@ -31,6 +31,8 @@ drive.google.com
 bas.eos.usbx.me
 eos.usbx.me
 scrutiny.bas.sh
+youtube.com
+store.steampowered.com
 ```
 
 //TODO: properly automate everything below
