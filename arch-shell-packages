@@ -57,3 +57,6 @@ moreutils
 entr
 yaycache
 python-trezor-agent-git
+kernel-modules-hook
+ccache
+mold

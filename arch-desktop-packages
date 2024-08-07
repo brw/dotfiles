@@ -78,3 +78,8 @@ qt6-wayland
 kruler
 intel-gpu-tools
 gdm-settings
+throttled
+power-profiles-daemon
+x86_energy_perf_policy
+intel-undervolt
+foliate
