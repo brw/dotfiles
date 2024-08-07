@@ -32,10 +32,9 @@ require("lazy").setup({
 
   {
     "folke/which-key.nvim",
+    event = "VeryLazy",
     opts = {
-      window = {
-        border = "single",
-      },
+      preset = "modern",
     },
   },
 
@@ -44,8 +43,15 @@ require("lazy").setup({
     dependencies = {
       "nvim-tree/nvim-web-devicons",
     },
-    config = function()
-      require("lualine").setup({
+    config = function(plugin)
+      local lualine = require("lualine")
+      local startuptime_visible = true
+      -- hide startup time after 3 seconds
+      vim.defer_fn(function()
+        startuptime_visible = false
+      end, 3000)
+
+      lualine.setup({
         options = {
           theme = "nord",
           component_separators = "|",
@@ -72,7 +78,11 @@ require("lazy").setup({
           lualine_x = {
             {
               function()
-                return require("lazy").stats().startuptime
+                return math.floor(require("lazy").stats().startuptime) .. "ms"
+              end,
+              icon = "󱎫",
+              cond = function()
+                return startuptime_visible
               end,
             },
           },
@@ -104,59 +114,69 @@ require("lazy").setup({
       "RRethy/nvim-treesitter-endwise",
       "windwp/nvim-ts-autotag",
     },
-    config = function()
-      ---@diagnostic disable-next-line: missing-fields
-      require("nvim-treesitter.configs").setup({
-        ensure_installed = {
-          "lua",
-          "vim",
-          "vimdoc",
-          "bash",
-          "fish",
-          "diff",
-          "json",
-          "jsonc",
-          "markdown",
-          "markdown_inline",
-          "regex",
-        },
-        auto_install = true,
-        highlight = {
+    opts = {
+      ensure_installed = {
+        "lua",
+        "vim",
+        "vimdoc",
+        "bash",
+        "fish",
+        "diff",
+        "json",
+        "jsonc",
+        "markdown",
+        "markdown_inline",
+        "regex",
+        "javascript",
+        "typescript",
+        "html",
+        "css",
+        "python",
+        "ruby",
+        "c",
+        "go",
+        "elixir",
+        "rust",
+      },
+      auto_install = true,
+      highlight = {
+        enable = true,
+        disable = { "gitcommit" },
+      },
+      textobjects = {
+        select = {
           enable = true,
-          disable = { "gitcommit" },
-        },
-        textobjects = {
-          select = {
-            enable = true,
-            lookahead = true,
-            keymaps = {
-              ["af"] = "@function.outer",
-              ["if"] = "@function.inner",
-              ["ac"] = "@comment.outer",
-              ["ic"] = "@comment.outer",
-              ["aa"] = "@parameter.outer",
-              ["ia"] = "@parameter.inner",
-            },
-            selection_modes = {
-              ["@function.outer"] = "V",
-              ["@function.inner"] = "V",
-            },
+          lookahead = true,
+          keymaps = {
+            ["af"] = "@function.outer",
+            ["if"] = "@function.inner",
+            ["ac"] = "@comment.outer",
+            ["ic"] = "@comment.outer",
+            ["aa"] = "@parameter.outer",
+            ["ia"] = "@parameter.inner",
           },
-          move = {
-            enable = true,
-            set_jumps = true,
-            goto_next_start = {
-              ["]m"] = "@function.outer",
-            },
+          selection_modes = {
+            ["@function.outer"] = "V",
+            ["@function.inner"] = "V",
           },
         },
-        endwise = {
+        move = {
           enable = true,
+          set_jumps = true,
+          goto_next_start = {
+            ["]m"] = "@function.outer",
+          },
         },
-        autotag = {
-          enable = true,
-        },
-      })
+      },
+      endwise = {
+        enable = true,
+      },
+      autotag = {
+        enable = true,
+      },
+    },
+    config = function(_, opts)
+      require("nvim-treesitter.configs").setup(opts)
     end,
   },
 
@@ -179,6 +199,43 @@ require("lazy").setup({
   },
 
   {
+    "zbirenbaum/copilot.lua",
+    enabled = false,
+    opts = {
+      filetypes = {
+        gitcommit = true,
+        markdown = true,
+        yaml = true,
+      },
+      panel = {
+        enabled = false,
+      },
+      suggestion = {
+        auto_trigger = true,
+        keymap = {
+          accept = "<M-CR>",
+          accept_word = "<M-,>",
+          accept_line = "<M-.>",
+          next = "<M-j>",
+          prev = "<M-d>",
+          dismiss = "<M-]>",
+        },
+      },
+    },
+  },
+
+  {
+    "supermaven-inc/supermaven-nvim",
+    opts = {
+      keymaps = {
+        accept_suggestion = "<M-CR>",
+        accept_word = "<M-.>",
+        clear_suggestion = "<M-]>",
+      },
+    },
+  },
+
+  {
     "vonheikemen/lsp-zero.nvim",
     branch = "v3.x",
     dependencies = {
@@ -187,40 +244,17 @@ require("lazy").setup({
       "neovim/nvim-lspconfig",
       "hrsh7th/nvim-cmp",
       "hrsh7th/cmp-nvim-lsp",
+      "onsails/lspkind.nvim",
       "l3mon4d3/luasnip",
       "b0o/schemastore.nvim",
-      {
-        "zbirenbaum/copilot.lua",
-        opts = {
-          filetypes = {
-            gitcommit = true,
-            markdown = true,
-            yaml = true,
-          },
-          panel = {
-            enabled = false,
-          },
-          suggestion = {
-            auto_trigger = true,
-            keymap = {
-              accept = "<M-CR>",
-              accept_word = "<M-L>",
-              accept_line = "<M-l>",
-              next = "<M-j>",
-              prev = "<M-k>",
-              dismiss = "<C-]>",
-            },
-          },
-        },
-      },
-      -- { "zbirenbaum/copilot-cmp", config = true },
+      "yioneko/nvim-vtsls",
+      -- { "zbirenbaum/copilot-cmp", opts = {} },
     },
     config = function()
       local lsp_zero = require("lsp-zero")
       local lspconfig = require("lspconfig")
       local schemastore = require("schemastore")
       local cmp = require("cmp")
-      local cmp_format = require("lsp-zero").cmp_format()
 
       cmp.setup({
         sources = {
@@ -231,7 +265,21 @@ require("lazy").setup({
         mapping = cmp.mapping.preset.insert({
           ["<C-Space>"] = cmp.mapping.complete(),
         }),
-        formatting = cmp_format,
+        formatting = {
+          fields = { "abbr", "kind", "menu" },
+          format = function(entry, item)
+            local color_item = require("nvim-highlight-colors").format(entry, { kind = item.kind })
+            item = require("lspkind").cmp_format({
+              -- before = require("tailwind-tools.cmp").lspkind_format,
+            })(entry, item)
+            if color_item.abbr_hl_group then
+              item.kind_hl_group = color_item.abbr_hl_group
+              item.kind = color_item.abbr
+            end
+            return item
+          end,
+          expandable_indicator = true,
+        },
         window = {
           completion = cmp.config.window.bordered(),
           documentation = cmp.config.window.bordered(),
@@ -239,12 +287,28 @@ require("lazy").setup({
       })
 
       lsp_zero.on_attach(function(client, bufnr)
-        -- see :help lsp-zero-keybindings
-        -- to learn the available actions
+        -- :h lsp-zero-keybindings
         lsp_zero.default_keymaps({
           buffer = bufnr,
           preserve_mappings = false,
+          exclude = { "gs" },
         })
+
+        vim.keymap.set(
+          "n",
+          "gk",
+          "<cmd>lua vim.lsp.buf.signature_help()<cr>",
+          { desc = "Show function signature", silent = true, buffer = bufnr }
+        )
+
+        if client.name == "vtsls" then
+          vim.keymap.set(
+            "n",
+            "gs",
+            "<cmd>VtsExec goto_source_definition<cr>",
+            { desc = "Goto source definition", silent = true, buffer = bufnr }
+          )
+        end
       end)
 
       require("mason").setup({})
@@ -261,18 +325,25 @@ require("lazy").setup({
           "tailwindcss",
           "terraformls",
           "tflint",
-          "tsserver",
+          "vtsls",
         },
         handlers = {
           lsp_zero.default_setup,
 
           lua_ls = function()
-            local lua_opts = lsp_zero.nvim_lua_ls()
-            lua_opts.settings.Lua.format = {
-              enable = false,
+            -- local lua_opts = lsp_zero.nvim_lua_ls()
+            local lua_opts = {
+              settings = {
+                Lua = {
+                  format = {
+                    enable = false,
+                  },
+                },
+              },
             }
             lspconfig.lua_ls.setup(lua_opts)
           end,
+
           jsonls = function()
             lspconfig.jsonls.setup({
               settings = {
@@ -288,6 +359,7 @@ require("lazy").setup({
               },
             })
           end,
+
           yamlls = function()
             lspconfig.yamlls.setup({
               settings = {
@@ -304,13 +376,63 @@ require("lazy").setup({
               },
             })
           end,
+
+          tailwindcss = function()
+            lspconfig.tailwindcss.setup({
+              settings = {
+                tailwindCSS = {
+                  experimental = {
+                    classRegex = {
+                      { "cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]" },
+                      { "cx\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)" },
+                    },
+                  },
+                },
+              },
+            })
+          end,
+
+          vtsls = function()
+            lspconfig.vtsls.setup({
+              settings = {
+                javascript = {
+                  updateImportsOnFileMove = "always",
+                },
+                typescript = {
+                  updateImportsOnFileMove = "always",
+                },
+                vtsls = {
+                  enableMoveToFileCodeAction = true,
+                },
+              },
+            })
+          end,
         },
       })
     end,
   },
 
   {
+    "antosha417/nvim-lsp-file-operations",
+    requires = {
+      "nvim-lua/plenary.nvim",
+      "nvim-neo-tree/neo-tree.nvim",
+    },
+    opts = {},
+  },
+
+  {
+    "luckasRanarison/tailwind-tools.nvim",
+    enabled = false,
+    ---@module "tailwind-tools"
+    ---@type TailwindTools.Option
+    opts = {},
+  },
+
+  {
     "stevearc/conform.nvim",
+    event = { "BufWritePre" },
+    cmd = { "ConformInfo", "Format", "FormatDisable", "FormatEnable", "FormatToggle" },
     init = function()
       vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
     end,
@@ -318,24 +440,93 @@ require("lazy").setup({
       formatters_by_ft = {
         lua = { "stylua" },
         yaml = { "yamlfmt" },
-        javascript = { { "prettierd", "prettier" } },
-        javascriptreact = { { "prettierd", "prettier" } },
-        typescript = { { "prettierd", "prettier" } },
-        typescriptreact = { { "prettierd", "prettier" } },
-        css = { { "prettierd", "prettier" } },
+        javascript = { "prettierd", "prettier", stop_after_first = true },
+        javascriptreact = { "prettierd", "prettier", stop_after_first = true },
+        typescript = { "prettierd", "prettier", stop_after_first = true },
+        typescriptreact = { "prettierd", "prettier", stop_after_first = true },
+        html = { "prettierd", "prettier", stop_after_first = true },
+        css = { "prettierd", "prettier", stop_after_first = true },
+        graphql = { "prettierd", "prettier", stop_after_first = true },
         sh = { "shfmt" },
         fish = { "fish_indent" },
       },
-      format_on_save = {
-        lsp_fallback = true,
-      },
+      format_on_save = function(bufnr)
+        if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
+          return
+        end
+
+        return { lsp_format = "fallback" }
+      end,
+      format_after_save = function(bufnr)
+        if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
+          return
+        end
+
+        return { lsp_format = "fallback" }
+      end,
     },
+    config = function(_, opts)
+      require("conform").setup(opts)
+
+      vim.api.nvim_create_user_command("Format", function(args)
+        local range = nil
+        if args.count ~= -1 then
+          local end_line = vim.api.nvim_buf_get_lines(0, args.line2 - 1, args.line2, true)[1]
+          range = {
+            start = { args.line1, 0 },
+            ["end"] = { args.line2, end_line:len() },
+          }
+        end
+
+        require("conform").format({ async = true, lsp_format = "fallback", range = range })
+      end, {})
+
+      vim.api.nvim_create_user_command("FormatDisable", function(args)
+        if args.bang then
+          vim.b.disable_autoformat = true
+        else
+          vim.g.disable_autoformat = true
+        end
+      end, {
+        bang = true,
+        desc = "Disable autoformat on save (bang to disable for current buffer only)",
+      })
+
+      vim.api.nvim_create_user_command("FormatEnable", function()
+        vim.b.disable_autoformat = false
+        vim.g.disable_autoformat = false
+      end, {
+        desc = "Re-enable autoformat on save",
+      })
+
+      vim.api.nvim_create_user_command("FormatToggle", function()
+        if vim.g.disable_autoformat then
+          vim.g.disable_autoformat = false
+        else
+          vim.g.disable_autoformat = true
+        end
+      end, {
+        desc = "Toggle autoformat on save",
+      })
+    end,
   },
 
   {
     "folke/lazydev.nvim",
     ft = "lua",
-    opts = {},
+    ---@module "lazydev"
+    ---@type lazydev.Config
+    opts = {
+      ---@type lazydev.Library.spec[]
+      library = {
+        { path = "luvit-meta/library", words = { "vim%.uv" } },
+      },
+    },
+  },
+
+  {
+    "Bilal2453/luvit-meta",
+    lazy = true,
   },
 
   --TODO: configure
@@ -360,7 +551,7 @@ require("lazy").setup({
     keys = {
       { "<C-t><C-r>", "<cmd>Telescope resume<CR>", desc = "Telescope resume" },
       { "<C-t><C-p>", "<cmd>Telescope find_files<CR>", desc = "Telescope find files" },
-      { "<C-t><C-b>", "<cmd>Telescope buffers<CR>", desc = "Telescope buffers" },
+      { "<C-t><C-f>", "<cmd>Telescope buffers<CR>", desc = "Telescope buffers" },
       { "<C-t><C-g>", "<cmd>Telescope live_grep<CR>", desc = "Telescope grep" },
       { "<C-t><C-c>", "<cmd>Telescope help_tags<CR>", desc = "Telescope help" },
       { "<C-t><C-m>", "<cmd>Telescope man_pages<CR>", desc = "Telescope man" },
@@ -408,12 +599,20 @@ require("lazy").setup({
     },
     keys = {
       { "<C-h>", "<cmd>Neotree toggle<CR>", desc = "Toggle Neotree" },
+      { "<leader>fh", "<cmd>Neotree reveal<CR>", desc = "Reveal file in Neotree" },
     },
     opts = {
       close_if_last_window = true,
       filesystem = {
+        follow_current_file = {
+          enabled = true,
+        },
         filtered_items = {
           visible = true,
+          never_show = {
+            "..",
+            "node_modules",
+          },
         },
         find_command = "fd",
         find_args = {
@@ -433,6 +632,33 @@ require("lazy").setup({
         --   end,
         -- },
       },
+      window = {
+        mappings = {
+          ["P"] = { "toggle_preview", config = { use_float = false } },
+        },
+      },
+    },
+  },
+
+  {
+    "echasnovski/mini.files",
+    enabled = false,
+    keys = {
+      { "<C-h>", "<cmd>lua if not MiniFiles.close() then MiniFiles.open() end<CR>", desc = "Toggle MiniFiles" },
+    },
+    opts = {
+      mappings = {
+        close = "<Esc>",
+      },
+    },
+  },
+
+  {
+    "stevearc/oil.nvim",
+    opts = {
+      skip_confirm_for_simple_edits = true,
+      prompt_save_on_select_new_entry = false,
+      watch_for_changes = true,
     },
   },
 
@@ -467,14 +693,12 @@ require("lazy").setup({
 
   {
     "andweeb/presence.nvim",
-    enabled = true,
-    config = function()
-      require("presence"):setup({
-        show_time = false,
-        neovim_image_text = "Neovim",
-        -- log_level = "debug",
-      })
-    end,
+    -- enabled = false,
+    opts = {
+      show_time = false,
+      neovim_image_text = "Neovim",
+      -- log_level = "debug",
+    },
   },
 
   {
@@ -485,12 +709,12 @@ require("lazy").setup({
       { "<leader>q", "<Cmd>QFToggle!<CR>" },
       { "<leader>l", "<Cmd>LLToggle!<CR>" },
     },
-    config = true,
+    opts = {},
   },
 
   {
     "yorickpeterse/nvim-pqf",
-    config = true,
+    opts = {},
   },
 
   {
@@ -519,7 +743,7 @@ require("lazy").setup({
       { "g*", "g*<Cmd>lua require('hlslens').start()<CR>" },
       { "g#", "g#<Cmd>lua require('hlslens').start()<CR>" },
     },
-    config = true,
+    opts = {},
   },
 
   {
@@ -536,17 +760,17 @@ require("lazy").setup({
 
   {
     "ethanholz/nvim-lastplace",
-    config = true,
+    opts = {},
   },
 
   {
     "kylechui/nvim-surround",
-    config = true,
+    opts = {},
   },
 
   {
     "numtostr/comment.nvim",
-    config = true,
+    opts = {},
   },
 
   {
@@ -557,6 +781,19 @@ require("lazy").setup({
       { "g<C-a>", "<Cmd>lua require('dial.map').manipulate('increment', 'gnormal')<CR>", mode = { "n", "v" } },
       { "g<C-x>", "<Cmd>lua require('dial.map').manipulate('decrement', 'gnormal')<CR>", mode = { "n", "v" } },
     },
+    config = function()
+      local augend = require("dial.augend")
+
+      require("dial.config").augends:register_group({
+        default = {
+          augend.integer.alias.decimal,
+          augend.integer.alias.hex,
+          augend.date.alias["%Y/%m/%d"],
+          augend.date.alias["%Y-%m-%d"],
+          augend.constant.alias.bool,
+        },
+      })
+    end,
   },
 
   {
@@ -566,7 +803,7 @@ require("lazy").setup({
 
   {
     "lewis6991/gitsigns.nvim",
-    config = true,
+    opts = {},
   },
 
   {
@@ -609,40 +846,53 @@ require("lazy").setup({
 
   {
     "abecodes/tabout.nvim",
-    config = true,
+    opts = {},
   },
 
   {
     "NMAC427/guess-indent.nvim",
-    config = true,
+    opts = {},
   },
 
   {
     "NvChad/nvim-colorizer.lua",
+    enabled = false,
+    main = "colorizer",
     opts = {
       filetypes = { "*", "!lazy" },
-      RGB = true, -- #RGB hex codes
-      RRGGBB = true, -- #RRGGBB hex codes
-      names = false, -- "Name" codes like Blue or blue
-      RRGGBBAA = false, -- #RRGGBBAA hex codes
-      AARRGGBB = false, -- 0xAARRGGBB hex codes
-      rgb_fn = true, -- CSS rgb() and rgba() functions
-      hsl_fn = true, -- CSS hsl() and hsla() functions
-      css = true, -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
-      css_fn = true, -- Enable all CSS *functions*: rgb_fn, hsl_fn
-      -- Available modes for `mode`: foreground, background,  virtualtext
-      mode = "background",
-      -- Available methods are false / true / "normal" / "lsp" / "both"
-      -- True is same as normal
-      tailwind = "both",
-      sass = {
-        enable = true,
-        parsers = { "css" },
+      user_default_options = {
+        RGB = true, -- #RGB hex codes
+        RRGGBB = true, -- #RRGGBB hex codes
+        names = false, -- "Name" codes like Blue or blue
+        RRGGBBAA = false, -- #RRGGBBAA hex codes
+        AARRGGBB = false, -- 0xAARRGGBB hex codes
+        rgb_fn = true, -- CSS rgb() and rgba() functions
+        hsl_fn = true, -- CSS hsl() and hsla() functions
+        css = true, -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
+        css_fn = true, -- Enable all CSS *functions*: rgb_fn, hsl_fn
+        -- Available modes for `mode`: foreground, background,  virtualtext
+        mode = "background",
+        -- Available methods are false / true / "normal" / "lsp" / "both"
+        -- True is same as normal
+        tailwind = "both",
+        sass = {
+          enable = true,
+          parsers = { "css" },
+        },
+        virtualtext = "■",
+        -- update color values even if buffer is not focused
+        -- example use: cmp_menu, cmp_docs
+        always_update = true,
       },
-      virtualtext = "■",
-      -- update color values even if buffer is not focused
-      -- example use: cmp_menu, cmp_docs
-      always_update = false,
+    },
+  },
+
+  {
+    "brenoprata10/nvim-highlight-colors",
+    enabled = true,
+    opts = {
+      render = "virtual",
+      enable_tailwind = true,
     },
   },
 
@@ -693,19 +943,19 @@ require("lazy").setup({
   {
     "Shatur/neovim-session-manager",
     dependencies = { "nvim-lua/plenary.nvim" },
-    config = function()
+    main = "session_manager",
+    opts = function()
       local config = require("session_manager.config")
-      -- print(config.AutoloadMode.CurrentDir)
 
-      require("session_manager").setup({
-        autoload_mode = config.AutoloadMode.Disabled,
-      })
+      return {
+        autoload_mode = { config.AutoloadMode.GitSession, config.AutoloadMode.CurrentDir },
+      }
     end,
   },
 
   {
     "chentoast/marks.nvim",
-    config = true,
+    opts = {},
   },
 
   {
@@ -739,8 +989,8 @@ require("lazy").setup({
       { "<M-L>", "<Cmd>lua require('tmux').resize_right()<CR>", desc = "Resize right", mode = { "n", "t" } },
     },
     opts = {
-      copy_sync = {
-        redirect_to_clipboard = true,
+      navigation = {
+        enable_default_keybindings = false,
       },
       resize = {
         enable_custom_bindings = false,
@@ -755,26 +1005,42 @@ require("lazy").setup({
     dependencies = {
       "nvim-telescope/telescope-fzf-native.nvim",
     },
-    config = function()
-      require("dropbar").setup()
-
+    init = function()
       vim.cmd.highlight("WinBar guibg=none")
       vim.cmd.highlight("WinBarNC guibg=none")
     end,
+    opts = {},
   },
 
   {
     "romgrk/barbar.nvim",
+    lazy = false,
     dependencies = {
       "lewis6991/gitsigns.nvim",
       "nvim-tree/nvim-web-devicons",
     },
+    keys = {
+      { "<M-.>", "<Cmd>BufferNext<CR>", desc = "Buffer next" },
+      { "<M-,>", "<Cmd>BufferPrevious<CR>", desc = "Buffer previous" },
+      { "<M-d>", "<Cmd>BufferClose<CR>", desc = "Buffer close" },
+      { "<M-<>", "<Cmd>BufferMovePrevious<CR>", desc = "Buffer move previous" },
+      { "<M->>", "<Cmd>BufferMoveNext<CR>", desc = "Buffer move next" },
+      { "<M-p", "<Cmd>BufferPin<CR>", desc = "Buffer pin" },
+      { "<C-p>", "<Cmd>BufferPick<CR>", desc = "Buffer pick" },
+      { "<M-1>", "<Cmd>BufferGoto 1<CR>", desc = "Buffer goto 1" },
+      { "<M-2>", "<Cmd>BufferGoto 2<CR>", desc = "Buffer goto 2" },
+      { "<M-3>", "<Cmd>BufferGoto 3<CR>", desc = "Buffer goto 3" },
+      { "<M-4>", "<Cmd>BufferGoto 4<CR>", desc = "Buffer goto 4" },
+      { "<M-5>", "<Cmd>BufferGoto 5<CR>", desc = "Buffer goto 5" },
+      { "<M-6>", "<Cmd>BufferGoto 6<CR>", desc = "Buffer goto 6" },
+      { "<M-7>", "<Cmd>BufferGoto 7<CR>", desc = "Buffer goto 7" },
+      { "<M-8>", "<Cmd>BufferGoto 8<CR>", desc = "Buffer goto 8" },
+      { "<M-9>", "<Cmd>BufferGoto 9<CR>", desc = "Buffer goto 9" },
+      { "<M-0>", "<Cmd>BufferLast<CR>", desc = "Buffer goto last" },
+    },
     opts = {
       auto_hide = 1,
       focus_on_close = "previous",
-      sidebar_filetypes = {
-        ["neo-tree"] = { event = "BufWipeout" },
-      },
       no_name_title = "new",
     },
   },
