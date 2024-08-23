@@ -35,3 +35,5 @@ map("n", "<Esc>", function()
     require("noice").cmd("dismiss")
   end
 end, silent)
+
+map("n", "<C-L>", "<Cmd>Lazy<CR>", silent)
