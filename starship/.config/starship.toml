@@ -7,7 +7,7 @@ success_symbol = "[❯](bold purple)"
 min_time = 4_000
 
 [directory]
-read_only = " "
+read_only = " 󰌾"
 truncation_length = 5
 truncate_to_repo = false
 truncation_symbol = "../"
@@ -167,7 +167,7 @@ symbol = "󰟔 "
 symbol = " "
 
 [rust]
-symbol = " "
+symbol = "󱘗 "
 
 [scala]
 symbol = " "
