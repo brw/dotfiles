@@ -447,10 +447,14 @@ return {
             local tailwindcss_opts = {
               settings = {
                 tailwindCSS = {
+                  classAttributes = {
+                    "modifiersClassNames",
+                  },
                   experimental = {
                     classRegex = {
                       { "cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]" },
                       { "cx\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)" },
+                      { "cn\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)" },
                     },
                   },
                 },
