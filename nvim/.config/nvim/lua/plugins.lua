@@ -111,7 +111,13 @@ return {
       "RRethy/nvim-treesitter-endwise",
       {
         "windwp/nvim-ts-autotag",
-        config = true,
+        config = function()
+          require("nvim-ts-autotag").setup({
+            opts = {
+              enable_close_on_slash = true,
+            },
+          })
+        end,
       },
     },
     config = function()
@@ -171,9 +177,6 @@ return {
           },
         },
         endwise = {
-          enable = true,
-        },
-        autotag = {
           enable = true,
         },
       })
