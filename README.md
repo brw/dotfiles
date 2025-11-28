@@ -8,12 +8,15 @@ My dotfiles managed using [GNU Stow](https://www.gnu.org/software/stow).
 
 - `~/.local/share/fish/fish_history`
 - uBlock Origin filters & settings
-- Twitch FFZ & Previews settings
+- Twitch FFZ, Previews, 7TV settings
 - ViolentMonkey userscripts & options
+- Hover Zoom+ settings
 - YouTube Enhancer & SponsorBlock config
 - Tabs and windows using Session Buddy
 - Remote Torrent Adder config
 - AniList Automail userscript config
+- VueTorrent settings
+- Redirector entries
 - Flatpak apps (`~/.var/app/` or `flatpak list --columns=application --app`)
 - gpg keys (`~/.gnupg/`)
 
@@ -28,14 +31,16 @@ kemono.su
 coomer.su
 pixeldrain.com
 drive.google.com
-bas.eos.usbx.me
 eos.usbx.me
 scrutiny.bas.sh
 youtube.com
 store.steampowered.com
+pomf.tv
+bunkr
+arazu.io
 ```
 
-//TODO: properly automate everything below
+`// TODO: automate everything below`
 
 #### Clone dotfiles
 ```shell
@@ -45,10 +50,13 @@ git clone git@github.com:brw/dotfiles.git
 #### Disable Intel pstate driver
 Add `intel_pstate=disable` to the options in `/boot/entries/linux.conf`
 
+Or `intel_pstate=active`, if using [throttled](https://github.com/erpalma/throttled):
+
 #### Copy system files
 ```shell
-sudo cp sysctl/etc/sysctld.d/* /etc/sysctl.d/
-sudo cp zram/etc/systemd/zram-generator.conf /etc/systemd/
+sudo cp -i sysctl/etc/sysctld.d/* /etc/sysctl.d/
+sudo cp -i zram/etc/systemd/zram-generator.conf /etc/systemd/
+sudo cp -i etc/udev/rules.d/10-trim.rules /etc/udev/rules.d/
 ```
 
 #### Install yay
@@ -64,9 +72,9 @@ yay -Y --gendb
 gpg --auto-key-locate nodefault,wkd --locate-keys torbrowser@torproject.org
 ```
 
-#### Install packages 
+#### Install packages
 ```shell
-yay -Syu --needed $(cat arch-*-packages)
+yay -Syu --needed $(cat arch-{shell,desktop}-packages)
 ```
 
 #### Install dotfiles
