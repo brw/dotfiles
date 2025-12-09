@@ -44,11 +44,14 @@ else if string match -q -- "*codam.nl*" $host && string match -q -- "*Darwin*" $
 end
 
 type -q mise && mise activate fish | source
-test -e $HOME/.local/mise && $HOME/.local/mise activate fish | source
-type -q starship && starship init fish | source
+test -f $HOME/.local/mise && $HOME/.local/mise activate fish | source
 type -q direnv && direnv hook fish | source
 type -q zoxide && zoxide init fish | source
 type -q imdl && imdl completions --shell fish | source
+# type -q carapace && carapace _carapace | source
+type -q starship && starship init fish | source
+type -q atuin && atuin init fish --disable-up-arrow | source
+type -q keylightctl && keylightctl completion fish | source
 
 if test -e $__fish_user_data_dir/plugins/plug.fish/conf.d/plugin_load.fish
     source $__fish_user_data_dir/plugins/plug.fish/conf.d/plugin_load.fish
