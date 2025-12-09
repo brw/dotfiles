@@ -32,19 +32,13 @@ if string match -q -- "*microsoft*" (uname -a)
 
     if not ss -a | grep -q $SSH_AUTH_SOCK
         rm -f $SSH_AUTH_SOCK
-
-        if string match -iq -- bamibal $host
-            set -gx user Bas # I don't remember what this is for but it's here now
-        end
-
         setsid --fork socat UNIX-LISTEN:$SSH_AUTH_SOCK,fork EXEC:"/mnt/c/Users/$user/wsl-ssh-agent/npiperelay.exe -ei -s //./pipe/openssh-ssh-agent",nofork
     end
-else if string match -q -- "*codam.nl*" $host
-    if string match -q -- "*Darwin*" $uname
-        ulimit -n 10240
+else if string match -q -- "*codam.nl*" $host && string match -q -- "*Darwin*" $uname
+    ulimit -n 10240
 
-        #set -gx HOMEBREW_CORE_GIT_REMOTE "https://github.com/gromgit/homebrew-core-mojave"
-        set -gx HOMEBREW_TEMP /Volumes/T7/homebrew/tmp
+    #set -gx HOMEBREW_CORE_GIT_REMOTE "https://github.com/gromgit/homebrew-core-mojave"
+    set -gx HOMEBREW_TEMP /Volumes/T7/homebrew/tmp
 
     fish_add_path -P /Applications/CLion.app/Contents/bin/gdb/mac/bin
 end
