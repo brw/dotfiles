@@ -74,10 +74,9 @@ set -q SSH_AUTH_SOCK || set -gx SSH_AUTH_SOCK $XDG_RUNTIME_DIR/gcr/ssh
 set -l editors nvim vim vi
 for editor in $editors
     if command -q $editor
-        set -gx EDITOR $editor
+        set -Ux EDITOR $editor
+        set -Ux SYSTEMD_EDITOR $editor
         break
     end
 end
 
-set -gx SYSTEMD_EDITOR $EDITOR
-set -gx WINEPREFIX $HOME/.wine
