@@ -1,6 +1,3 @@
-function fish_remove_path
-    if set -l index (contains -i "$argv" $fish_user_paths)
-        set -e fish_user_paths[$index]
-        echo "Removed $argv from the path"
-    end
+function fish_remove_path --description 'Remove an item from $fish_user_paths'
+    fish_remove_list fish_user_paths $argv
 end
