@@ -56,6 +56,9 @@ type -q keylightctl && keylightctl completion fish | source
 if test -e $__fish_user_data_dir/plugins/plug.fish/conf.d/plugin_load.fish
     source $__fish_user_data_dir/plugins/plug.fish/conf.d/plugin_load.fish
 else
+    if not set -q plugins
+        set -U plugins https://github.com/kidonng/plug.fish
+    end
     curl -L https://github.com/kidonng/plug.fish/raw/v3/conf.d/plugin_load.fish | source
 end
 
