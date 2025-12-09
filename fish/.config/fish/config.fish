@@ -1,7 +1,7 @@
 set uname (uname -a)
 set host (hostname)
 
-if status is-login && not set -q SSH_CLIENT
+if status is-login && not set -q SSH_CLIENT && not set -q TMUX
     exit
 end
 
