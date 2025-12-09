@@ -5,7 +5,7 @@ if status is-login && not set -q SSH_CLIENT && not set -q TMUX
     exit
 end
 
-fish_add_path -g $HOME/.local/bin
+fish_add_path -P $HOME/.local/bin
 
 if test -e /opt/homebrew/bin/brew
     eval (/opt/homebrew/bin/brew shellenv)
@@ -20,7 +20,7 @@ end
 if command -q brew
     set brew_prefix (brew --prefix)
     set -agx PKG_CONFIG_PATH $brew_prefix/opt/*/lib/pkgconfig
-    fish_add_path -g $brew_prefix/opt/glibc/{,s}bin
+    fish_add_path -P $brew_prefix/opt/glibc/{,s}bin
 end
 
 if string match -q -- "*microsoft*" (uname -a)
@@ -46,9 +46,7 @@ else if string match -q -- "*codam.nl*" $host
         #set -gx HOMEBREW_CORE_GIT_REMOTE "https://github.com/gromgit/homebrew-core-mojave"
         set -gx HOMEBREW_TEMP /Volumes/T7/homebrew/tmp
 
-        fish_add_path -g /Applications/CLion.app/Contents/bin/gdb/mac/bin
-    else # linux
-    end
+    fish_add_path -P /Applications/CLion.app/Contents/bin/gdb/mac/bin
 end
 
 type -q mise && mise activate fish | source
