@@ -1,5 +1,7 @@
+npm
 neovim
 prettier
-@fsouza/prettierd
+@prettier/plugin-xml
+#@fsouza/prettierd
 eslint
-eslint_d
+#eslint_d

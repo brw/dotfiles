@@ -1,0 +1,9 @@
+[Unit]
+Description=normcap background mode
+
+[Service]
+Type=exec
+ExecStart=normcap --background-mode
+
+[Install]
+WantedBy=default.target

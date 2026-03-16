@@ -1,0 +1,7 @@
+[Unit]
+Description=Ghostty automatic config reload using entr
+BindsTo=app-com.mitchellh.ghostty.service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/sh -c "echo ~/.config/ghostty/config | /usr/bin/entr -np pkill -SIGUSR2 ghostty"

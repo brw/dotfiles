@@ -36,4 +36,11 @@ map("n", "<Esc>", function()
   end
 end, silent)
 
-map("n", "<C-L>", "<Cmd>Lazy<CR>", silent)
+map("n", "<C-l>", "<Cmd>Lazy<CR>", silent)
+map("n", "<C-m>", "<Cmd>Mason<CR>", silent)
+-- revert Enter behavior after mapping Ctrl-M
+map("n", "<CR>", "<CR>")
+
+map("n", "<leader>c", "<Cmd>%y+<CR>", { silent = true, desc = "Yank file contents into system clipboard" })
+
+map("n", "<leader>r", "<Cmd>restart<CR>", { silent = true, desc = "Restart Neovim" })

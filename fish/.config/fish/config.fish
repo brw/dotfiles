@@ -53,11 +53,32 @@ type -q starship && starship init fish | source
 type -q atuin && atuin init fish --disable-up-arrow | source
 type -q keylightctl && keylightctl completion fish | source
 
+# why does this break autocomplete for the tmux command
+# test ! -e "$HOME/.x-cmd.root/local/data/fish/rc.fish" || source "$HOME/.x-cmd.root/local/data/fish/rc.fish"
+
+# functions -c fish_prompt __fish_prompt
+# function fish_prompt
+#     set _status $status
+#     echo "check $(date +%s%3N) $did_tmux_restore" | systemd-cat
+#     if set -q did_tmux_restore
+#         # functions -e fish_prompt
+#         # functions -c __fish_prompt fish_prompt
+#         # functions -e __fish_prompt
+#         # printf '\e[u'
+#         return
+#     else
+#         # forwarding the original $status to the actual prompt
+#         test $_status -eq 0
+#         __fish_prompt
+#         # printf '\e[s'
+#     end
+# end
+
 if test -e $__fish_user_data_dir/plugins/plug.fish/conf.d/plugin_load.fish
     source $__fish_user_data_dir/plugins/plug.fish/conf.d/plugin_load.fish
 else
     if not set -q plugins
-        set -U plugins https://github.com/kidonng/plug.fish
+        set -Ux plugins https://github.com/kidonng/plug.fish
     end
     curl -L https://github.com/kidonng/plug.fish/raw/v3/conf.d/plugin_load.fish | source
 end
@@ -80,3 +101,11 @@ for editor in $editors
     end
 end
 
+function last_history_item
+    echo $history[1]
+end
+abbr -a !! --position anywhere --function last_history_item
+
+# TODO: fix empty line on suspending again
+# bind -M insert \cz 'functions -c fish_job_summary _fish_job_summary; function fish_job_summary; end; fg 2>/dev/null; commandline -f repaint; functions -e fish_job_summary; functions -c _fish_job_summary fish_job_summary; functions -e _fish_job_summary'
+bind -M insert \cz 'fg; commandline -f repaint'

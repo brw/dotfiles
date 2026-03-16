@@ -1,3 +1,9 @@
-VteTerminal, vte-terminal {
+VteTerminal,
+vte-terminal {
   padding: 10px;
+}
+
+treeview {
+  padding: 2px;
+  -gtktreeview-horizontal-separator: 5;
 }

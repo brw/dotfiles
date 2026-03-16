@@ -1,0 +1,40 @@
+quit-after-last-window-closed = false
+maximize = true
+
+font-size = 10.5
+font-feature = "-calt"
+
+# font: Google Sans Code
+#font-family = "Google Sans Code NF"
+#adjust-underline-position = 1
+#adjust-underline-thickness = -1
+
+# font: Hack
+font-family = "Hack Nerd Font"
+adjust-cell-height = 1
+
+# fallbacks
+font-family = "Noto Sans Mono"
+font-family = "Noto Sans Mono CJK JP"
+
+theme = "Nord"
+
+# now handled by fish? kinda? seems like I still need these settings though
+#shell-integration-features = "no-cursor"
+shell-integration = "fish"
+shell-integration-features = "no-cursor,sudo,ssh-env,ssh-terminfo"
+cursor-style = "block"
+
+# tmux?
+cursor-click-to-move = true
+
+# TODO: figure out why scroll speed is different between Ghostty and tmux
+mouse-scroll-multiplier = 1
+
+keybind = clear
+keybind = ctrl+shift+c=copy_to_clipboard
+keybind = ctrl+shift+v=paste_from_clipboard
+keybind = ctrl+equal=increase_font_size:1
+keybind = ctrl+plus=increase_font_size:1
+keybind = ctrl+minus=decrease_font_size:1
+keybind = ctrl+zero=reset_font_size

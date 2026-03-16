@@ -1,18 +1,29 @@
 [user]
     email = hi@bas.sh
     name = Bas van den Wollenberg
+    signingkey = /home/bas/.ssh/id_ed25519_bas
 
 [core]
     autocrlf = input
     editor = nvim
     pager = delta
+    difftool = true
+
+[pager]
+    difftool = true
+	; diff = diffnav
 
 [alias]
-    showext = show --ext-diff
-    logext = log --ext-diff
+    showt = show --ext-diff
+    logt = log --ext-diff
+    difft = difftool
+    diffn = -c pager.diff=diffnav diff
+    prune-local = !git branch -vv | awk '/: gone]/{print $1}' | xargs git branch -d
+    cd = "!fish -c \"if test -d $1 && read -p 'echo -n \"Directory exists. Delete first? Y/n \"' | grep -v '[yY ]'; exit 1; else rm -rf (path basename $1); end; git clone $1 && cd (path basename $1)\""
+    bl = branchless
 
 [credential]
-    helper = store
+    helper = /usr/lib/git-core/git-credential-libsecret
 
 [filter "lfs"]
     clean = git-lfs clean -- %f
@@ -27,27 +38,43 @@
     diffFilter = delta --color-only
 
 [delta]
-    syntax-theme = Nord
     navigate = true
+    syntax-theme = Nord
+
+[diff]
+    colorMoved = default
+    ; external = difft "$LOCAL" "$REMOTE"
+    tool = difftastic
+    algorithm = histogram
 
 [difftool]
     prompt = false
-    external = difft --display inline
+
+[difftool "difftastic"]
+    cmd = difft "$LOCAL" "$REMOTE"
+
+[difftool "diffnav"]
+    cmd = diffnav "$LOCAL" "$REMOTE"
 
 [init]
-    defaultBranch = main
+	defaultBranch = main
 
 [pull]
     rebase = true
 
 [rebase]
     autostash = true
+	updaterefs = true
 
 [merge]
     autoStash = true
+    conflictstyle = zdiff3
+	summary = true
+	ff = only
 
 [commit]
     verbose = true
+    gpgsign = true
 
 [submodule]
     recurse = true
@@ -56,7 +83,35 @@
     autoSetupRemote = true
 
 [rerere]
-	enabled = true
+    enabled = true
 
 [protocol "file"]
-	allow = always
+    allow = always
+
+[gpg]
+    format = ssh
+
+[tag]
+    gpgSign = true
+	sort = -version:refname
+
+[url "git@github.com:"]
+   insteadOf = git://github.com/
+;    insteadOf = http://github.com/
+;    insteadOf = https://github.com/
+
+[url "git+ssh://brw@git.launchpad.net/"]
+    insteadof = lp:
+
+[fetch]
+    prune = true
+
+[cola]
+	theme = default
+	icontheme = dark
+	expandtab = true
+	refreshonfocus = true
+	resizebrowsercolumns = true
+
+[gui]
+	editor = nvim

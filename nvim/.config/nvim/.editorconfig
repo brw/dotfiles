@@ -1,5 +1,0 @@
-[*.lua]
-indent_style = space
-indent_size = 2
-quote_style = single
-trailing_table_separator = smart

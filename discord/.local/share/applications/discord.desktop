@@ -4,7 +4,8 @@ StartupWMClass=discord
 Comment=All-in-one voice and text chat for gamers that's free, secure, and works on both your desktop and phone.
 GenericName=Internet Messenger
 # Exec=/usr/bin/discord --enable-features=WebRTCPipeWireCapturer,VaapiVideoDecoder --ozone-platform-hint=auto --enable-blink-features=MiddleClickAutoScroll --ignore-gpu-blocklist
-Exec=/usr/bin/discord --enable-features=WaylandWindowDecorations,AcceleratedVideoDecodeLinuxZeroCopyGL,AcceleratedVideoDecodeLinuxGL,AcceleratedVideoEncoder,TouchpadOverscrollHistoryNavigation,PlatformHEVCDecoderSupport,CanvasOopRasterization --ozone-platform-hint=auto --enable-blink-features=MiddleClickAutoscroll --ignore-gpu-blocklist --enable-gpu-rasterization
+# Exec=/usr/bin/discord --enable-features=WaylandWindowDecorations,AcceleratedVideoDecodeLinuxZeroCopyGL,AcceleratedVideoDecodeLinuxGL,AcceleratedVideoEncoder,TouchpadOverscrollHistoryNavigation,PlatformHEVCDecoderSupport,CanvasOopRasterization --ozone-platform-hint=auto --enable-blink-features=MiddleClickAutoscroll --ignore-gpu-blocklist --enable-gpu-rasterization
+Exec=prlimit --core=0 -- fish -c 'exec /usr/bin/discord (grep "^[^#]" ~/.config/discord-flags.conf)'
 Icon=discord
 Type=Application
 Categories=Network;InstantMessaging;

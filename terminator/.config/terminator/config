@@ -1,7 +1,6 @@
 [global_config]
   inactive_color_offset = 1.0
-  enabled_plugins = ActivityWatch, InactivityWatch, LaunchpadBugURLHandler, LaunchpadCodeURLHandler, APTURLHandler, SaveLastSessionLayout
-  suppress_multiple_term_dialog = True
+  enabled_plugins = ActivityWatch, InactivityWatch, LaunchpadBugURLHandler, LaunchpadCodeURLHandler, APTURLHandler
   disable_mouse_paste = True
   clear_select_on_copy = True
   invert_search = True
@@ -10,8 +9,8 @@
   cycle_prev = ""
   go_next = <Alt>bracketright
   go_prev = <Alt>bracketleft
-  split_auto = <Primary>Return
-  split_horiz = <Primary><Shift>Return
+  split_auto = <Primary><Shift>Return
+  split_horiz = ""
   split_vert = ""
   next_tab = <Primary>Tab
   prev_tab = <Primary><Shift>Tab
@@ -20,7 +19,7 @@
 [profiles]
   [[default]]
     background_color = "#2E3440"
-    font = Hack Nerd Font 10
+    font = Hack Nerd Font 10.5
     foreground_color = "#D8DEE9"
     show_titlebar = False
     scrollback_infinite = True
@@ -36,4 +35,23 @@
       type = Terminal
       parent = window0
       profile = default
+  [[SaveLastSessionLayout]]
+    [[[child0]]]
+      type = Window
+      parent = ""
+      order = 0
+      position = 0:0
+      maximised = True
+      fullscreen = False
+      size = 2560, 1403
+      title = ~
+      last_active_term = 3463da18-cdfa-4dcf-9bec-34b402b91ed0
+      last_active_window = True
+    [[[terminal1]]]
+      type = Terminal
+      parent = child0
+      order = 0
+      profile = default
+      uuid = 3463da18-cdfa-4dcf-9bec-34b402b91ed0
+      directory = /home/bas
 [plugins]

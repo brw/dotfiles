@@ -1,5 +1,8 @@
+pip
 pynvim
 virtualenv
 pipenv
 norminette; python_version >= '3'
 c-formatter-42; python_version >= '3'
+cyberdrop-dl-patched
+tmux-language-server

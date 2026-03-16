@@ -1,0 +1,28 @@
+[general]
+import = ["/usr/share/alacritty/themes/nord.toml"]
+
+[window]
+padding = { x = 8, y = 10 }
+dynamic_padding = true
+
+[font]
+normal = { family = "Hack Nerd Font", style = "Regular" }
+bold = { family = "Hack Nerd Font", style = "Bold" }
+italic = { family = "Hack Nerd Font", style = "Italic" }
+bold_italic = { family = "Hack Nerd Font", style = "Bold Italic" }
+size = 10
+offset = { x = 0, y = 0 }
+builtin_box_drawing = true
+
+[env]
+# TERM = "alacritty-direct"
+
+[terminal]
+osc52 = "CopyPaste"
+
+[keyboard]
+bindings = [
+  { key = "M", mods = "Control", chars = "\u001b[109;5u" },
+  { key = "V", mods = "Control|Shift", action = "Paste" },
+  { key = "C", mods = "Control|Shift", action = "Copy" },
+]

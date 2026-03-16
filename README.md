@@ -86,7 +86,7 @@ yay -Syu --needed $(cat arch-{shell,desktop}-packages)
 #### Install dotfiles
 ```
 rm -rf ~/.config/fish
-stow -d dotfiles bin cpupower direnv fish git gtk neofetch nvim pacman ripgrep mise starship stow terminator wayland yay
+stow -d dotfiles bin cpupower direnv fish git gtk neofetch nvim pacman ripgrep mise starship stow wayland yay ghostty
 ```
 
 #### Use systemd-resolved
