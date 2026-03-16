@@ -1,0 +1,34 @@
+#:schema https://jj-vcs.github.io/jj/latest/config-schema.json
+
+[user]
+name = "Bas van den Wollenberg"
+email = "hi@bas.sh"
+
+[aliases]
+stack = ["util", "exec", "--", "bunx", "jj-stack"]
+spr = ["util", "exec", "--", "jj-spr"]
+
+[ui]
+default-command = "log"
+diff-formatter = "delta"
+
+[merge-tools.delta]
+diff-args=["--side-by-side", "$left", "$right", "--width=$width"]
+diff-expected-exit-codes = [0, 1]
+
+[signing]
+behavior = "own"
+backend = "ssh"
+key = "~/.ssh/id_ed25519_bas.pub"
+
+[templates]
+draft_commit_description = '''
+concat(
+  builtin_draft_commit_description,
+  "\nJJ: ignore-rest\n",
+  diff.git(),
+)
+'''
+
+[gg.ui]
+recent-workspaces = ["/home/bas/dev/server"]
