@@ -1,3 +1,0 @@
-#!/bin/sh
-
-exec nice /usr/bin/makepkg $@
