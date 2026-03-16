@@ -10,7 +10,6 @@ My dotfiles managed using [GNU Stow](https://www.gnu.org/software/stow).
 - uBlock Origin filters & settings
 - Twitch FFZ, Previews, 7TV settings
 - ViolentMonkey userscripts & options
-- Hover Zoom+ settings
 - YouTube Enhancer & SponsorBlock config
 - Tabs and windows using Session Buddy
 - Remote Torrent Adder config
@@ -20,25 +19,6 @@ My dotfiles managed using [GNU Stow](https://www.gnu.org/software/stow).
 - Flatpak apps (`~/.var/app/` or `flatpak list --columns=application --app`)
 - gpg keys (`~/.gnupg/`)
 
-#### Manual actions to perform
-- Disable HoverZoom+ on
-```
-qbittorrent.bas.sh
-twitch.tv
-kick.com
-trash-guides.info
-kemono.su
-coomer.su
-pixeldrain.com
-drive.google.com
-eos.usbx.me
-scrutiny.bas.sh
-youtube.com
-store.steampowered.com
-pomf.tv
-bunkr
-arazu.io
-```
 
 `// TODO: automate everything below`
 
