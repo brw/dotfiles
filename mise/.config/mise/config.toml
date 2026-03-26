@@ -9,6 +9,7 @@ rust = "nightly"
 
 [settings]
 experimental = true
+env_file = ".env"
 
 trusted_config_paths = ['~/dev']
 idiomatic_version_file_enable_tools = ["ruby"]
