@@ -17,7 +17,7 @@ diff-args=["--side-by-side", "$left", "$right", "--width=$width"]
 diff-expected-exit-codes = [0, 1]
 
 [signing]
-behavior = "keep"
+behavior = "force"
 backend = "ssh"
 key = "~/.ssh/id_ed25519_bas.pub"
 
@@ -32,4 +32,4 @@ concat(
 
 [git]
 private-commits = "description('private:*') | description('wip:*')"
-sign-on-push = true
+# sign-on-push = true
