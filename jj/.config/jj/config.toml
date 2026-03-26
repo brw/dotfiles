@@ -30,5 +30,6 @@ concat(
 )
 '''
 
-[gg.ui]
-recent-workspaces = ["/home/bas/dev/server"]
+[git]
+private-commits = "description('private:*') | description('wip:*')"
+sign-on-push = true
