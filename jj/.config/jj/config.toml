@@ -17,7 +17,7 @@ diff-args=["--side-by-side", "$left", "$right", "--width=$width"]
 diff-expected-exit-codes = [0, 1]
 
 [signing]
-behavior = "force"
+behavior = "own"
 backend = "ssh"
 key = "~/.ssh/id_ed25519_bas.pub"
 
