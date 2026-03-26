@@ -186,3 +186,5 @@ qadwaitadecorations-qt6
 keylightd-bin
 prismlauncher
 btrfs-desktop-notification
+obs-studio-tytan652
+ffmpeg-obs # FFMPEG_OBS_FULL=ON
