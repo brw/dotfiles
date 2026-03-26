@@ -1,0 +1,8 @@
+#!/usr/bin/env fish
+
+set tty (echo "$argv[1]" | cut -d/ -f3-)
+
+for pid in (pgrep -t $tty)
+    set exe (readlink /proc/$pid/exe 2>/dev/null || cat /proc/$pid/cmdline | tr '\0' '\n' | grep -E '^[^-]' | sed -n '2p')
+    echo (ps -o state= -p $pid) $exe
+end | grep -iqE '^[^TXZ ] +(.*/)?(view|n?vim?x?)(-wrapped)?(diff)?$'
