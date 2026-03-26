@@ -12,3 +12,7 @@ experimental = true
 
 trusted_config_paths = ['~/dev']
 idiomatic_version_file_enable_tools = ["ruby"]
+
+[settings.ruby]
+compile = false
+ruby_build_opts = "--with-gcc='gcc -std=gnu17'"
